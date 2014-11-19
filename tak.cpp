@@ -69,7 +69,7 @@ Tak::Tak(Knoop *sourceNode, Knoop *destNode, bool directedEdge)
         destPoint.setY(y2);
     }//if
     if (x1 < x2 && y1 == y2){
-        sourcePoint.setX(x1+(cos(hoek2)*37.5));
+        sourcePoint.setX(x1+(cos(hoek1)*37.5));
         sourcePoint.setY(y1);
         destPoint.setX(x2+(cos(hoek2)*37.5));
         destPoint.setY(y2);
