@@ -11,15 +11,34 @@ Tak::Tak(Knoop *sourceNode, Knoop *destNode, bool directedEdge)
     source = sourceNode;
     dest = destNode;
     directed = directedEdge;
-    sourcePoint.setX(source->x);
-    sourcePoint.setY(source->y);
-    destPoint.setX(dest->x);
-    destPoint.setY(dest->y);
+    double x1 = source->x;
+    double x2 = dest->x;
+    double y1 = source->y;
+    double y2 = dest->y;
+    double dX = abs(x2-x1);
+    double dY = abs(y2-y1);
+    double hoek = tan(dX/dY);
+    qDebug() << hoek << dY << dX << x1 <<x2 << y1 <<y2;
+    sourcePoint.setX((x1+cos(hoek))*37.5);
+    sourcePoint.setY((y1+sin(hoek))*37.5);
+    destPoint.setX((x2+cos(hoek))*37.5);
+    destPoint.setY((y2+sin(hoek))*37.5);
     qDebug() << sourcePoint;
     arrowSize = 10; // TODO : grootte van zijkant van de pijl maken
     line.setLine(source->x, source->y, dest->x, dest->y);
-    //gewicht van de tak meegeven
     //voeg toe aan adjancency list
+    pLineEdit = new QLineEdit("");
+    pLineEdit->setMaxLength(3); //er kunnen maximaal 6 karakters in de text box geplaatst worden
+    pLineEdit->setFixedSize(40, 20); //de grootte van de text box
+    pLineEdit->setStyleSheet("QLineEdit{background: transparent; }");//border: none;
+    pMyProxy = new QGraphicsProxyWidget(this); // the proxy's parent is the 2d object
+    pMyProxy->setWidget(pLineEdit); //voeg de text box toe
+    midX = (source->x + dest->x)/2; //berekene de X-coördinaat het midden van de lijn
+    midY = (source->y + dest->y)/2; //berekene de Y-coördinaat het midden van de lijn
+    if((dest->x >= source->x && dest->x >= source->y) || (dest->x < source->x && dest->x < source->y)) //lijn als y=x
+        pMyProxy->moveBy(midX-20,midY-30); //zet de text box rechts boven het midden van de lijn
+    if((dest->x >= source->x && dest->x < source->y) || (dest->x < source->x && dest->x >= source->y)) //lijn als y=-x
+        pMyProxy->moveBy(midX-30,midY-30); //zet de text box links boven het midden van de lijn
 }
 
 QRectF Tak::boundingRect() const
@@ -79,3 +98,4 @@ void Tak::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
     qDebug("test");
 }
+
