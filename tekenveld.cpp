@@ -43,6 +43,7 @@ void tekenveld::mousePressEvent(QGraphicsSceneMouseEvent *event) {
                 knoop = new Knoop(x, y, false, true);
                 addItem(knoop);
             }//else if
+            graaf.expandList(knoop, graaf.listEntrance);
         }//if
        //anders als een takButton aan staat en met de linkermuisknop op een knoop wordt gedrukt
        //en daarna een tweede knoop wordt gedrukt, maak een lijn
@@ -78,6 +79,7 @@ void tekenveld::mousePressEvent(QGraphicsSceneMouseEvent *event) {
                             else
                                 tak = new Tak(eersteKnoop, knoop, false);
                             addItem(tak);
+                            graaf.expandList(tak, graaf.listEntrance);
                             firstClick = true;
                             eersteKnoop = NULL;
                         }//if
