@@ -17,12 +17,64 @@ Tak::Tak(Knoop *sourceNode, Knoop *destNode, bool directedEdge)
     double y2 = dest->y;
     double dX = abs(x2-x1);
     double dY = abs(y2-y1);
-    double hoek = tan(dX/dY);
-    qDebug() << hoek << dY << dX << x1 <<x2 << y1 <<y2;
-    sourcePoint.setX((x1+cos(hoek))*37.5);
-    sourcePoint.setY((y1+sin(hoek))*37.5);
-    destPoint.setX((x2+cos(hoek))*37.5);
-    destPoint.setY((y2+sin(hoek))*37.5);
+    double hoek1 = tan(dY/dX);//hoek source cirkel
+    double hoek2 = tan(dX/dY);//hoek dest cirkel
+    qDebug() << hoek1 << dY << dX << x1 <<x2 << y1 <<y2;
+    /* Eerste kwadrant */
+    if (x1 < x2 && y1 < y2){
+        sourcePoint.setX(x1+(cos(hoek1)*37.5));
+        sourcePoint.setY(y1+(sin(hoek1)*37.5));
+        destPoint.setX(x2-(cos(hoek2)*37.5));
+        destPoint.setY(y2-(sin(hoek2)*37.5));
+    }//if
+    /* Tweede kwadrant */
+    if (x1 < x2 && y1 > y2){
+        sourcePoint.setX(x1+(cos(hoek1)*37.5));
+        sourcePoint.setY(y1-(sin(hoek1)*37.5));
+        destPoint.setX(x2-(cos(hoek2)*37.5));
+        destPoint.setY(y2+(sin(hoek2)*37.5));
+    }//if
+    /* Derde kwadrant */
+    if (x1 > x2 && y1 < y2){
+        sourcePoint.setX(x1-(cos(hoek1)*37.5));
+        sourcePoint.setY(y1+(sin(hoek1)*37.5));
+        destPoint.setX(x2+(cos(hoek2)*37.5));
+        destPoint.setY(y2-(sin(hoek2)*37.5));
+    }//if
+    /* Vierde kwadrant */
+    if (x1 > x2 && y1 > y2){
+        sourcePoint.setX(x1-(cos(hoek1)*37.5));
+        sourcePoint.setY(y1-(sin(hoek1)*37.5));
+        destPoint.setX(x2+(cos(hoek2)*37.5));
+        destPoint.setY(y2+(sin(hoek2)*37.5));
+    }//if
+    /* Boven elkaar */
+    if (x1 == x2 && y1 > y2){
+        sourcePoint.setX(x1);
+        sourcePoint.setY(y1-(sin(hoek1)*37.5));
+        destPoint.setX(x2);
+        destPoint.setY(y2+(sin(hoek2)*37.5));
+    }//if
+    if (x1 == x2 && y1 < y2){
+        sourcePoint.setX(x1);
+        sourcePoint.setY(y1+(sin(hoek1)*37.5));
+        destPoint.setX(x2);
+        destPoint.setY(y2-(sin(hoek2)*37.5));
+    }//if
+    /* Naast elkaar */
+    if (x1 > x2 && y1 == y2){
+        sourcePoint.setX(x1-(cos(hoek1)*37.5));
+        sourcePoint.setY(y1);
+        destPoint.setX(x2-(cos(hoek2)*37.5));
+        destPoint.setY(y2);
+    }//if
+    if (x1 < x2 && y1 == y2){
+        sourcePoint.setX(x1+(cos(hoek2)*37.5));
+        sourcePoint.setY(y1);
+        destPoint.setX(x2+(cos(hoek2)*37.5));
+        destPoint.setY(y2);
+    }//if
+
     qDebug() << sourcePoint;
     arrowSize = 10; // TODO : grootte van zijkant van de pijl maken
     line.setLine(source->x, source->y, dest->x, dest->y);
