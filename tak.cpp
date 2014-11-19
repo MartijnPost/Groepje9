@@ -20,6 +20,18 @@ Tak::Tak(Knoop *sourceNode, Knoop *destNode, bool directedEdge)
     line.setLine(source->x, source->y, dest->x, dest->y);
     //gewicht van de tak meegeven
     //voeg toe aan adjancency list
+    pLineEdit = new QLineEdit("");
+    pLineEdit->setMaxLength(3); //er kunnen maximaal 6 karakters in de text box geplaatst worden
+    pLineEdit->setFixedSize(40, 20); //de grootte van de text box
+    pLineEdit->setStyleSheet("QLineEdit{background: transparent; }");//border: none;
+    pMyProxy = new QGraphicsProxyWidget(this); // the proxy's parent is the 2d object
+    pMyProxy->setWidget(pLineEdit); //voeg de text box toe
+    midX = (source->x + dest->x)/2; //berekene de X-coördinaat het midden van de lijn
+    midY = (source->y + dest->y)/2; //berekene de Y-coördinaat het midden van de lijn
+    if((dest->x >= source->x && dest->x >= source->y) || (dest->x < source->x && dest->x < source->y)) //lijn als y=x
+        pMyProxy->moveBy(midX-20,midY-30); //zet de text box rechts boven het midden van de lijn
+    if((dest->x >= source->x && dest->x < source->y) || (dest->x < source->x && dest->x >= source->y)) //lijn als y=-x
+        pMyProxy->moveBy(midX-30,midY-30); //zet de text box links boven het midden van de lijn
 }
 
 QRectF Tak::boundingRect() const
@@ -79,3 +91,4 @@ void Tak::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
     qDebug("test");
 }
+
