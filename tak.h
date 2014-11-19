@@ -22,8 +22,7 @@ public:
     int midX;
     int midY;
 private:
-    Knoop *source, *dest;//de begin en eindknoop 
-    qreal arrowSize;//grootte van de pijl
+    Knoop *source, *dest;//de begin en eindknoop
     QLineF line;
     QPoint sourcePoint;
     QPoint destPoint;

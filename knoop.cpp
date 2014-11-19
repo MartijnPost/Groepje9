@@ -55,6 +55,5 @@ QWidget *widget)
 
 void Knoop::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
-    qDebug() << pLineEdit->text(); //print tekst in knoop
-    qDebug() << x << "," << y; //print x- en y-coordinaat
+    qDebug("knoop");
 }

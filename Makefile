@@ -910,8 +910,9 @@ moc_mainwindow.cpp: ../Qt/5.3/gcc_64/include/QtWidgets/QMainWindow \
 		../Qt/5.3/gcc_64/include/QtWidgets/QGraphicsProxyWidget \
 		../Qt/5.3/gcc_64/include/QtWidgets/QLineEdit \
 		tak.h \
+		../Qt/5.3/gcc_64/include/QtCore/QPoint \
 		mainwindow.h
-	/home/robbin/Qt/5.3/gcc_64/bin/moc $(DEFINES) -I/home/robbin/Qt/5.3/gcc_64/mkspecs/linux-g++ -I'/home/robbin/Takken(niet werkend)' -I/home/robbin/Qt/5.3/gcc_64/include -I/home/robbin/Qt/5.3/gcc_64/include/QtWidgets -I/home/robbin/Qt/5.3/gcc_64/include/QtGui -I/home/robbin/Qt/5.3/gcc_64/include/QtCore mainwindow.h -o moc_mainwindow.cpp
+	/home/robbin/Qt/5.3/gcc_64/bin/moc $(DEFINES) -I/home/robbin/Qt/5.3/gcc_64/mkspecs/linux-g++ -I/home/robbin/main -I/home/robbin/Qt/5.3/gcc_64/include -I/home/robbin/Qt/5.3/gcc_64/include/QtWidgets -I/home/robbin/Qt/5.3/gcc_64/include/QtGui -I/home/robbin/Qt/5.3/gcc_64/include/QtCore mainwindow.h -o moc_mainwindow.cpp
 
 moc_invoegscherm.cpp: ../Qt/5.3/gcc_64/include/QtWidgets/QDialog \
 		../Qt/5.3/gcc_64/include/QtWidgets/qdialog.h \
@@ -1015,7 +1016,7 @@ moc_invoegscherm.cpp: ../Qt/5.3/gcc_64/include/QtWidgets/QDialog \
 		../Qt/5.3/gcc_64/include/QtGui/qvector2d.h \
 		../Qt/5.3/gcc_64/include/QtGui/qtouchdevice.h \
 		invoegscherm.h
-	/home/robbin/Qt/5.3/gcc_64/bin/moc $(DEFINES) -I/home/robbin/Qt/5.3/gcc_64/mkspecs/linux-g++ -I'/home/robbin/Takken(niet werkend)' -I/home/robbin/Qt/5.3/gcc_64/include -I/home/robbin/Qt/5.3/gcc_64/include/QtWidgets -I/home/robbin/Qt/5.3/gcc_64/include/QtGui -I/home/robbin/Qt/5.3/gcc_64/include/QtCore invoegscherm.h -o moc_invoegscherm.cpp
+	/home/robbin/Qt/5.3/gcc_64/bin/moc $(DEFINES) -I/home/robbin/Qt/5.3/gcc_64/mkspecs/linux-g++ -I/home/robbin/main -I/home/robbin/Qt/5.3/gcc_64/include -I/home/robbin/Qt/5.3/gcc_64/include/QtWidgets -I/home/robbin/Qt/5.3/gcc_64/include/QtGui -I/home/robbin/Qt/5.3/gcc_64/include/QtCore invoegscherm.h -o moc_invoegscherm.cpp
 
 moc_resultatenscherm.cpp: ../Qt/5.3/gcc_64/include/QtWidgets/QDialog \
 		../Qt/5.3/gcc_64/include/QtWidgets/qdialog.h \
@@ -1458,8 +1459,9 @@ moc_resultatenscherm.cpp: ../Qt/5.3/gcc_64/include/QtWidgets/QDialog \
 		../Qt/5.3/gcc_64/include/QtWidgets/QGraphicsProxyWidget \
 		../Qt/5.3/gcc_64/include/QtWidgets/QLineEdit \
 		tak.h \
+		../Qt/5.3/gcc_64/include/QtCore/QPoint \
 		resultatenscherm.h
-	/home/robbin/Qt/5.3/gcc_64/bin/moc $(DEFINES) -I/home/robbin/Qt/5.3/gcc_64/mkspecs/linux-g++ -I'/home/robbin/Takken(niet werkend)' -I/home/robbin/Qt/5.3/gcc_64/include -I/home/robbin/Qt/5.3/gcc_64/include/QtWidgets -I/home/robbin/Qt/5.3/gcc_64/include/QtGui -I/home/robbin/Qt/5.3/gcc_64/include/QtCore resultatenscherm.h -o moc_resultatenscherm.cpp
+	/home/robbin/Qt/5.3/gcc_64/bin/moc $(DEFINES) -I/home/robbin/Qt/5.3/gcc_64/mkspecs/linux-g++ -I/home/robbin/main -I/home/robbin/Qt/5.3/gcc_64/include -I/home/robbin/Qt/5.3/gcc_64/include/QtWidgets -I/home/robbin/Qt/5.3/gcc_64/include/QtGui -I/home/robbin/Qt/5.3/gcc_64/include/QtCore resultatenscherm.h -o moc_resultatenscherm.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -1927,6 +1929,7 @@ main.o: main.cpp mainwindow.h \
 		../Qt/5.3/gcc_64/include/QtWidgets/QGraphicsProxyWidget \
 		../Qt/5.3/gcc_64/include/QtWidgets/QLineEdit \
 		tak.h \
+		../Qt/5.3/gcc_64/include/QtCore/QPoint \
 		invoegscherm.h \
 		../Qt/5.3/gcc_64/include/QtWidgets/QDialog \
 		resultatenscherm.h \
@@ -2375,6 +2378,7 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		../Qt/5.3/gcc_64/include/QtWidgets/QGraphicsProxyWidget \
 		../Qt/5.3/gcc_64/include/QtWidgets/QLineEdit \
 		tak.h \
+		../Qt/5.3/gcc_64/include/QtCore/QPoint \
 		ui_mainwindow.h \
 		../Qt/5.3/gcc_64/include/QtWidgets/QAction \
 		../Qt/5.3/gcc_64/include/QtWidgets/QApplication \
@@ -2842,6 +2846,7 @@ invoegscherm.o: invoegscherm.cpp invoegscherm.h \
 		../Qt/5.3/gcc_64/include/QtCore/QDebug \
 		../Qt/5.3/gcc_64/include/QtWidgets/QGraphicsProxyWidget \
 		tak.h \
+		../Qt/5.3/gcc_64/include/QtCore/QPoint \
 		ui_mainwindow.h \
 		../Qt/5.3/gcc_64/include/QtWidgets/QComboBox \
 		../Qt/5.3/gcc_64/include/QtWidgets/QGraphicsView \
@@ -3293,6 +3298,7 @@ resultatenscherm.o: resultatenscherm.cpp resultatenscherm.h \
 		../Qt/5.3/gcc_64/include/QtWidgets/QGraphicsProxyWidget \
 		../Qt/5.3/gcc_64/include/QtWidgets/QLineEdit \
 		tak.h \
+		../Qt/5.3/gcc_64/include/QtCore/QPoint \
 		ui_resultatenscherm.h \
 		../Qt/5.3/gcc_64/include/QtWidgets/QAction \
 		../Qt/5.3/gcc_64/include/QtWidgets/QApplication \
@@ -3424,7 +3430,9 @@ tekenveld.o: tekenveld.cpp tekenveld.h \
 		../Qt/5.3/gcc_64/include/QtGui/qcursor.h \
 		../Qt/5.3/gcc_64/include/QtGui/qtextcursor.h \
 		../Qt/5.3/gcc_64/include/QtGui/qtextformat.h \
+		../Qt/5.3/gcc_64/include/QtCore/QList \
 		tak.h \
+		../Qt/5.3/gcc_64/include/QtCore/QPoint \
 		../Qt/5.3/gcc_64/include/QtGui/QCursor
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o tekenveld.o tekenveld.cpp
 
@@ -3544,7 +3552,9 @@ knoop.o: knoop.cpp knoop.h \
 		../Qt/5.3/gcc_64/include/QtGui/qcursor.h \
 		../Qt/5.3/gcc_64/include/QtGui/qtextcursor.h \
 		../Qt/5.3/gcc_64/include/QtGui/qtextformat.h \
-		tak.h
+		../Qt/5.3/gcc_64/include/QtCore/QList \
+		tak.h \
+		../Qt/5.3/gcc_64/include/QtCore/QPoint
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o knoop.o knoop.cpp
 
 graaf.o: graaf.cpp graaf.h \
@@ -3664,12 +3674,15 @@ graaf.o: graaf.cpp graaf.h \
 		../Qt/5.3/gcc_64/include/QtGui/qcursor.h \
 		../Qt/5.3/gcc_64/include/QtGui/qtextcursor.h \
 		../Qt/5.3/gcc_64/include/QtGui/qtextformat.h \
-		tak.h
+		../Qt/5.3/gcc_64/include/QtCore/QList \
+		tak.h \
+		../Qt/5.3/gcc_64/include/QtCore/QPoint
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o graaf.o graaf.cpp
 
 tak.o: tak.cpp tak.h \
-		../Qt/5.3/gcc_64/include/QtWidgets/QGraphicsItem \
-		../Qt/5.3/gcc_64/include/QtWidgets/qgraphicsitem.h \
+		../Qt/5.3/gcc_64/include/QtGui/QPainter \
+		../Qt/5.3/gcc_64/include/QtGui/qpainter.h \
+		../Qt/5.3/gcc_64/include/QtCore/qnamespace.h \
 		../Qt/5.3/gcc_64/include/QtCore/qglobal.h \
 		../Qt/5.3/gcc_64/include/QtCore/qconfig.h \
 		../Qt/5.3/gcc_64/include/QtCore/qfeatures.h \
@@ -3698,10 +3711,24 @@ tak.o: tak.cpp tak.h \
 		../Qt/5.3/gcc_64/include/QtCore/qglobalstatic.h \
 		../Qt/5.3/gcc_64/include/QtCore/qmutex.h \
 		../Qt/5.3/gcc_64/include/QtCore/qnumeric.h \
-		../Qt/5.3/gcc_64/include/QtCore/qobject.h \
+		../Qt/5.3/gcc_64/include/QtCore/qrect.h \
+		../Qt/5.3/gcc_64/include/QtCore/qmargins.h \
+		../Qt/5.3/gcc_64/include/QtCore/qsize.h \
+		../Qt/5.3/gcc_64/include/QtCore/qpoint.h \
+		../Qt/5.3/gcc_64/include/QtCore/qscopedpointer.h \
+		../Qt/5.3/gcc_64/include/QtGui/qpixmap.h \
+		../Qt/5.3/gcc_64/include/QtGui/qpaintdevice.h \
+		../Qt/5.3/gcc_64/include/QtGui/qwindowdefs.h \
 		../Qt/5.3/gcc_64/include/QtCore/qobjectdefs.h \
-		../Qt/5.3/gcc_64/include/QtCore/qnamespace.h \
 		../Qt/5.3/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../Qt/5.3/gcc_64/include/QtGui/qwindowdefs_win.h \
+		../Qt/5.3/gcc_64/include/QtGui/qcolor.h \
+		../Qt/5.3/gcc_64/include/QtGui/qrgb.h \
+		../Qt/5.3/gcc_64/include/QtCore/qstringlist.h \
+		../Qt/5.3/gcc_64/include/QtCore/qalgorithms.h \
+		../Qt/5.3/gcc_64/include/QtCore/qdatastream.h \
+		../Qt/5.3/gcc_64/include/QtCore/qiodevice.h \
+		../Qt/5.3/gcc_64/include/QtCore/qobject.h \
 		../Qt/5.3/gcc_64/include/QtCore/qstring.h \
 		../Qt/5.3/gcc_64/include/QtCore/qchar.h \
 		../Qt/5.3/gcc_64/include/QtCore/qbytearray.h \
@@ -3709,59 +3736,43 @@ tak.o: tak.cpp tak.h \
 		../Qt/5.3/gcc_64/include/QtCore/qarraydata.h \
 		../Qt/5.3/gcc_64/include/QtCore/qstringbuilder.h \
 		../Qt/5.3/gcc_64/include/QtCore/qlist.h \
-		../Qt/5.3/gcc_64/include/QtCore/qalgorithms.h \
 		../Qt/5.3/gcc_64/include/QtCore/qiterator.h \
 		../Qt/5.3/gcc_64/include/QtCore/qcoreevent.h \
-		../Qt/5.3/gcc_64/include/QtCore/qscopedpointer.h \
 		../Qt/5.3/gcc_64/include/QtCore/qmetatype.h \
 		../Qt/5.3/gcc_64/include/QtCore/qvarlengtharray.h \
 		../Qt/5.3/gcc_64/include/QtCore/qcontainerfwd.h \
 		../Qt/5.3/gcc_64/include/QtCore/qisenum.h \
 		../Qt/5.3/gcc_64/include/QtCore/qobject_impl.h \
-		../Qt/5.3/gcc_64/include/QtCore/qvariant.h \
-		../Qt/5.3/gcc_64/include/QtCore/qmap.h \
 		../Qt/5.3/gcc_64/include/QtCore/qpair.h \
-		../Qt/5.3/gcc_64/include/QtCore/qdebug.h \
-		../Qt/5.3/gcc_64/include/QtCore/qhash.h \
-		../Qt/5.3/gcc_64/include/QtCore/qtextstream.h \
-		../Qt/5.3/gcc_64/include/QtCore/qiodevice.h \
-		../Qt/5.3/gcc_64/include/QtCore/qlocale.h \
-		../Qt/5.3/gcc_64/include/QtCore/qshareddata.h \
-		../Qt/5.3/gcc_64/include/QtCore/qvector.h \
-		../Qt/5.3/gcc_64/include/QtCore/qpoint.h \
-		../Qt/5.3/gcc_64/include/QtCore/qset.h \
-		../Qt/5.3/gcc_64/include/QtCore/qcontiguouscache.h \
-		../Qt/5.3/gcc_64/include/QtCore/qstringlist.h \
-		../Qt/5.3/gcc_64/include/QtCore/qdatastream.h \
 		../Qt/5.3/gcc_64/include/QtCore/qregexp.h \
 		../Qt/5.3/gcc_64/include/QtCore/qstringmatcher.h \
-		../Qt/5.3/gcc_64/include/QtCore/qrect.h \
-		../Qt/5.3/gcc_64/include/QtCore/qmargins.h \
-		../Qt/5.3/gcc_64/include/QtCore/qsize.h \
-		../Qt/5.3/gcc_64/include/QtGui/qpainterpath.h \
-		../Qt/5.3/gcc_64/include/QtGui/qmatrix.h \
-		../Qt/5.3/gcc_64/include/QtGui/qpolygon.h \
-		../Qt/5.3/gcc_64/include/QtGui/qregion.h \
-		../Qt/5.3/gcc_64/include/QtGui/qwindowdefs.h \
-		../Qt/5.3/gcc_64/include/QtGui/qwindowdefs_win.h \
-		../Qt/5.3/gcc_64/include/QtCore/qline.h \
-		../Qt/5.3/gcc_64/include/QtGui/qpixmap.h \
-		../Qt/5.3/gcc_64/include/QtGui/qpaintdevice.h \
-		../Qt/5.3/gcc_64/include/QtGui/qcolor.h \
-		../Qt/5.3/gcc_64/include/QtGui/qrgb.h \
 		../Qt/5.3/gcc_64/include/QtCore/qsharedpointer.h \
+		../Qt/5.3/gcc_64/include/QtCore/qshareddata.h \
 		../Qt/5.3/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../Qt/5.3/gcc_64/include/QtCore/qhash.h \
 		../Qt/5.3/gcc_64/include/QtGui/qimage.h \
 		../Qt/5.3/gcc_64/include/QtGui/qtransform.h \
-		knoop.h \
-		../Qt/5.3/gcc_64/include/QtGui/QPainter \
-		../Qt/5.3/gcc_64/include/QtGui/qpainter.h \
+		../Qt/5.3/gcc_64/include/QtGui/qmatrix.h \
+		../Qt/5.3/gcc_64/include/QtGui/qpolygon.h \
+		../Qt/5.3/gcc_64/include/QtCore/qvector.h \
+		../Qt/5.3/gcc_64/include/QtGui/qregion.h \
+		../Qt/5.3/gcc_64/include/QtCore/qline.h \
+		../Qt/5.3/gcc_64/include/QtGui/qpainterpath.h \
 		../Qt/5.3/gcc_64/include/QtGui/qtextoption.h \
 		../Qt/5.3/gcc_64/include/QtGui/qpen.h \
 		../Qt/5.3/gcc_64/include/QtGui/qbrush.h \
 		../Qt/5.3/gcc_64/include/QtGui/qfontinfo.h \
 		../Qt/5.3/gcc_64/include/QtGui/qfont.h \
 		../Qt/5.3/gcc_64/include/QtGui/qfontmetrics.h \
+		../Qt/5.3/gcc_64/include/QtWidgets/QGraphicsItem \
+		../Qt/5.3/gcc_64/include/QtWidgets/qgraphicsitem.h \
+		../Qt/5.3/gcc_64/include/QtCore/qvariant.h \
+		../Qt/5.3/gcc_64/include/QtCore/qmap.h \
+		../Qt/5.3/gcc_64/include/QtCore/qdebug.h \
+		../Qt/5.3/gcc_64/include/QtCore/qtextstream.h \
+		../Qt/5.3/gcc_64/include/QtCore/qlocale.h \
+		../Qt/5.3/gcc_64/include/QtCore/qset.h \
+		../Qt/5.3/gcc_64/include/QtCore/qcontiguouscache.h \
 		../Qt/5.3/gcc_64/include/QtCore/QDebug \
 		../Qt/5.3/gcc_64/include/QtWidgets/QGraphicsProxyWidget \
 		../Qt/5.3/gcc_64/include/QtWidgets/qgraphicsproxywidget.h \
@@ -3783,7 +3794,10 @@ tak.o: tak.cpp tak.h \
 		../Qt/5.3/gcc_64/include/QtWidgets/qwidget.h \
 		../Qt/5.3/gcc_64/include/QtGui/qcursor.h \
 		../Qt/5.3/gcc_64/include/QtGui/qtextcursor.h \
-		../Qt/5.3/gcc_64/include/QtGui/qtextformat.h
+		../Qt/5.3/gcc_64/include/QtGui/qtextformat.h \
+		../Qt/5.3/gcc_64/include/QtCore/QList \
+		../Qt/5.3/gcc_64/include/QtCore/QPoint \
+		knoop.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o tak.o tak.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 

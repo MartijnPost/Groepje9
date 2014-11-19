@@ -17,66 +17,63 @@ Tak::Tak(Knoop *sourceNode, Knoop *destNode, bool directedEdge)
     double y2 = dest->y;
     double dX = abs(x2-x1);
     double dY = abs(y2-y1);
-    double hoek1 = tan(dY/dX);//hoek source cirkel
-    double hoek2 = tan(dX/dY);//hoek dest cirkel
-    qDebug() << hoek1 << dY << dX << x1 <<x2 << y1 <<y2;
+    double hoek1 = atan(dY/dX) * 180 / Pi;//hoek source cirkel
+    double hoek2 = 90 - hoek1;//hoek dest cirkel
+    double convertToDegrees = Pi / 180.0;
     /* Eerste kwadrant */
-    if (x1 < x2 && y1 < y2){
-        sourcePoint.setX(x1+(cos(hoek1)*37.5));
-        sourcePoint.setY(y1+(sin(hoek1)*37.5));
-        destPoint.setX(x2-(cos(hoek2)*37.5));
-        destPoint.setY(y2-(sin(hoek2)*37.5));
+    if (x1 < x2 && y1 > y2){
+        sourcePoint.setX(x1+(cos(hoek1 * convertToDegrees)*37.5));
+        sourcePoint.setY(y1-(sin(hoek1 * convertToDegrees)*37.5));
+        destPoint.setX(x2-(sin(hoek2 * convertToDegrees)*37.5));
+        destPoint.setY(y2+(cos(hoek2 * convertToDegrees)*37.5));
     }//if
     /* Tweede kwadrant */
-    if (x1 < x2 && y1 > y2){
-        sourcePoint.setX(x1+(cos(hoek1)*37.5));
-        sourcePoint.setY(y1-(sin(hoek1)*37.5));
-        destPoint.setX(x2-(cos(hoek2)*37.5));
-        destPoint.setY(y2+(sin(hoek2)*37.5));
+    if (x1 < x2 && y1 < y2){
+        sourcePoint.setX(x1+(sin(hoek2 * convertToDegrees)*37.5));
+        sourcePoint.setY(y1+(cos(hoek2 * convertToDegrees)*37.5));
+        destPoint.setX(x2-(cos(hoek1 * convertToDegrees)*37.5));
+        destPoint.setY(y2-(sin(hoek1 * convertToDegrees)*37.5));
     }//if
     /* Derde kwadrant */
-    if (x1 > x2 && y1 < y2){
-        sourcePoint.setX(x1-(cos(hoek1)*37.5));
-        sourcePoint.setY(y1+(sin(hoek1)*37.5));
-        destPoint.setX(x2+(cos(hoek2)*37.5));
-        destPoint.setY(y2-(sin(hoek2)*37.5));
+    if (x1 > x2 && y1 > y2){
+        sourcePoint.setX(x1-(cos(hoek1 * convertToDegrees)*37.5));
+        sourcePoint.setY(y1-(sin(hoek1 * convertToDegrees)*37.5));
+        destPoint.setX(x2+(sin(hoek2 * convertToDegrees)*37.5));
+        destPoint.setY(y2+(cos(hoek2 * convertToDegrees)*37.5));
     }//if
     /* Vierde kwadrant */
-    if (x1 > x2 && y1 > y2){
-        sourcePoint.setX(x1-(cos(hoek1)*37.5));
-        sourcePoint.setY(y1-(sin(hoek1)*37.5));
-        destPoint.setX(x2+(cos(hoek2)*37.5));
-        destPoint.setY(y2+(sin(hoek2)*37.5));
+    if (x1 > x2 && y1 < y2){
+        sourcePoint.setX(x1-(sin(hoek2 * convertToDegrees)*37.5));
+        sourcePoint.setY(y1+(cos(hoek2 * convertToDegrees)*37.5));
+        destPoint.setX(x2+(cos(hoek1 * convertToDegrees)*37.5));
+        destPoint.setY(y2-(sin(hoek1 * convertToDegrees)*37.5));
     }//if
     /* Boven elkaar */
-    if (x1 == x2 && y1 > y2){
-        sourcePoint.setX(x1);
-        sourcePoint.setY(y1-(sin(hoek1)*37.5));
-        destPoint.setX(x2);
-        destPoint.setY(y2+(sin(hoek2)*37.5));
-    }//if
     if (x1 == x2 && y1 < y2){
         sourcePoint.setX(x1);
-        sourcePoint.setY(y1+(sin(hoek1)*37.5));
+        sourcePoint.setY(y1+37.5);
         destPoint.setX(x2);
-        destPoint.setY(y2-(sin(hoek2)*37.5));
+        destPoint.setY(y2-37.5);
+    }//if
+    if (x1 == x2 && y1 > y2){
+        sourcePoint.setX(x1);
+        sourcePoint.setY(y1-37.5);
+        destPoint.setX(x2);
+        destPoint.setY(y2+37.5);
     }//if
     /* Naast elkaar */
     if (x1 > x2 && y1 == y2){
-        sourcePoint.setX(x1-(cos(hoek1)*37.5));
+        sourcePoint.setX(x1-(cos(hoek1 * convertToDegrees)*37.5));
         sourcePoint.setY(y1);
-        destPoint.setX(x2-(cos(hoek2)*37.5));
+        destPoint.setX(x2-(cos(hoek2 * convertToDegrees)*37.5));
         destPoint.setY(y2);
     }//if
     if (x1 < x2 && y1 == y2){
-        sourcePoint.setX(x1+(cos(hoek1)*37.5));
+        sourcePoint.setX(x1+(cos(hoek1 * convertToDegrees)*37.5));
         sourcePoint.setY(y1);
-        destPoint.setX(x2+(cos(hoek2)*37.5));
+        destPoint.setX(x2+(cos(hoek2 * convertToDegrees)*37.5));
         destPoint.setY(y2);
     }//if
-
-    qDebug() << sourcePoint;
-    arrowSize = 10; // TODO : grootte van zijkant van de pijl maken
     line.setLine(source->x, source->y, dest->x, dest->y);
     //voeg toe aan adjancency list
     pLineEdit = new QLineEdit("");
@@ -112,7 +109,7 @@ QRectF Tak::boundingRect() const
 QPainterPath Tak::shape() const
 {
     QPainterPath path;
-    QPolygon polygon;    
+    QPolygon polygon;
     polygon << QPoint(source->x-5, source->y-5);
     polygon << QPoint(source->x+5, source->y+5);
     polygon << QPoint(dest->x+5, dest->y+5);
@@ -128,12 +125,12 @@ void Tak::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
     //teken de lijn
     QPen paintpen(Qt::black); //de pen waarmee de knoop getekend wordt, is zwart
     paintpen.setWidth(2); //de dikte van de pen is 1
-
     painter->setPen(paintpen); //de pen waarmee getekend gaat worden is paintpen
     painter->setRenderHint(QPainter::Antialiasing); //er wordt AA gebruikt om de knoop mooier te maken
     painter->drawLine(sourcePoint, destPoint);
     //teken de zijkant van de pijl
     if (directed) {
+        qreal arrowSize = 10; //grootte van de pijl
         double angle = ::acos(line.dx() / line.length());
         if (line.dy() >= 0)
             angle = TwoPi - angle;
@@ -142,12 +139,11 @@ void Tak::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
         QPointF destArrowP2 = destPoint + QPointF(sin(angle - Pi + Pi / 3) * arrowSize,
                                                   cos(angle - Pi + Pi / 3) * arrowSize);
         painter->setBrush(Qt::black);
-        painter->drawPolygon(QPolygonF() << line.p2() << destArrowP1 << destArrowP2);
+        painter->drawPolygon(QPolygonF() << destPoint << destArrowP1 << destArrowP2);
     }//if
 }
 
 void Tak::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
-    qDebug("test");
+    qDebug("tak");
 }
-
