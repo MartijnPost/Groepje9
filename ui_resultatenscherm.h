@@ -35,38 +35,62 @@ public:
     {
         if (ResultatenScherm->objectName().isEmpty())
             ResultatenScherm->setObjectName(QStringLiteral("ResultatenScherm"));
-        ResultatenScherm->resize(1150, 740);
+        ResultatenScherm->resize(1150, 758);
+        ResultatenScherm->setStyleSheet(QStringLiteral("background-color: rgba(202, 164, 227, 194);"));
         Begin = new QPushButton(ResultatenScherm);
         Begin->setObjectName(QStringLiteral("Begin"));
-        Begin->setGeometry(QRect(0, 680, 141, 61));
+        Begin->setGeometry(QRect(0, 680, 201, 81));
         QFont font;
-        font.setPointSize(14);
+        font.setFamily(QStringLiteral("Arial Black"));
+        font.setPointSize(16);
+        font.setBold(false);
+        font.setItalic(false);
+        font.setWeight(9);
         Begin->setFont(font);
+        Begin->setStyleSheet(QLatin1String("background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:0, stop:0 rgba(160, 75, 164, 255), stop:1 rgba(255, 255, 255, 255));\n"
+"color: rgb(255, 255, 255);\n"
+"font: 75 16pt \"Arial Black\";"));
         Vorige = new QPushButton(ResultatenScherm);
         Vorige->setObjectName(QStringLiteral("Vorige"));
-        Vorige->setGeometry(QRect(410, 680, 141, 61));
+        Vorige->setGeometry(QRect(390, 680, 191, 81));
         Vorige->setFont(font);
+        Vorige->setStyleSheet(QLatin1String("background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:0, stop:0 rgba(160, 75, 164, 255), stop:1 rgba(255, 255, 255, 255));\n"
+"color: rgb(255, 255, 255);\n"
+"font: 75 16pt \"Arial Black\";"));
         Volgende = new QPushButton(ResultatenScherm);
         Volgende->setObjectName(QStringLiteral("Volgende"));
-        Volgende->setGeometry(QRect(210, 680, 141, 61));
+        Volgende->setGeometry(QRect(200, 680, 191, 81));
         Volgende->setFont(font);
+        Volgende->setStyleSheet(QLatin1String("background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:0, stop:0 rgba(160, 75, 164, 255), stop:1 rgba(255, 255, 255, 255));\n"
+"color: rgb(255, 255, 255);\n"
+"font: 75 16pt \"Arial Black\";"));
         Einde = new QPushButton(ResultatenScherm);
         Einde->setObjectName(QStringLiteral("Einde"));
-        Einde->setGeometry(QRect(620, 680, 141, 61));
+        Einde->setGeometry(QRect(580, 680, 191, 81));
         Einde->setFont(font);
+        Einde->setStyleSheet(QLatin1String("background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:0, stop:0 rgba(160, 75, 164, 255), stop:1 rgba(255, 255, 255, 255));\n"
+"color: rgb(255, 255, 255);\n"
+"font: 75 16pt \"Arial Black\";"));
         Upload = new QPushButton(ResultatenScherm);
         Upload->setObjectName(QStringLiteral("Upload"));
-        Upload->setGeometry(QRect(810, 680, 141, 61));
+        Upload->setGeometry(QRect(770, 680, 181, 81));
         Upload->setFont(font);
+        Upload->setStyleSheet(QLatin1String("background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:0, stop:0 rgba(160, 75, 164, 255), stop:1 rgba(255, 255, 255, 255));\n"
+"color: rgb(255, 255, 255);\n"
+"font: 75 16pt \"Arial Black\";"));
         Stop = new QPushButton(ResultatenScherm);
         Stop->setObjectName(QStringLiteral("Stop"));
-        Stop->setGeometry(QRect(1010, 680, 141, 61));
+        Stop->setGeometry(QRect(950, 680, 201, 81));
         Stop->setFont(font);
+        Stop->setStyleSheet(QLatin1String("background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:0, stop:0 rgba(160, 75, 164, 255), stop:1 rgba(255, 255, 255, 255));\n"
+"color: rgb(255, 255, 255);\n"
+"font: 75 16pt \"Arial Black\";"));
         tekenVeld = new QGraphicsView(ResultatenScherm);
         tekenVeld->setObjectName(QStringLiteral("tekenVeld"));
         tekenVeld->setGeometry(QRect(0, 0, 1151, 681));
         tekenVeld->setMinimumSize(QSize(281, 192));
         tekenVeld->setMouseTracking(true);
+        tekenVeld->setStyleSheet(QStringLiteral("background-color: rgb(255, 255, 255);"));
 
         retranslateUi(ResultatenScherm);
 
@@ -76,12 +100,12 @@ public:
     void retranslateUi(QDialog *ResultatenScherm)
     {
         ResultatenScherm->setWindowTitle(QApplication::translate("ResultatenScherm", "Dialog", 0));
-        Begin->setText(QApplication::translate("ResultatenScherm", "Begin", 0));
-        Vorige->setText(QApplication::translate("ResultatenScherm", "Vorige", 0));
-        Volgende->setText(QApplication::translate("ResultatenScherm", "Volgende", 0));
-        Einde->setText(QApplication::translate("ResultatenScherm", "Einde", 0));
-        Upload->setText(QApplication::translate("ResultatenScherm", "Upload", 0));
-        Stop->setText(QApplication::translate("ResultatenScherm", "Stop", 0));
+        Begin->setText(QApplication::translate("ResultatenScherm", "BEGIN", 0));
+        Vorige->setText(QApplication::translate("ResultatenScherm", "VORIGE", 0));
+        Volgende->setText(QApplication::translate("ResultatenScherm", "VOLGENDE", 0));
+        Einde->setText(QApplication::translate("ResultatenScherm", "EINDE", 0));
+        Upload->setText(QApplication::translate("ResultatenScherm", "UPLOAD", 0));
+        Stop->setText(QApplication::translate("ResultatenScherm", "STOP", 0));
     } // retranslateUi
 
 };

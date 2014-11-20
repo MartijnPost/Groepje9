@@ -2,6 +2,7 @@
 #include "knoop.h"
 #include <math.h>
 #include <QPainter>
+#include <QIntValidator>
 
 static const double Pi = 3.14159265358979323846264338327950288419717;
 static double TwoPi = 2.0 * Pi;
@@ -63,23 +64,24 @@ Tak::Tak(Knoop *sourceNode, Knoop *destNode, bool directedEdge)
     }//if
     /* Naast elkaar */
     if (x1 > x2 && y1 == y2){
-        sourcePoint.setX(x1-(cos(hoek1 * convertToDegrees)*37.5));
+        sourcePoint.setX(x1-37.5);
         sourcePoint.setY(y1);
-        destPoint.setX(x2-(cos(hoek2 * convertToDegrees)*37.5));
+        destPoint.setX(x2+37.5);
         destPoint.setY(y2);
     }//if
     if (x1 < x2 && y1 == y2){
-        sourcePoint.setX(x1+(cos(hoek1 * convertToDegrees)*37.5));
+        sourcePoint.setX(x1+37.5);
         sourcePoint.setY(y1);
-        destPoint.setX(x2+(cos(hoek2 * convertToDegrees)*37.5));
+        destPoint.setX(x2-37.5);
         destPoint.setY(y2);
-    }//if
+    }//if   
     line.setLine(source->x, source->y, dest->x, dest->y);
     //voeg toe aan adjancency list
     pLineEdit = new QLineEdit("");
-    pLineEdit->setMaxLength(3); //er kunnen maximaal 6 karakters in de text box geplaatst worden
+    pLineEdit->setMaxLength(3); //er kunnen maximaal 3 karakters in de text box geplaatst worden
     pLineEdit->setFixedSize(40, 20); //de grootte van de text box
     pLineEdit->setStyleSheet("QLineEdit{background: transparent; }");//border: none;
+    pLineEdit->setValidator(new QIntValidator);
     pMyProxy = new QGraphicsProxyWidget(this); // the proxy's parent is the 2d object
     pMyProxy->setWidget(pLineEdit); //voeg de text box toe
     midX = (source->x + dest->x)/2; //berekene de X-coördinaat het midden van de lijn
@@ -90,19 +92,24 @@ Tak::Tak(Knoop *sourceNode, Knoop *destNode, bool directedEdge)
         pMyProxy->moveBy(midX-30,midY-30); //zet de text box links boven het midden van de lijn
 }
 
+Tak::~Tak()
+{
+    delete pLineEdit;
+}
+
 QRectF Tak::boundingRect() const
 {
-    if (source->x > dest->x) {
-        if (source->y > dest->y)
-            return QRectF(dest->x-10, dest->y-10, abs(source->x-dest->x)+20, abs(source->y-dest->y)+20);
+    if (sourcePoint.x() > destPoint.x()) {
+        if (sourcePoint.y() > destPoint.y())
+            return QRectF(destPoint.x()-10, destPoint.y()-10, abs(sourcePoint.x()-destPoint.x())+20, abs(sourcePoint.y()-destPoint.y())+20);
         else
-            return QRectF(dest->x-10, source->y-10, abs(source->x-dest->x)+20, abs(source->y-dest->y)+20);
+            return QRectF(destPoint.x()-10, sourcePoint.y()-10, abs(sourcePoint.x()-destPoint.x())+20, abs(sourcePoint.y()-destPoint.y())+20);
     }//if
     else {
-        if (source->y > dest->y)
-            return QRectF(source->x-10, dest->y-10, abs(source->x-dest->x)+20, abs(source->y-dest->y)+20);
+        if (sourcePoint.y() > destPoint.y())
+            return QRectF(sourcePoint.x()-10, destPoint.y()-10, abs(sourcePoint.x()-destPoint.x())+20, abs(sourcePoint.y()-destPoint.y())+20);
         else
-            return QRectF(source->x-10, source->y-10, abs(source->x-dest->x)+20, abs(source->y-dest->y)+20);
+            return QRectF(sourcePoint.x()-10, sourcePoint.y()-10, abs(sourcePoint.x()-destPoint.x())+20, abs(sourcePoint.y()-destPoint.y())+20);
     }//else
 }
 
@@ -110,11 +117,20 @@ QPainterPath Tak::shape() const
 {
     QPainterPath path;
     QPolygon polygon;
-    polygon << QPoint(source->x-5, source->y-5);
-    polygon << QPoint(source->x+5, source->y+5);
-    polygon << QPoint(dest->x+5, dest->y+5);
-    polygon << QPoint(dest->x-5, dest->y-5);
-    polygon << QPoint(source->x-5, source->y-5);
+    if (abs(sourcePoint.x() - destPoint.x()) > abs(sourcePoint.y() - destPoint.y())) {
+        polygon << QPoint(sourcePoint.x(), sourcePoint.y()-10);
+        polygon << QPoint(sourcePoint.x(), sourcePoint.y()+10);
+        polygon << QPoint(dest->x, destPoint.y()+10);
+        polygon << QPoint(dest->x, destPoint.y()-10);
+        polygon << QPoint(sourcePoint.x(), sourcePoint.y()-10);
+    }//if
+    else {
+        polygon << QPoint(sourcePoint.x()-10, sourcePoint.y());
+        polygon << QPoint(sourcePoint.x()+10, sourcePoint.y());
+        polygon << QPoint(destPoint.x()+10, destPoint.y());
+        polygon << QPoint(destPoint.x()-10, destPoint.y());
+        polygon << QPoint(sourcePoint.x()-10, sourcePoint.y());
+    }
     path.addPolygon(polygon);
     return path; // return the item's defined shape
 }

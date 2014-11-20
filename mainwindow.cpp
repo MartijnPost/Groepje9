@@ -8,6 +8,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    ui->algChoice->setEditable(true);
+    ui->algChoice->lineEdit()->setReadOnly(true);
+    ui->algChoice->lineEdit()->setAlignment(Qt::AlignCenter);
     this->setWindowTitle("Hoofdscherm");
     setFixedSize(1350,740);
     scene = new tekenveld();
@@ -19,7 +22,6 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
-
 
 void MainWindow::on_KnoopRadio_toggled(bool checked)
 {
@@ -67,9 +69,13 @@ void MainWindow::on_StartKnop_clicked()
     scene->resultaatScherm = true; //resultaatscherm gaat geopend worden
     hide(); //verberg hoofdscherm
     ResultatenScherm* r = new ResultatenScherm(); //maak nieuw resultaatscherm aan
+    scene->setTextEdits(true);
     r->setScene(scene); //kopieer het tekenveld van het hoofdscherm en plaats in resultaatscherm
     r->setModal(true);
-    r->exec(); //open het resultaatscherm
+    r->exec(); //open het resultaatscherm.
+    delete r;
+    r = NULL;
+    scene->setTextEdits(false);
     show(); //als het resultaatscherm wordt afgesloten, toon het hoofdscherm
     scene->resultaatScherm = false; //resultaatscherm is afgesloten
 }
@@ -84,4 +90,9 @@ void MainWindow::on_InvoegenKnop_clicked()
 void MainWindow::on_AfsluitenKnop_clicked()
 {
     MainWindow::close();//function exit program
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+    scene->clear();
 }

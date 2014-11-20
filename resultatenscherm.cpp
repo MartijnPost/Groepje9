@@ -7,7 +7,7 @@ ResultatenScherm::ResultatenScherm(QWidget *parent) :
 {
     ui->setupUi(this);    
     this->setWindowTitle("Resultatenscherm");
-    setFixedSize(1150,740); //zet grootte vast
+    setFixedSize(1150,760); //zet grootte vast
 }
 
 ResultatenScherm::~ResultatenScherm()
