@@ -4,7 +4,7 @@
 Knoop::Knoop(const int xPos, const int yPos, bool start, bool eind)
 {
     x = xPos; //de x-coordinaat van de knoop
-    y = yPos; //de y-coordinaat van de knoop
+    y = yPos; //de y-coordinaat van de knoop    
     startknoop = start;    //deze zijn later nodig om takken te tekenen
     eindknoop = eind;
     pLineEdit = new QLineEdit("");
@@ -25,6 +25,10 @@ void Knoop::addTak(Tak *tak)
 QList<Tak *> Knoop::takken() const
 {
     return takkenList;
+}
+
+void Knoop::deleteTakFromList(Tak* tak) {
+    takkenList.removeOne(tak);
 }
 
 QRectF Knoop::boundingRect() const
@@ -55,6 +59,5 @@ QWidget *widget)
 
 void Knoop::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
-    qDebug() << pLineEdit->text(); //print tekst in knoop
-    qDebug() << x << "," << y; //print x- en y-coordinaat
+    qDebug("knoop");
 }

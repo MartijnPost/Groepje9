@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgba(202, 164, 227, 194);</string>
+  </property>
   <widget class="QPushButton" name="Toevoegen">
    <property name="geometry">
     <rect>
@@ -24,11 +27,20 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>26</pointsize>
+     <family>Arial Black</family>
+     <pointsize>16</pointsize>
+     <weight>9</weight>
+     <italic>false</italic>
+     <bold>false</bold>
     </font>
    </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:0, stop:0 rgba(160, 75, 164, 255), stop:1 rgba(255, 255, 255, 255));
+color: rgb(255, 255, 255);
+font: 75 16pt &quot;Arial Black&quot;;</string>
+   </property>
    <property name="text">
-    <string>Toevoegen</string>
+    <string>TOEVOEGEN</string>
    </property>
   </widget>
   <widget class="QPushButton" name="Terug">
@@ -42,11 +54,20 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>26</pointsize>
+     <family>Arial Black</family>
+     <pointsize>16</pointsize>
+     <weight>9</weight>
+     <italic>false</italic>
+     <bold>false</bold>
     </font>
    </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:0, stop:0 rgba(160, 75, 164, 255), stop:1 rgba(255, 255, 255, 255));
+color: rgb(255, 255, 255);
+font: 75 16pt &quot;Arial Black&quot;;</string>
+   </property>
    <property name="text">
-    <string>Terug</string>
+    <string>TERUG</string>
    </property>
   </widget>
   <widget class="QPlainTextEdit" name="plainTextEdit">
@@ -62,6 +83,9 @@
     <font>
      <pointsize>14</pointsize>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 255, 255);</string>
    </property>
    <property name="placeholderText">
     <string>Algoritme geschreven in C++</string>

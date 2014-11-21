@@ -13,19 +13,21 @@ class Tak;
 class Knoop : public QGraphicsItem
 {
 public:
-    void addTak(Tak *tak);//voegt tak toe aan taklijst
-    QList<Tak *> takken() const;//geeft takkenlijst
     Knoop(const int xPos, const int yPos, bool start, bool eind); //constructor
-    QRectF boundingRect() const; //vorm van de knoop
-    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget); //tekent de knoop
     int x; //x-coordinaat
-    int y; //y-coordinaat
+    int y; //y-coordinaat    
+    friend class Graaf;
+    friend class tekenveld;
+private:
     bool startknoop; //true als de knoop een startknoop is
     bool eindknoop; //true als de knoop een eindknoop is
-    friend class Graaf;
-private:    
-    QList<Tak *> takkenList;//taklijst met alle takken
+    QList<Tak *> takken() const;//geeft takkenlijst
+    QList<Tak *> takkenList;//taklijst met alle takken    Q
+    QRectF boundingRect() const; //vorm van de knoop
     QLineEdit *pLineEdit; //text box voor naamgeving
+    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget); //tekent de knoop
+    void addTak(Tak *tak);//voegt tak toe aan taklijst
+    void deleteTakFromList(Tak* tak);
     QGraphicsProxyWidget* pMyProxy; //nodig om de text box weer te geven
 protected:
     void mousePressEvent(QGraphicsSceneMouseEvent *event); //wordt aangeroepen bij een muisklik op de knoop

@@ -39,7 +39,7 @@ void Graaf::addToRow(Element*& e, Knoop *k, Tak *t) {
 
 void Graaf::writeToDebug(Header *h) const {
     if(h){
-        qDebug() << "HEADER " << h->knoop->pLineEdit->text();
+        qDebug() << "Grenzend aan knoop " << h->knoop->pLineEdit->text() << ":";
         writeToDebug(h->row);
         writeToDebug(h->next);
     }
@@ -48,8 +48,8 @@ void Graaf::writeToDebug(Header *h) const {
 
 void Graaf::writeToDebug(Element *e) const {
     if(e) {
-        qDebug() << "  ELEMENT " << e->knoop->pLineEdit->text()
-                 << "  WEIGHT " << e->tak->pLineEdit->text();
+        qDebug() << "  knoop" << e->knoop->pLineEdit->text()
+                 << "met gewicht" << e->tak->pLineEdit->text();
         writeToDebug(e->next);
     }
     return;

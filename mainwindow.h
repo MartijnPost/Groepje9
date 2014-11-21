@@ -35,6 +35,8 @@ private slots:
 
     void on_AfsluitenKnop_clicked();
 
+    void on_pushButton_clicked();
+
 private:
     tekenveld *scene;
     Ui::MainWindow *ui;
