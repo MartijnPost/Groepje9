@@ -13,6 +13,7 @@ class Tak;
 class Knoop : public QGraphicsItem
 {
 public:
+    Knoop( );
     Knoop(const int xPos, const int yPos, bool start, bool eind); //constructor
     int x; //x-coordinaat
     int y; //y-coordinaat    
