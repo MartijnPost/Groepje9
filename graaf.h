@@ -6,6 +6,10 @@
 
 class tekenveld;
 
+//Voor de dynamische arrays:
+typedef Knoop* knoopPtr;
+typedef Tak* takPtr;
+
 //De elementen uit de rijen van de adjacency list
 struct Element
 {
@@ -32,13 +36,28 @@ public:
     Graaf();
     friend class tekenveld;
 private:
-    Knoop *startknoop;
+    int aantalKnopen;                             //Aantal knopen in de graaf
+    int aantalTakken;                             //Aantal takken in de graaf
+    Knoop* startknoop;                            //Startknoop van de graaf
+    Knoop* eindknoop;                             //Eindknoop van de graaf
     Header* listEntrance;                         //Pointer naar de bovenste Header uit de adjacency list
     void expandList(Knoop* k, Header*& h);        //Zet een nieuwe Knoop als Header van de adjacency list
     void expandList(Tak* t, Header*& h);          //Zet nieuwe Elementen in de adjacency list als een tak is toegevoegd
     void addToRow(Element*& e, Knoop* k, Tak* t); //Voegt een Element toe aan het einde van een rij
     void writeToDebug(Header* h) const;           //Drukt de adjacency list af in de debug
     void writeToDebug(Element* e) const;          //Drukt de adjacency list af in de debug
+    /* Bellman-Ford Algoritme: */
+    int* afstand;                                 //Lijst met de afstanden van elke knoop tot de startknoop
+    knoopPtr* voorganger;                         //Lijst met voor elke knoop hun voorganger in hun korste pad
+    knoopPtr* knopen;                             //Lijst met alle knopen uit de graaf
+    takPtr* takken;                               //Lijst met alle takken uit de graafd
+    knoopPtr* kortste_pad;                        //De knopen die op het kortste pad van start naar eind liggen (start = [0])
+    void vul_knopen( );                           //Vult de lijst 'knopen'
+    void vul_takken( );                           //Vult de lijst 'takken'
+    void verwijder_arrays( );                     //Verwijderd de dynamische arrays (knopen, takken, afstand & voorganger)
+    int zoek_index(Knoop* k) const;               //Zoekt voor een knoop zijn index in de lijst 'knopen'
+    void BellmanFord( );                          //Implementatie functie voor het Bellman-Ford algoritme
+    void vul_kortste_pad( );                      //Vult de lijst 'kortste_pad'
 };
 
 #endif // GRAAF_H
