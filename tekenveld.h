@@ -18,6 +18,7 @@ public:
     bool resultaatScherm; //true als het om de graphicsScene in het resultaatscherm gaat
     void setTextEdits(bool readOnly);
     Graaf graaf;
+    friend class Knoop;
 private:
     bool startknoop; //true als er een startknoop voor komt in de graaf
     bool eindknoop; //true als er een eindknoop voor komt in de graaf

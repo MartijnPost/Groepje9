@@ -11,10 +11,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->algChoice->setEditable(true);
     ui->algChoice->lineEdit()->setReadOnly(true);
     ui->algChoice->lineEdit()->setAlignment(Qt::AlignCenter);
-    this->setWindowTitle("Hoofdscherm");
-    setFixedSize(1350,740);
+    this->setWindowTitle("Hoofdscherm");    
     scene = new tekenveld();
-    scene->setSceneRect(160,40,1500,1500); //nodig om het tekenveld 'vast' te zetten
+    scene->setSceneRect(0,0,2000,2000); //nodig om het tekenveld 'vast' te zetten
     ui->graphicsView->setScene(scene);
 }
 
@@ -65,7 +64,6 @@ void MainWindow::on_GerichteTakRadio_toggled(bool checked)
 
 void MainWindow::on_StartKnop_clicked()
 {
-    scene->tekenveld->graaf->BellmanFord();
     //function open algoritme doorloop schermpje
     scene->resultaatScherm = true; //resultaatscherm gaat geopend worden
     hide(); //verberg hoofdscherm
@@ -93,7 +91,13 @@ void MainWindow::on_AfsluitenKnop_clicked()
     MainWindow::close();//function exit program
 }
 
-void MainWindow::on_pushButton_clicked()
+void MainWindow::on_ClearKnop_clicked()
 {
     scene->clear();
+}
+
+void MainWindow::on_algChoice_currentIndexChanged(int index)
+{
+    scene->graaf.algoritme = index;
+    qDebug() << index;
 }
