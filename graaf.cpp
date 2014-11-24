@@ -113,16 +113,17 @@ void Graaf::verwijder_arrays( ) {
     return;
 }
 
-int Graaf::zoek_index(Knoop* k) const {
+int Graaf::zoek_index(Knoop* k) const {  
     for(int i=0;i<aantalKnopen;i++)
         if(knopen[i] == k)
-            return i;
+            return i; 
     return -1;
 }
 
 void Graaf::BellmanFord( ) {
     //Opschonen
     verwijder_arrays( );
+    qDebug() << "test";
     //Initialiseren
     vul_knopen( );
     vul_takken( );
@@ -146,30 +147,14 @@ void Graaf::BellmanFord( ) {
             }//if
         }//for
     }//for
+    qDebug() << "test2";
     return;
 }
 
 void Graaf::vul_kortste_pad( ) {
    //Bereken het aantal knopen op het pad
-   int grootte = 1;
    int index = zoek_index(eindknoop);
-   while(index != 0) {
-       index = zoek_index(voorganger[index]);
-       grootte++;
-   }
-   kortste_pad = new knoopPtr[grootte];
-   //Vul het korste pad
-   kortste_pad[0] = startknoop;
-   kortste_pad[grootte-1] = eindknoop;
-   index = zoek_index(eindknoop);
-   for(int i=grootte-2;i>0;i--) {
-       kortste_pad[i] = voorganger[index];
-       index = zoek_index(voorganger[index]);
-   }
-   //Debugging
-   for(int i=0;i<grootte;i++)
-       qDebug() << kortste_pad[i]->pLineEdit->text();
-   index = zoek_index(eindknoop);
+   qDebug() << eindknoop->pLineEdit->text();
    qDebug() << "Pad lengte: " << afstand[index];
    return;
 }

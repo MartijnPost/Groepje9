@@ -71,6 +71,7 @@ void tekenveld::mousePressEvent(QGraphicsSceneMouseEvent *event) {
             else if (eindknoopButton && !eindknoop) {
                 eindknoop = true;
                 knoop = new Knoop(x, y, false, true);
+                graaf.eindknoop = knoop;
                 addItem(knoop);
             }//else if
             graaf.expandList(knoop, graaf.listEntrance);
