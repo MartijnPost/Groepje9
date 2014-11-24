@@ -17,7 +17,7 @@ tekenveld::tekenveld() {
 }
 
 void tekenveld::setTextEdits(bool readOnly) {
-    QList<QGraphicsItem*> list = items(QRectF(0,0,2000,2000), Qt::IntersectsItemShape, Qt::DescendingOrder, QTransform());
+    QList<QGraphicsItem*> list = items(QRectF(160,40,1500,1500), Qt::IntersectsItemShape, Qt::DescendingOrder, QTransform());
     Knoop *knoop = NULL;
     Tak *tak = NULL;
     while (!list.empty()) {
@@ -47,8 +47,8 @@ void tekenveld::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
 
 void tekenveld::mousePressEvent(QGraphicsSceneMouseEvent *event) {
     if (!resultaatScherm) {
-        qreal x = event->scenePos().x();
-        qreal y = event->scenePos().y();
+        int x = event->scenePos().x();
+        int y = event->scenePos().y();
         Tak *tak = NULL;
         Knoop *knoop = NULL;
         QList<QGraphicsItem*> list;
@@ -71,6 +71,7 @@ void tekenveld::mousePressEvent(QGraphicsSceneMouseEvent *event) {
             else if (eindknoopButton && !eindknoop) {
                 eindknoop = true;
                 knoop = new Knoop(x, y, false, true);
+                graaf.eindknoop = knoop;
                 addItem(knoop);
             }//else if
             graaf.expandList(knoop, graaf.listEntrance);
@@ -121,16 +122,20 @@ void tekenveld::mousePressEvent(QGraphicsSceneMouseEvent *event) {
         //anders als er zich een object op de coordinaten (x,y) bevindt en er op de rechtermuisknop gedrukt
         //wordt en de knoopbutton aan staat, verwijder de knoop
         else if (itemAt(event->scenePos(), QTransform()) &&
-        (event->button() == Qt::RightButton)) {            
-            foreach (QGraphicsItem* item, items(event->scenePos(), Qt::IntersectsItemShape, Qt::DescendingOrder, QTransform())) {
-                knoop = dynamic_cast<Knoop *>(item);
+        (event->button() == Qt::RightButton)) {
+            list = items(event->scenePos(), Qt::IntersectsItemShape, Qt::DescendingOrder, QTransform());
+            while (!list.empty()) {
+                knoop = dynamic_cast<Knoop *>(list.front());
                 if (knoop != NULL)
-                    knoopInLijst = true;           
-            }//foreach
-            foreach (QGraphicsItem* item, items(event->scenePos(), Qt::IntersectsItemShape, Qt::DescendingOrder, QTransform())) {
+                    knoopInLijst = true;
+                list.pop_front();
+            }//while
+            list = items(event->scenePos(), Qt::IntersectsItemShape, Qt::DescendingOrder, QTransform());
+            while (!list.empty()) {
                 //als het object een knoop is
-                knoop = dynamic_cast<Knoop *>(item);
-                tak = dynamic_cast<Tak *>(item);
+                knoop = (dynamic_cast<Knoop *>(list.front()));
+                tak = (dynamic_cast<Tak *>(list.front()));
+                list.pop_front();
                 if (knoop != NULL) {
                     if (knoop->startknoop)
                         startknoop = false;
@@ -139,16 +144,19 @@ void tekenveld::mousePressEvent(QGraphicsSceneMouseEvent *event) {
                     if (knoop == eersteKnoop) { //als de knoop die verwijderd wordt, zich op dit moment in de eersteKnoop pointer bevindt
                         eersteKnoop = NULL;
                         firstClick = true;
-                    }//if                
+                    }//if
+                }//if
+                if (knoop != NULL) {
                     takList = knoop->takken();
-                    foreach (Tak *tak, takList) {
-                        if (tak != NULL) {
-                            tak->source->deleteTakFromList(tak);
-                            tak->dest->deleteTakFromList(tak);
-                            removeItem(tak);
+                    while (!takList.empty()) {
+                        if (takList.front() != NULL) {
+                            takList.front()->source->deleteTakFromList(takList.front());
+                            takList.front()->dest->deleteTakFromList(takList.front());
+                            removeItem(takList.front());
                         }//if
-                    }//foreach
-                removeItem(knoop); //verwijder het object
+                        takList.pop_front();
+                    }//while
+                    removeItem(knoop); //verwijder het object             
                 }//if
                 if (tak != NULL) {
                     if (!knoopInLijst) {
@@ -157,7 +165,7 @@ void tekenveld::mousePressEvent(QGraphicsSceneMouseEvent *event) {
                         removeItem(tak);
                     }//if
                 }//if
-            }//foreach
+            }//while
         }//else if
      }//if
      QGraphicsScene::mousePressEvent(event); //needed to retain standard mouse click functionality

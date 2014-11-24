@@ -6,7 +6,8 @@ ResultatenScherm::ResultatenScherm(QWidget *parent) :
     ui(new Ui::ResultatenScherm)
 {
     ui->setupUi(this);    
-    this->setWindowTitle("Resultatenscherm");    
+    this->setWindowTitle("Resultatenscherm");
+    setFixedSize(1150,760); //zet grootte vast
 }
 
 ResultatenScherm::~ResultatenScherm()
@@ -16,13 +17,13 @@ ResultatenScherm::~ResultatenScherm()
 
 void ResultatenScherm::setScene(tekenveld* graaf) {
     scene = graaf; //kopieer het tekenveld van de mainwindow
-    scene->setSceneRect(0,0,2000,2000); //zet tekenveld vast
+    scene->setSceneRect(160,40,1500,1500); //zet tekenveld vast
     ui->tekenVeld->setScene(scene);
 }
 
 void ResultatenScherm::on_Begin_clicked()
 {
-
+    scene->tekenveld->graaf->stapVooruit();
 }
 
 void ResultatenScherm::on_Vorige_clicked()
@@ -37,10 +38,7 @@ void ResultatenScherm::on_Volgende_clicked()
 
 void ResultatenScherm::on_Einde_clicked()
 {
-    if (scene->graaf.algoritme == 1) {
-        scene->graaf.BellmanFord();
-        scene->graaf.vul_kortste_pad();
-    }
+
 }
 
 void ResultatenScherm::on_Upload_clicked()

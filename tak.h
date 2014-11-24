@@ -14,26 +14,23 @@ class Knoop;
 class Tak : public QGraphicsItem
 {
 public:
-    Tak(Knoop *sourceKnoop, Knoop *destKnoop, bool directedEdge);//constructor   
+    Tak(Knoop *sourceKnoop, Knoop *destKnoop, bool directedEdge);//constructor
     ~Tak();    
-    qreal midX;
-    qreal midY;
+    int midX;
+    int midY;
     friend class tekenveld;
-    friend class Graaf;  
-    friend class Knoop;
+    friend class Graaf;
 private:
     Knoop *source, *dest;//de begin en eindknoop
     QLineF line;
     QPoint sourcePoint;
-    QPoint destPoint;   
+    QPoint destPoint;
     bool directed;
     QGraphicsProxyWidget* pMyProxy; //nodig om de text box weer te geven
     QLineEdit *pLineEdit; //text box voor naamgeving
     QRectF boundingRect() const;//bepaalt grootte van de pijl
     QPainterPath shape() const;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);//tekent de pijl
-    void calcCoordinates();
-    void placeTextBox();
 protected:
     void mousePressEvent(QGraphicsSceneMouseEvent *event); //wordt aangeroepen bij een muisklik op de knoop
 };

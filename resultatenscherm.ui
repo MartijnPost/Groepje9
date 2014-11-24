@@ -10,223 +10,196 @@
     <height>758</height>
    </rect>
   </property>
-  <property name="maximumSize">
-   <size>
-    <width>2000</width>
-    <height>2000</height>
-   </size>
-  </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color: rgba(202, 164, 227, 194);</string>
   </property>
-  <layout class="QGridLayout" name="gridLayout">
-   <property name="leftMargin">
-    <number>0</number>
+  <widget class="QPushButton" name="Begin">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>680</y>
+     <width>201</width>
+     <height>81</height>
+    </rect>
    </property>
-   <property name="topMargin">
-    <number>0</number>
+   <property name="font">
+    <font>
+     <family>Arial Black</family>
+     <pointsize>16</pointsize>
+     <weight>9</weight>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
    </property>
-   <property name="rightMargin">
-    <number>0</number>
+   <property name="styleSheet">
+    <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:0, stop:0 rgba(160, 75, 164, 255), stop:1 rgba(255, 255, 255, 255));
+color: rgb(255, 255, 255);
+font: 75 16pt &quot;Arial Black&quot;;</string>
    </property>
-   <property name="bottomMargin">
-    <number>0</number>
+   <property name="text">
+    <string>BEGIN</string>
    </property>
-   <property name="spacing">
-    <number>0</number>
+  </widget>
+  <widget class="QPushButton" name="Vorige">
+   <property name="geometry">
+    <rect>
+     <x>390</x>
+     <y>680</y>
+     <width>191</width>
+     <height>81</height>
+    </rect>
    </property>
-   <item row="0" column="0">
-    <widget class="QGraphicsView" name="tekenVeld">
-     <property name="minimumSize">
-      <size>
-       <width>281</width>
-       <height>192</height>
-      </size>
-     </property>
-     <property name="mouseTracking">
-      <bool>true</bool>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: rgb(255, 255, 255);</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0">
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <property name="spacing">
-      <number>0</number>
-     </property>
-     <item>
-      <widget class="QPushButton" name="Begin">
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>110</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <family>Arial Black</family>
-         <pointsize>16</pointsize>
-         <weight>9</weight>
-         <italic>false</italic>
-         <bold>false</bold>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:0, stop:0 rgba(160, 75, 164, 255), stop:1 rgba(255, 255, 255, 255));
+   <property name="font">
+    <font>
+     <family>Arial Black</family>
+     <pointsize>16</pointsize>
+     <weight>9</weight>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:0, stop:0 rgba(160, 75, 164, 255), stop:1 rgba(255, 255, 255, 255));
 color: rgb(255, 255, 255);
 font: 75 16pt &quot;Arial Black&quot;;</string>
-       </property>
-       <property name="text">
-        <string>BEGIN</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="Volgende">
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>110</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <family>Arial Black</family>
-         <pointsize>16</pointsize>
-         <weight>9</weight>
-         <italic>false</italic>
-         <bold>false</bold>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:0, stop:0 rgba(160, 75, 164, 255), stop:1 rgba(255, 255, 255, 255));
+   </property>
+   <property name="text">
+    <string>VORIGE</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="Volgende">
+   <property name="geometry">
+    <rect>
+     <x>200</x>
+     <y>680</y>
+     <width>191</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial Black</family>
+     <pointsize>16</pointsize>
+     <weight>9</weight>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:0, stop:0 rgba(160, 75, 164, 255), stop:1 rgba(255, 255, 255, 255));
 color: rgb(255, 255, 255);
 font: 75 16pt &quot;Arial Black&quot;;</string>
-       </property>
-       <property name="text">
-        <string>VOLGENDE</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="Vorige">
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>110</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <family>Arial Black</family>
-         <pointsize>16</pointsize>
-         <weight>9</weight>
-         <italic>false</italic>
-         <bold>false</bold>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:0, stop:0 rgba(160, 75, 164, 255), stop:1 rgba(255, 255, 255, 255));
+   </property>
+   <property name="text">
+    <string>VOLGENDE</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="Einde">
+   <property name="geometry">
+    <rect>
+     <x>580</x>
+     <y>680</y>
+     <width>191</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial Black</family>
+     <pointsize>16</pointsize>
+     <weight>9</weight>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:0, stop:0 rgba(160, 75, 164, 255), stop:1 rgba(255, 255, 255, 255));
 color: rgb(255, 255, 255);
 font: 75 16pt &quot;Arial Black&quot;;</string>
-       </property>
-       <property name="text">
-        <string>VORIGE</string>
-       </property>
-       <property name="autoDefault">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="Einde">
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>110</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <family>Arial Black</family>
-         <pointsize>16</pointsize>
-         <weight>9</weight>
-         <italic>false</italic>
-         <bold>false</bold>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:0, stop:0 rgba(160, 75, 164, 255), stop:1 rgba(255, 255, 255, 255));
+   </property>
+   <property name="text">
+    <string>EINDE</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="Upload">
+   <property name="geometry">
+    <rect>
+     <x>770</x>
+     <y>680</y>
+     <width>181</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial Black</family>
+     <pointsize>16</pointsize>
+     <weight>9</weight>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:0, stop:0 rgba(160, 75, 164, 255), stop:1 rgba(255, 255, 255, 255));
 color: rgb(255, 255, 255);
 font: 75 16pt &quot;Arial Black&quot;;</string>
-       </property>
-       <property name="text">
-        <string>EINDE</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="Upload">
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>110</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <family>Arial Black</family>
-         <pointsize>16</pointsize>
-         <weight>9</weight>
-         <italic>false</italic>
-         <bold>false</bold>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:0, stop:0 rgba(160, 75, 164, 255), stop:1 rgba(255, 255, 255, 255));
+   </property>
+   <property name="text">
+    <string>UPLOAD</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="Stop">
+   <property name="geometry">
+    <rect>
+     <x>950</x>
+     <y>680</y>
+     <width>201</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial Black</family>
+     <pointsize>16</pointsize>
+     <weight>9</weight>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:0, stop:0 rgba(160, 75, 164, 255), stop:1 rgba(255, 255, 255, 255));
 color: rgb(255, 255, 255);
 font: 75 16pt &quot;Arial Black&quot;;</string>
-       </property>
-       <property name="text">
-        <string>UPLOAD</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="Stop">
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>110</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <family>Arial Black</family>
-         <pointsize>16</pointsize>
-         <weight>9</weight>
-         <italic>false</italic>
-         <bold>false</bold>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:0, stop:0 rgba(160, 75, 164, 255), stop:1 rgba(255, 255, 255, 255));
-color: rgb(255, 255, 255);
-font: 75 16pt &quot;Arial Black&quot;;</string>
-       </property>
-       <property name="text">
-        <string>STOP</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-  </layout>
+   </property>
+   <property name="text">
+    <string>STOP</string>
+   </property>
+  </widget>
+  <widget class="QGraphicsView" name="tekenVeld">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1151</width>
+     <height>681</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>281</width>
+     <height>192</height>
+    </size>
+   </property>
+   <property name="mouseTracking">
+    <bool>true</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 255, 255);</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

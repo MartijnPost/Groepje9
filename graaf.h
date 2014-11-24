@@ -35,12 +35,9 @@ class Graaf
 public:
     Graaf();
     friend class tekenveld;
-    friend class MainWindow;
-    friend class ResultatenScherm;
 private:
     int aantalKnopen;                             //Aantal knopen in de graaf
     int aantalTakken;                             //Aantal takken in de graaf
-    int algoritme;
     Knoop* startknoop;                            //Startknoop van de graaf
     Knoop* eindknoop;                             //Eindknoop van de graaf
     Header* listEntrance;                         //Pointer naar de bovenste Header uit de adjacency list
@@ -60,7 +57,14 @@ private:
     void verwijder_arrays( );                     //Verwijderd de dynamische arrays (knopen, takken, afstand & voorganger)
     int zoek_index(Knoop* k) const;               //Zoekt voor een knoop zijn index in de lijst 'knopen'
     void BellmanFord( );                          //Implementatie functie voor het Bellman-Ford algoritme
-    void vul_kortste_pad( );                      //Vult de lijst 'kortste_pad'    
+    void vul_kortste_pad( );                      //Vult de lijst 'kortste_pad'
+    int stappenArray[999][999];                   //Array waar alle lengtes van algoritme stap voor stap in opgeslagen zijn
+    int stap;                                     //Tellertje voor stappenArray
+    void stapVooruit( );                          //Zet een stap verder in het algoritme
+    void stapAchteruit( );                        //Zet een stap terug in het algrotime
+    void stapBegin( );                            //Ga terug naar het begin van het algoritme
+    void stapEinde( );                            //Ga naar het einde van het algoritme
+
 };
 
 #endif // GRAAF_H

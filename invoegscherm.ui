@@ -16,121 +16,99 @@
   <property name="styleSheet">
    <string notr="true">background-color: rgba(202, 164, 227, 194);</string>
   </property>
-  <layout class="QGridLayout" name="gridLayout">
-   <property name="leftMargin">
-    <number>0</number>
+  <widget class="QPushButton" name="Toevoegen">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>610</y>
+     <width>281</width>
+     <height>131</height>
+    </rect>
    </property>
-   <property name="topMargin">
-    <number>0</number>
+   <property name="font">
+    <font>
+     <family>Arial Black</family>
+     <pointsize>16</pointsize>
+     <weight>9</weight>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
    </property>
-   <property name="rightMargin">
-    <number>0</number>
-   </property>
-   <property name="bottomMargin">
-    <number>0</number>
-   </property>
-   <property name="spacing">
-    <number>0</number>
-   </property>
-   <item row="0" column="0">
-    <layout class="QVBoxLayout" name="verticalLayout">
-     <property name="spacing">
-      <number>0</number>
-     </property>
-     <item>
-      <widget class="QLineEdit" name="addAlgBox">
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background-color: rgba(202, 164, 227, 194);</string>
-       </property>
-       <property name="placeholderText">
-        <string>Naam van algoritme</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPlainTextEdit" name="plainTextEdit">
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background-color: rgb(255, 255, 255);</string>
-       </property>
-       <property name="placeholderText">
-        <string>Algoritme geschreven in C++</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <layout class="QHBoxLayout" name="horizontalLayout">
-       <property name="spacing">
-        <number>0</number>
-       </property>
-       <item>
-        <widget class="QPushButton" name="Terug">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>130</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <family>Arial Black</family>
-           <pointsize>16</pointsize>
-           <weight>9</weight>
-           <italic>false</italic>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:0, stop:0 rgba(160, 75, 164, 255), stop:1 rgba(255, 255, 255, 255));
+   <property name="styleSheet">
+    <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:0, stop:0 rgba(160, 75, 164, 255), stop:1 rgba(255, 255, 255, 255));
 color: rgb(255, 255, 255);
 font: 75 16pt &quot;Arial Black&quot;;</string>
-         </property>
-         <property name="text">
-          <string>TERUG</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="Toevoegen">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>130</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <family>Arial Black</family>
-           <pointsize>16</pointsize>
-           <weight>9</weight>
-           <italic>false</italic>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:0, stop:0 rgba(160, 75, 164, 255), stop:1 rgba(255, 255, 255, 255));
+   </property>
+   <property name="text">
+    <string>TOEVOEGEN</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="Terug">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>610</y>
+     <width>291</width>
+     <height>131</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial Black</family>
+     <pointsize>16</pointsize>
+     <weight>9</weight>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:0, stop:0 rgba(160, 75, 164, 255), stop:1 rgba(255, 255, 255, 255));
 color: rgb(255, 255, 255);
 font: 75 16pt &quot;Arial Black&quot;;</string>
-         </property>
-         <property name="text">
-          <string>TOEVOEGEN</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-    </layout>
-   </item>
-  </layout>
+   </property>
+   <property name="text">
+    <string>TERUG</string>
+   </property>
+  </widget>
+  <widget class="QPlainTextEdit" name="plainTextEdit">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>60</y>
+     <width>571</width>
+     <height>551</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="placeholderText">
+    <string>Algoritme geschreven in C++</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="addAlgBox">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>571</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="placeholderText">
+    <string>Naam van algoritme</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>
