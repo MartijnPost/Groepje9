@@ -35,9 +35,12 @@ class Graaf
 public:
     Graaf();
     friend class tekenveld;
+    friend class MainWindow;
+    friend class ResultatenScherm;
 private:
     int aantalKnopen;                             //Aantal knopen in de graaf
     int aantalTakken;                             //Aantal takken in de graaf
+    int algoritme;                                //Huidig index algoritme
     Knoop* startknoop;                            //Startknoop van de graaf
     Knoop* eindknoop;                             //Eindknoop van de graaf
     Header* listEntrance;                         //Pointer naar de bovenste Header uit de adjacency list

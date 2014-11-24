@@ -4,6 +4,7 @@ Graaf::Graaf()
 {
     aantalKnopen = 0;
     aantalTakken = 0;
+    algoritme = 0;
     startknoop = NULL;
     eindknoop = NULL;
     listEntrance = NULL;

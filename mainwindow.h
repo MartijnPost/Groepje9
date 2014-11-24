@@ -15,7 +15,8 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = 0);    
+    explicit MainWindow(QWidget *parent = 0);
+    friend class Knoop;
     ~MainWindow();
 
 private slots:
@@ -35,7 +36,9 @@ private slots:
 
     void on_AfsluitenKnop_clicked();
 
-    void on_pushButton_clicked();
+    void on_ClearKnop_clicked();
+
+    void on_algChoice_currentIndexChanged(int index);
 
 private:
     tekenveld *scene;

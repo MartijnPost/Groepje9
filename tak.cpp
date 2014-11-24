@@ -12,10 +12,22 @@ Tak::Tak(Knoop *sourceNode, Knoop *destNode, bool directedEdge)
     source = sourceNode;
     dest = destNode;
     directed = directedEdge;
-    double x1 = source->x;
-    double x2 = dest->x;
-    double y1 = source->y;
-    double y2 = dest->y;
+    calcCoordinates();
+    pLineEdit = new QLineEdit("");
+    pLineEdit->setMaxLength(3); //er kunnen maximaal 3 karakters in de text box geplaatst worden
+    pLineEdit->setFixedSize(40, 20); //de grootte van de text box    
+    pLineEdit->setValidator(new QIntValidator);    
+    pMyProxy = new QGraphicsProxyWidget(this); // the proxy's parent is the 2d object
+    pMyProxy->setWidget(pLineEdit); //voeg de text box toe      
+    placeTextBox();    
+    //voeg toe aan adjancency list    
+}
+
+void Tak::calcCoordinates() {
+    double x1 = source->xHuidig;
+    double x2 = dest->xHuidig;
+    double y1 = source->yHuidig;
+    double y2 = dest->yHuidig;
     double dX = abs(x2-x1);
     double dY = abs(y2-y1);
     double hoek1 = atan(dY/dX) * 180 / Pi;//hoek source cirkel
@@ -74,23 +86,15 @@ Tak::Tak(Knoop *sourceNode, Knoop *destNode, bool directedEdge)
         sourcePoint.setY(y1);
         destPoint.setX(x2-37.5);
         destPoint.setY(y2);
-    }//if   
-    line.setLine(source->x, source->y, dest->x, dest->y);
-    //voeg toe aan adjancency list
-    pLineEdit = new QLineEdit("");
-    pLineEdit->setMaxLength(3); //er kunnen maximaal 3 karakters in de text box geplaatst worden
-    pLineEdit->setFixedSize(40, 20); //de grootte van de text box
-    pLineEdit->setStyleSheet("QLineEdit{background: transparent; }");//border: none;
-    pLineEdit->setValidator(new QIntValidator);
-    pMyProxy = new QGraphicsProxyWidget(this); // the proxy's parent is the 2d object
-    pMyProxy->setWidget(pLineEdit); //voeg de text box toe
-    midX = (source->x + dest->x)/2; //berekene de X-coördinaat het midden van de lijn
-    midY = (source->y + dest->y)/2; //berekene de Y-coördinaat het midden van de lijn
-    if((dest->x >= source->x && dest->x >= source->y) || (dest->x < source->x && dest->x < source->y)) //lijn als y=x
-        pMyProxy->moveBy(midX-20,midY-30); //zet de text box rechts boven het midden van de lijn
-    if((dest->x >= source->x && dest->x < source->y) || (dest->x < source->x && dest->x >= source->y)) //lijn als y=-x
-        pMyProxy->moveBy(midX-30,midY-30); //zet de text box links boven het midden van de lijn
+    }//if
+    line.setLine(source->xHuidig, source->yHuidig, dest->xHuidig, dest->yHuidig);
 }
+
+void Tak::placeTextBox() {
+    midX = (source->xHuidig + dest->xHuidig)/2; //berekent de X-coördinaat van het midden van de lijn
+    midY = (source->yHuidig + dest->yHuidig)/2; //berekent de Y-coördinaat van het midden van de lijn
+    pMyProxy->setPos(midX-20,midY-10); //zet de text box rechts boven het midden van de lijn
+}//placeTextBox
 
 Tak::~Tak()
 {
@@ -98,19 +102,8 @@ Tak::~Tak()
 }
 
 QRectF Tak::boundingRect() const
-{
-    if (sourcePoint.x() > destPoint.x()) {
-        if (sourcePoint.y() > destPoint.y())
-            return QRectF(destPoint.x()-10, destPoint.y()-10, abs(sourcePoint.x()-destPoint.x())+20, abs(sourcePoint.y()-destPoint.y())+20);
-        else
-            return QRectF(destPoint.x()-10, sourcePoint.y()-10, abs(sourcePoint.x()-destPoint.x())+20, abs(sourcePoint.y()-destPoint.y())+20);
-    }//if
-    else {
-        if (sourcePoint.y() > destPoint.y())
-            return QRectF(sourcePoint.x()-10, destPoint.y()-10, abs(sourcePoint.x()-destPoint.x())+20, abs(sourcePoint.y()-destPoint.y())+20);
-        else
-            return QRectF(sourcePoint.x()-10, sourcePoint.y()-10, abs(sourcePoint.x()-destPoint.x())+20, abs(sourcePoint.y()-destPoint.y())+20);
-    }//else
+{    
+    return QRectF(0,0,2000,2000);
 }
 
 QPainterPath Tak::shape() const
@@ -120,8 +113,8 @@ QPainterPath Tak::shape() const
     if (abs(sourcePoint.x() - destPoint.x()) > abs(sourcePoint.y() - destPoint.y())) {
         polygon << QPoint(sourcePoint.x(), sourcePoint.y()-10);
         polygon << QPoint(sourcePoint.x(), sourcePoint.y()+10);
-        polygon << QPoint(dest->x, destPoint.y()+10);
-        polygon << QPoint(dest->x, destPoint.y()-10);
+        polygon << QPoint(destPoint.x(), destPoint.y()+10);
+        polygon << QPoint(destPoint.x(), destPoint.y()-10);
         polygon << QPoint(sourcePoint.x(), sourcePoint.y()-10);
     }//if
     else {
@@ -143,7 +136,7 @@ void Tak::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
     paintpen.setWidth(2); //de dikte van de pen is 1
     painter->setPen(paintpen); //de pen waarmee getekend gaat worden is paintpen
     painter->setRenderHint(QPainter::Antialiasing); //er wordt AA gebruikt om de knoop mooier te maken
-    painter->drawLine(sourcePoint, destPoint);
+    painter->drawLine(sourcePoint, destPoint);    
     //teken de zijkant van de pijl
     if (directed) {
         qreal arrowSize = 10; //grootte van de pijl

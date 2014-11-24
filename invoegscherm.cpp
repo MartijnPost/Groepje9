@@ -10,9 +10,7 @@ InvoegScherm::InvoegScherm(QWidget *parent) :
     ui(new Ui::InvoegScherm)
 {
     ui->setupUi(this);
-    this->setWindowTitle("Invoegscherm");
-    setFixedSize(570,740); //zet grootte vast
-
+    this->setWindowTitle("Invoegscherm");   
 }
 
 InvoegScherm::~InvoegScherm()

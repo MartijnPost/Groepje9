@@ -15,12 +15,16 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QGraphicsView>
+#include <QtWidgets/QGridLayout>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QRadioButton>
+#include <QtWidgets/QSpacerItem>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -29,36 +33,218 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralWidget;
-    QPushButton *StartKnop;
-    QPushButton *InvoegenKnop;
-    QPushButton *AfsluitenKnop;
+    QGridLayout *gridLayout;
+    QHBoxLayout *horizontalLayout_7;
+    QVBoxLayout *verticalLayout_2;
+    QSpacerItem *verticalSpacer_2;
+    QHBoxLayout *horizontalLayout_2;
     QRadioButton *KnoopRadio;
-    QRadioButton *StartKnoopRadio;
-    QRadioButton *OngerichteTakRadio;
-    QRadioButton *GerichteTakRadio;
-    QGraphicsView *graphicsView;
-    QComboBox *algChoice;
-    QRadioButton *EindKnoopRadio;
     QLabel *label;
+    QHBoxLayout *horizontalLayout_3;
+    QRadioButton *StartKnoopRadio;
     QLabel *label_2;
+    QHBoxLayout *horizontalLayout_4;
+    QRadioButton *EindKnoopRadio;
     QLabel *label_3;
+    QHBoxLayout *horizontalLayout_5;
+    QRadioButton *OngerichteTakRadio;
     QLabel *label_4;
+    QHBoxLayout *horizontalLayout_6;
+    QRadioButton *GerichteTakRadio;
     QLabel *label_5;
-    QPushButton *pushButton;
+    QSpacerItem *verticalSpacer;
+    QSpacerItem *horizontalSpacer;
+    QVBoxLayout *verticalLayout;
+    QGraphicsView *graphicsView;
+    QHBoxLayout *horizontalLayout;
+    QPushButton *StartKnop;
+    QComboBox *algChoice;
+    QPushButton *InvoegenKnop;
+    QPushButton *ClearKnop;
+    QPushButton *AfsluitenKnop;
     QMenuBar *menuBar;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(1350, 771);
+        MainWindow->resize(1349, 693);
         MainWindow->setStyleSheet(QStringLiteral("background-color: rgba(204, 176, 212, 210);"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
+        gridLayout = new QGridLayout(centralWidget);
+        gridLayout->setSpacing(0);
+        gridLayout->setContentsMargins(11, 11, 11, 11);
+        gridLayout->setObjectName(QStringLiteral("gridLayout"));
+        gridLayout->setContentsMargins(6, 0, 0, 0);
+        horizontalLayout_7 = new QHBoxLayout();
+        horizontalLayout_7->setSpacing(6);
+        horizontalLayout_7->setObjectName(QStringLiteral("horizontalLayout_7"));
+        verticalLayout_2 = new QVBoxLayout();
+        verticalLayout_2->setSpacing(6);
+        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
+        verticalSpacer_2 = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Fixed);
+
+        verticalLayout_2->addItem(verticalSpacer_2);
+
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setSpacing(6);
+        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
+        KnoopRadio = new QRadioButton(centralWidget);
+        KnoopRadio->setObjectName(QStringLiteral("KnoopRadio"));
+        KnoopRadio->setMinimumSize(QSize(20, 17));
+        QFont font;
+        font.setPointSize(12);
+        KnoopRadio->setFont(font);
+
+        horizontalLayout_2->addWidget(KnoopRadio);
+
+        label = new QLabel(centralWidget);
+        label->setObjectName(QStringLiteral("label"));
+        QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
+        label->setSizePolicy(sizePolicy);
+        label->setMinimumSize(QSize(60, 60));
+        label->setMaximumSize(QSize(60, 60));
+        label->setBaseSize(QSize(0, 0));
+        label->setPixmap(QPixmap(QString::fromUtf8("knoop.png")));
+        label->setScaledContents(true);
+
+        horizontalLayout_2->addWidget(label);
+
+
+        verticalLayout_2->addLayout(horizontalLayout_2);
+
+        horizontalLayout_3 = new QHBoxLayout();
+        horizontalLayout_3->setSpacing(6);
+        horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
+        StartKnoopRadio = new QRadioButton(centralWidget);
+        StartKnoopRadio->setObjectName(QStringLiteral("StartKnoopRadio"));
+        StartKnoopRadio->setMinimumSize(QSize(20, 17));
+        StartKnoopRadio->setFont(font);
+
+        horizontalLayout_3->addWidget(StartKnoopRadio);
+
+        label_2 = new QLabel(centralWidget);
+        label_2->setObjectName(QStringLiteral("label_2"));
+        sizePolicy.setHeightForWidth(label_2->sizePolicy().hasHeightForWidth());
+        label_2->setSizePolicy(sizePolicy);
+        label_2->setMinimumSize(QSize(60, 60));
+        label_2->setMaximumSize(QSize(60, 60));
+        label_2->setPixmap(QPixmap(QString::fromUtf8("startknoop.png")));
+        label_2->setScaledContents(true);
+
+        horizontalLayout_3->addWidget(label_2);
+
+
+        verticalLayout_2->addLayout(horizontalLayout_3);
+
+        horizontalLayout_4 = new QHBoxLayout();
+        horizontalLayout_4->setSpacing(6);
+        horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
+        EindKnoopRadio = new QRadioButton(centralWidget);
+        EindKnoopRadio->setObjectName(QStringLiteral("EindKnoopRadio"));
+        EindKnoopRadio->setMinimumSize(QSize(20, 17));
+        EindKnoopRadio->setFont(font);
+
+        horizontalLayout_4->addWidget(EindKnoopRadio);
+
+        label_3 = new QLabel(centralWidget);
+        label_3->setObjectName(QStringLiteral("label_3"));
+        sizePolicy.setHeightForWidth(label_3->sizePolicy().hasHeightForWidth());
+        label_3->setSizePolicy(sizePolicy);
+        label_3->setMinimumSize(QSize(60, 60));
+        label_3->setMaximumSize(QSize(60, 60));
+        label_3->setPixmap(QPixmap(QString::fromUtf8("eindknoop.png")));
+        label_3->setScaledContents(true);
+
+        horizontalLayout_4->addWidget(label_3);
+
+
+        verticalLayout_2->addLayout(horizontalLayout_4);
+
+        horizontalLayout_5 = new QHBoxLayout();
+        horizontalLayout_5->setSpacing(6);
+        horizontalLayout_5->setObjectName(QStringLiteral("horizontalLayout_5"));
+        OngerichteTakRadio = new QRadioButton(centralWidget);
+        OngerichteTakRadio->setObjectName(QStringLiteral("OngerichteTakRadio"));
+        OngerichteTakRadio->setMinimumSize(QSize(20, 17));
+        OngerichteTakRadio->setFont(font);
+
+        horizontalLayout_5->addWidget(OngerichteTakRadio);
+
+        label_4 = new QLabel(centralWidget);
+        label_4->setObjectName(QStringLiteral("label_4"));
+        sizePolicy.setHeightForWidth(label_4->sizePolicy().hasHeightForWidth());
+        label_4->setSizePolicy(sizePolicy);
+        label_4->setMinimumSize(QSize(60, 60));
+        label_4->setMaximumSize(QSize(60, 60));
+        label_4->setPixmap(QPixmap(QString::fromUtf8("gerichtepijll.png")));
+        label_4->setScaledContents(true);
+
+        horizontalLayout_5->addWidget(label_4);
+
+
+        verticalLayout_2->addLayout(horizontalLayout_5);
+
+        horizontalLayout_6 = new QHBoxLayout();
+        horizontalLayout_6->setSpacing(6);
+        horizontalLayout_6->setObjectName(QStringLiteral("horizontalLayout_6"));
+        GerichteTakRadio = new QRadioButton(centralWidget);
+        GerichteTakRadio->setObjectName(QStringLiteral("GerichteTakRadio"));
+        GerichteTakRadio->setMinimumSize(QSize(20, 17));
+        GerichteTakRadio->setFont(font);
+
+        horizontalLayout_6->addWidget(GerichteTakRadio);
+
+        label_5 = new QLabel(centralWidget);
+        label_5->setObjectName(QStringLiteral("label_5"));
+        sizePolicy.setHeightForWidth(label_5->sizePolicy().hasHeightForWidth());
+        label_5->setSizePolicy(sizePolicy);
+        label_5->setMinimumSize(QSize(60, 60));
+        label_5->setMaximumSize(QSize(60, 60));
+        label_5->setPixmap(QPixmap(QString::fromUtf8("gerichtpijl.png")));
+        label_5->setScaledContents(true);
+
+        horizontalLayout_6->addWidget(label_5);
+
+
+        verticalLayout_2->addLayout(horizontalLayout_6);
+
+        verticalSpacer = new QSpacerItem(20, 60, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout_2->addItem(verticalSpacer);
+
+
+        horizontalLayout_7->addLayout(verticalLayout_2);
+
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+
+        horizontalLayout_7->addItem(horizontalSpacer);
+
+        verticalLayout = new QVBoxLayout();
+        verticalLayout->setSpacing(0);
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        graphicsView = new QGraphicsView(centralWidget);
+        graphicsView->setObjectName(QStringLiteral("graphicsView"));
+        QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(graphicsView->sizePolicy().hasHeightForWidth());
+        graphicsView->setSizePolicy(sizePolicy1);
+        graphicsView->setMaximumSize(QSize(2000, 2000));
+        graphicsView->setStyleSheet(QStringLiteral("background-color: rgb(255, 255, 255);"));
+
+        verticalLayout->addWidget(graphicsView);
+
+        horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setSpacing(0);
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         StartKnop = new QPushButton(centralWidget);
         StartKnop->setObjectName(QStringLiteral("StartKnop"));
-        StartKnop->setGeometry(QRect(190, 640, 251, 101));
-        StartKnop->setMinimumSize(QSize(71, 0));
+        StartKnop->setMinimumSize(QSize(0, 110));
         QPalette palette;
         QBrush brush(QColor(255, 255, 255, 255));
         brush.setStyle(Qt::SolidPattern);
@@ -135,118 +321,83 @@ public:
         QBrush brush9(gradient8);
         palette.setBrush(QPalette::Disabled, QPalette::Window, brush9);
         StartKnop->setPalette(palette);
-        QFont font;
-        font.setFamily(QStringLiteral("Arial Black"));
-        font.setPointSize(16);
-        font.setBold(false);
-        font.setItalic(false);
-        font.setWeight(9);
-        StartKnop->setFont(font);
+        QFont font1;
+        font1.setFamily(QStringLiteral("Arial Black"));
+        font1.setPointSize(16);
+        font1.setBold(false);
+        font1.setItalic(false);
+        font1.setWeight(9);
+        StartKnop->setFont(font1);
         StartKnop->setStyleSheet(QLatin1String("background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:0, stop:0 rgba(160, 75, 164, 255), stop:1 rgba(255, 255, 255, 255));\n"
 "color: rgb(255, 255, 255);\n"
 "font: 75 16pt \"Arial Black\";\n"
 "\n"
 ""));
-        InvoegenKnop = new QPushButton(centralWidget);
-        InvoegenKnop->setObjectName(QStringLiteral("InvoegenKnop"));
-        InvoegenKnop->setGeometry(QRect(660, 640, 231, 101));
-        InvoegenKnop->setMinimumSize(QSize(71, 41));
-        InvoegenKnop->setFont(font);
-        InvoegenKnop->setStyleSheet(QLatin1String("background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:0, stop:0 rgba(160, 75, 164, 255), stop:1 rgba(255, 255, 255, 255));\n"
-"color: rgb(255, 255, 255);\n"
-"font: 75 16pt \"Arial Black\";"));
-        AfsluitenKnop = new QPushButton(centralWidget);
-        AfsluitenKnop->setObjectName(QStringLiteral("AfsluitenKnop"));
-        AfsluitenKnop->setGeometry(QRect(1100, 640, 241, 101));
-        AfsluitenKnop->setMinimumSize(QSize(71, 41));
-        AfsluitenKnop->setFont(font);
-        AfsluitenKnop->setStyleSheet(QLatin1String("background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:0, stop:0 rgba(160, 75, 164, 255), stop:1 rgba(255, 255, 255, 255));\n"
-"color: rgb(255, 255, 255);\n"
-"font: 75 16pt \"Arial Black\";"));
-        KnoopRadio = new QRadioButton(centralWidget);
-        KnoopRadio->setObjectName(QStringLiteral("KnoopRadio"));
-        KnoopRadio->setGeometry(QRect(20, 30, 141, 41));
-        KnoopRadio->setMinimumSize(QSize(82, 17));
-        QFont font1;
-        font1.setPointSize(12);
-        KnoopRadio->setFont(font1);
-        StartKnoopRadio = new QRadioButton(centralWidget);
-        StartKnoopRadio->setObjectName(QStringLiteral("StartKnoopRadio"));
-        StartKnoopRadio->setGeometry(QRect(20, 100, 141, 41));
-        StartKnoopRadio->setMinimumSize(QSize(82, 17));
-        StartKnoopRadio->setFont(font1);
-        OngerichteTakRadio = new QRadioButton(centralWidget);
-        OngerichteTakRadio->setObjectName(QStringLiteral("OngerichteTakRadio"));
-        OngerichteTakRadio->setGeometry(QRect(20, 240, 161, 41));
-        OngerichteTakRadio->setMinimumSize(QSize(91, 17));
-        OngerichteTakRadio->setFont(font1);
-        GerichteTakRadio = new QRadioButton(centralWidget);
-        GerichteTakRadio->setObjectName(QStringLiteral("GerichteTakRadio"));
-        GerichteTakRadio->setGeometry(QRect(20, 310, 151, 41));
-        GerichteTakRadio->setMinimumSize(QSize(82, 17));
-        GerichteTakRadio->setFont(font1);
-        graphicsView = new QGraphicsView(centralWidget);
-        graphicsView->setObjectName(QStringLiteral("graphicsView"));
-        graphicsView->setGeometry(QRect(190, 0, 1151, 641));
-        graphicsView->setStyleSheet(QStringLiteral("background-color: rgb(255, 255, 255);"));
+
+        horizontalLayout->addWidget(StartKnop);
+
         algChoice = new QComboBox(centralWidget);
         algChoice->setObjectName(QStringLiteral("algChoice"));
-        algChoice->setGeometry(QRect(440, 640, 221, 101));
-        QSizePolicy sizePolicy(QSizePolicy::Minimum, QSizePolicy::Fixed);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(algChoice->sizePolicy().hasHeightForWidth());
-        algChoice->setSizePolicy(sizePolicy);
-        algChoice->setMinimumSize(QSize(0, 0));
-        algChoice->setFont(font);
+        QSizePolicy sizePolicy2(QSizePolicy::Minimum, QSizePolicy::Fixed);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(algChoice->sizePolicy().hasHeightForWidth());
+        algChoice->setSizePolicy(sizePolicy2);
+        algChoice->setMinimumSize(QSize(200, 110));
+        algChoice->setFont(font1);
         algChoice->setStyleSheet(QLatin1String("background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:0, stop:0 rgba(160, 75, 164, 255), stop:1 rgba(255, 255, 255, 255));\n"
 "color: rgb(255, 255, 255);\n"
 "font: 75 16pt \"Arial Black\";\n"
 "padding: 1px 0px 1px 3px; /*This makes text colour work*/\n"
 ""));
         algChoice->setEditable(false);
-        EindKnoopRadio = new QRadioButton(centralWidget);
-        EindKnoopRadio->setObjectName(QStringLiteral("EindKnoopRadio"));
-        EindKnoopRadio->setGeometry(QRect(20, 170, 141, 41));
-        EindKnoopRadio->setMinimumSize(QSize(82, 17));
-        EindKnoopRadio->setFont(font1);
-        label = new QLabel(centralWidget);
-        label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(50, 20, 61, 61));
-        label->setPixmap(QPixmap(QString::fromUtf8("knoop.png")));
-        label->setScaledContents(true);
-        label_2 = new QLabel(centralWidget);
-        label_2->setObjectName(QStringLiteral("label_2"));
-        label_2->setGeometry(QRect(50, 90, 61, 61));
-        label_2->setPixmap(QPixmap(QString::fromUtf8("startknoop.png")));
-        label_2->setScaledContents(true);
-        label_3 = new QLabel(centralWidget);
-        label_3->setObjectName(QStringLiteral("label_3"));
-        label_3->setGeometry(QRect(50, 160, 61, 61));
-        label_3->setPixmap(QPixmap(QString::fromUtf8("eindknoop.png")));
-        label_3->setScaledContents(true);
-        label_4 = new QLabel(centralWidget);
-        label_4->setObjectName(QStringLiteral("label_4"));
-        label_4->setGeometry(QRect(50, 230, 61, 61));
-        label_4->setPixmap(QPixmap(QString::fromUtf8("gerichtepijll.png")));
-        label_4->setScaledContents(true);
-        label_5 = new QLabel(centralWidget);
-        label_5->setObjectName(QStringLiteral("label_5"));
-        label_5->setGeometry(QRect(50, 300, 61, 61));
-        label_5->setPixmap(QPixmap(QString::fromUtf8("gerichtpijl.png")));
-        label_5->setScaledContents(true);
-        pushButton = new QPushButton(centralWidget);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(890, 640, 211, 101));
-        pushButton->setStyleSheet(QLatin1String("background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:0, stop:0 rgba(160, 75, 164, 255), stop:1 rgba(255, 255, 255, 255));\n"
+
+        horizontalLayout->addWidget(algChoice);
+
+        InvoegenKnop = new QPushButton(centralWidget);
+        InvoegenKnop->setObjectName(QStringLiteral("InvoegenKnop"));
+        InvoegenKnop->setMinimumSize(QSize(0, 110));
+        InvoegenKnop->setFont(font1);
+        InvoegenKnop->setStyleSheet(QLatin1String("background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:0, stop:0 rgba(160, 75, 164, 255), stop:1 rgba(255, 255, 255, 255));\n"
+"color: rgb(255, 255, 255);\n"
+"font: 75 16pt \"Arial Black\";"));
+
+        horizontalLayout->addWidget(InvoegenKnop);
+
+        ClearKnop = new QPushButton(centralWidget);
+        ClearKnop->setObjectName(QStringLiteral("ClearKnop"));
+        ClearKnop->setMinimumSize(QSize(0, 110));
+        ClearKnop->setStyleSheet(QLatin1String("background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:0, stop:0 rgba(160, 75, 164, 255), stop:1 rgba(255, 255, 255, 255));\n"
 "color: rgb(255, 255, 255);\n"
 "font: 75 16pt \"Arial Black\";\n"
 "\n"
 ""));
+
+        horizontalLayout->addWidget(ClearKnop);
+
+        AfsluitenKnop = new QPushButton(centralWidget);
+        AfsluitenKnop->setObjectName(QStringLiteral("AfsluitenKnop"));
+        AfsluitenKnop->setMinimumSize(QSize(0, 110));
+        AfsluitenKnop->setFont(font1);
+        AfsluitenKnop->setStyleSheet(QLatin1String("background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:1, y2:0, stop:0 rgba(160, 75, 164, 255), stop:1 rgba(255, 255, 255, 255));\n"
+"color: rgb(255, 255, 255);\n"
+"font: 75 16pt \"Arial Black\";"));
+
+        horizontalLayout->addWidget(AfsluitenKnop);
+
+
+        verticalLayout->addLayout(horizontalLayout);
+
+
+        horizontalLayout_7->addLayout(verticalLayout);
+
+
+        gridLayout->addLayout(horizontalLayout_7, 0, 0, 1, 1);
+
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 1350, 25));
+        menuBar->setGeometry(QRect(0, 0, 1349, 25));
         MainWindow->setMenuBar(menuBar);
 
         retranslateUi(MainWindow);
@@ -257,25 +408,26 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0));
-        StartKnop->setText(QApplication::translate("MainWindow", "START", 0));
-        InvoegenKnop->setText(QApplication::translate("MainWindow", "INVOEGEN", 0));
-        AfsluitenKnop->setText(QApplication::translate("MainWindow", "AFSLUITEN", 0));
         KnoopRadio->setText(QString());
+        label->setText(QString());
         StartKnoopRadio->setText(QString());
+        label_2->setText(QString());
+        EindKnoopRadio->setText(QString());
+        label_3->setText(QString());
         OngerichteTakRadio->setText(QString());
+        label_4->setText(QString());
         GerichteTakRadio->setText(QString());
+        label_5->setText(QString());
+        StartKnop->setText(QApplication::translate("MainWindow", "START", 0));
         algChoice->clear();
         algChoice->insertItems(0, QStringList()
          << QApplication::translate("MainWindow", "DIJKSTRA", 0)
+         << QApplication::translate("MainWindow", "BELLMAN-FORD", 0)
         );
         algChoice->setCurrentText(QApplication::translate("MainWindow", "DIJKSTRA", 0));
-        EindKnoopRadio->setText(QString());
-        label->setText(QString());
-        label_2->setText(QString());
-        label_3->setText(QString());
-        label_4->setText(QString());
-        label_5->setText(QString());
-        pushButton->setText(QApplication::translate("MainWindow", "CLEAR", 0));
+        InvoegenKnop->setText(QApplication::translate("MainWindow", "INVOEGEN", 0));
+        ClearKnop->setText(QApplication::translate("MainWindow", "CLEAR", 0));
+        AfsluitenKnop->setText(QApplication::translate("MainWindow", "AFSLUITEN", 0));
     } // retranslateUi
 
 };
