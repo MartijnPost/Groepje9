@@ -58,6 +58,13 @@ private:
     int zoek_index(Knoop* k) const;               //Zoekt voor een knoop zijn index in de lijst 'knopen'
     void BellmanFord( );                          //Implementatie functie voor het Bellman-Ford algoritme
     void vul_kortste_pad( );                      //Vult de lijst 'kortste_pad'
+    int stappenArray[999][999];                   //Array waar alle lengtes van algoritme stap voor stap in opgeslagen zijn
+    int stap;                                     //Tellertje voor stappenArray
+    void stapVooruit( );                          //Zet een stap verder in het algoritme
+    void stapAchteruit( );                        //Zet een stap terug in het algrotime
+    void stapBegin( );                            //Ga terug naar het begin van het algoritme
+    void stapEinde( );                            //Ga naar het einde van het algoritme
+
 };
 
 #endif // GRAAF_H

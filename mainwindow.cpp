@@ -65,6 +65,7 @@ void MainWindow::on_GerichteTakRadio_toggled(bool checked)
 
 void MainWindow::on_StartKnop_clicked()
 {
+    scene->tekenveld->graaf->BellmanFord();
     //function open algoritme doorloop schermpje
     scene->resultaatScherm = true; //resultaatscherm gaat geopend worden
     hide(); //verberg hoofdscherm

@@ -23,7 +23,7 @@ void ResultatenScherm::setScene(tekenveld* graaf) {
 
 void ResultatenScherm::on_Begin_clicked()
 {
-
+    scene->tekenveld->graaf->stapVooruit();
 }
 
 void ResultatenScherm::on_Vorige_clicked()
