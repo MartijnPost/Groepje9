@@ -66,6 +66,7 @@ void MainWindow::on_StartKnop_clicked()
 {
     //function open algoritme doorloop schermpje
     scene->resultaatScherm = true; //resultaatscherm gaat geopend worden
+    scene->vulGraafArrays();
     hide(); //verberg hoofdscherm
     ResultatenScherm* r = new ResultatenScherm(); //maak nieuw resultaatscherm aan
     scene->setTextEdits(true);
@@ -94,6 +95,8 @@ void MainWindow::on_AfsluitenKnop_clicked()
 void MainWindow::on_ClearKnop_clicked()
 {
     scene->clear();
+    scene->startknoop = false;
+    scene->eindknoop = false;
 }
 
 void MainWindow::on_algChoice_currentIndexChanged(int index)

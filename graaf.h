@@ -47,6 +47,8 @@ private:
     void expandList(Knoop* k, Header*& h);        //Zet een nieuwe Knoop als Header van de adjacency list
     void expandList(Tak* t, Header*& h);          //Zet nieuwe Elementen in de adjacency list als een tak is toegevoegd
     void addToRow(Element*& e, Knoop* k, Tak* t); //Voegt een Element toe aan het einde van een rij
+    void reset_1();
+    void reset_2();
     void writeToDebug(Header* h) const;           //Drukt de adjacency list af in de debug
     void writeToDebug(Element* e) const;          //Drukt de adjacency list af in de debug
     /* Bellman-Ford Algoritme: */

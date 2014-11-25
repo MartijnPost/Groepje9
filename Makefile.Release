@@ -116,7 +116,7 @@ clean: compiler_clean
 	-$(DEL_FILE) release/Begin_resource_res.o
 
 distclean: clean 
-	-$(DEL_FILE) /home/robbin/Groepje9-master/begin_plugin_import.cpp
+	-$(DEL_FILE) /home/robbin/test/begin_plugin_import.cpp
 	-$(DEL_FILE) $(DESTDIR_TARGET)
 	-$(DEL_FILE) Makefile.Release
 
@@ -576,7 +576,7 @@ release/moc_mainwindow.cpp: ../mxe/usr/i686-w64-mingw32.static/qt5/include/QtWid
 		tak.h \
 		../mxe/usr/i686-w64-mingw32.static/qt5/include/QtCore/QPoint \
 		mainwindow.h
-	/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/bin/moc $(DEFINES) -D__GNUC__ -DWIN32 -I/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/mkspecs/win32-g++ -I/home/robbin/Groepje9-master -I/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/include -I/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/include/QtWidgets -I/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/include/QtGui -I/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/include/QtCore -I/home/robbin/mxe/usr/lib/gcc/i686-w64-mingw32.static/4.9.2/include/c++ -I/home/robbin/mxe/usr/lib/gcc/i686-w64-mingw32.static/4.9.2/include/c++/i686-w64-mingw32.static -I/home/robbin/mxe/usr/lib/gcc/i686-w64-mingw32.static/4.9.2/include/c++/backward -I/home/robbin/mxe/usr/lib/gcc/i686-w64-mingw32.static/4.9.2/include -I/home/robbin/mxe/usr/lib/gcc/i686-w64-mingw32.static/4.9.2/include-fixed -I/home/robbin/mxe/usr/i686-w64-mingw32.static/include mainwindow.h -o release/moc_mainwindow.cpp
+	/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/bin/moc $(DEFINES) -D__GNUC__ -DWIN32 -I/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/mkspecs/win32-g++ -I/home/robbin/test -I/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/include -I/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/include/QtWidgets -I/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/include/QtGui -I/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/include/QtCore -I/home/robbin/mxe/usr/lib/gcc/i686-w64-mingw32.static/4.9.2/include/c++ -I/home/robbin/mxe/usr/lib/gcc/i686-w64-mingw32.static/4.9.2/include/c++/i686-w64-mingw32.static -I/home/robbin/mxe/usr/lib/gcc/i686-w64-mingw32.static/4.9.2/include/c++/backward -I/home/robbin/mxe/usr/lib/gcc/i686-w64-mingw32.static/4.9.2/include -I/home/robbin/mxe/usr/lib/gcc/i686-w64-mingw32.static/4.9.2/include-fixed -I/home/robbin/mxe/usr/i686-w64-mingw32.static/include mainwindow.h -o release/moc_mainwindow.cpp
 
 release/moc_invoegscherm.cpp: ../mxe/usr/i686-w64-mingw32.static/qt5/include/QtWidgets/QDialog \
 		../mxe/usr/i686-w64-mingw32.static/qt5/include/QtWidgets/qdialog.h \
@@ -680,7 +680,7 @@ release/moc_invoegscherm.cpp: ../mxe/usr/i686-w64-mingw32.static/qt5/include/QtW
 		../mxe/usr/i686-w64-mingw32.static/qt5/include/QtGui/qvector2d.h \
 		../mxe/usr/i686-w64-mingw32.static/qt5/include/QtGui/qtouchdevice.h \
 		invoegscherm.h
-	/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/bin/moc $(DEFINES) -D__GNUC__ -DWIN32 -I/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/mkspecs/win32-g++ -I/home/robbin/Groepje9-master -I/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/include -I/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/include/QtWidgets -I/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/include/QtGui -I/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/include/QtCore -I/home/robbin/mxe/usr/lib/gcc/i686-w64-mingw32.static/4.9.2/include/c++ -I/home/robbin/mxe/usr/lib/gcc/i686-w64-mingw32.static/4.9.2/include/c++/i686-w64-mingw32.static -I/home/robbin/mxe/usr/lib/gcc/i686-w64-mingw32.static/4.9.2/include/c++/backward -I/home/robbin/mxe/usr/lib/gcc/i686-w64-mingw32.static/4.9.2/include -I/home/robbin/mxe/usr/lib/gcc/i686-w64-mingw32.static/4.9.2/include-fixed -I/home/robbin/mxe/usr/i686-w64-mingw32.static/include invoegscherm.h -o release/moc_invoegscherm.cpp
+	/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/bin/moc $(DEFINES) -D__GNUC__ -DWIN32 -I/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/mkspecs/win32-g++ -I/home/robbin/test -I/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/include -I/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/include/QtWidgets -I/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/include/QtGui -I/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/include/QtCore -I/home/robbin/mxe/usr/lib/gcc/i686-w64-mingw32.static/4.9.2/include/c++ -I/home/robbin/mxe/usr/lib/gcc/i686-w64-mingw32.static/4.9.2/include/c++/i686-w64-mingw32.static -I/home/robbin/mxe/usr/lib/gcc/i686-w64-mingw32.static/4.9.2/include/c++/backward -I/home/robbin/mxe/usr/lib/gcc/i686-w64-mingw32.static/4.9.2/include -I/home/robbin/mxe/usr/lib/gcc/i686-w64-mingw32.static/4.9.2/include-fixed -I/home/robbin/mxe/usr/i686-w64-mingw32.static/include invoegscherm.h -o release/moc_invoegscherm.cpp
 
 release/moc_resultatenscherm.cpp: ../mxe/usr/i686-w64-mingw32.static/qt5/include/QtWidgets/QDialog \
 		../mxe/usr/i686-w64-mingw32.static/qt5/include/QtWidgets/qdialog.h \
@@ -1125,7 +1125,7 @@ release/moc_resultatenscherm.cpp: ../mxe/usr/i686-w64-mingw32.static/qt5/include
 		tak.h \
 		../mxe/usr/i686-w64-mingw32.static/qt5/include/QtCore/QPoint \
 		resultatenscherm.h
-	/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/bin/moc $(DEFINES) -D__GNUC__ -DWIN32 -I/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/mkspecs/win32-g++ -I/home/robbin/Groepje9-master -I/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/include -I/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/include/QtWidgets -I/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/include/QtGui -I/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/include/QtCore -I/home/robbin/mxe/usr/lib/gcc/i686-w64-mingw32.static/4.9.2/include/c++ -I/home/robbin/mxe/usr/lib/gcc/i686-w64-mingw32.static/4.9.2/include/c++/i686-w64-mingw32.static -I/home/robbin/mxe/usr/lib/gcc/i686-w64-mingw32.static/4.9.2/include/c++/backward -I/home/robbin/mxe/usr/lib/gcc/i686-w64-mingw32.static/4.9.2/include -I/home/robbin/mxe/usr/lib/gcc/i686-w64-mingw32.static/4.9.2/include-fixed -I/home/robbin/mxe/usr/i686-w64-mingw32.static/include resultatenscherm.h -o release/moc_resultatenscherm.cpp
+	/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/bin/moc $(DEFINES) -D__GNUC__ -DWIN32 -I/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/mkspecs/win32-g++ -I/home/robbin/test -I/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/include -I/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/include/QtWidgets -I/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/include/QtGui -I/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/include/QtCore -I/home/robbin/mxe/usr/lib/gcc/i686-w64-mingw32.static/4.9.2/include/c++ -I/home/robbin/mxe/usr/lib/gcc/i686-w64-mingw32.static/4.9.2/include/c++/i686-w64-mingw32.static -I/home/robbin/mxe/usr/lib/gcc/i686-w64-mingw32.static/4.9.2/include/c++/backward -I/home/robbin/mxe/usr/lib/gcc/i686-w64-mingw32.static/4.9.2/include -I/home/robbin/mxe/usr/lib/gcc/i686-w64-mingw32.static/4.9.2/include-fixed -I/home/robbin/mxe/usr/i686-w64-mingw32.static/include resultatenscherm.h -o release/moc_resultatenscherm.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -3233,6 +3233,8 @@ release/knoop.o: knoop.cpp knoop.h \
 		../mxe/usr/i686-w64-mingw32.static/qt5/include/QtGui/qtextformat.h \
 		../mxe/usr/i686-w64-mingw32.static/qt5/include/QtCore/QList \
 		../mxe/usr/i686-w64-mingw32.static/qt5/include/QtCore/QVariant \
+		../mxe/usr/i686-w64-mingw32.static/qt5/include/QtWidgets/QGraphicsSceneMouseEvent \
+		../mxe/usr/i686-w64-mingw32.static/qt5/include/QtWidgets/qgraphicssceneevent.h \
 		tak.h \
 		../mxe/usr/i686-w64-mingw32.static/qt5/include/QtCore/QPoint
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release/knoop.o knoop.cpp
@@ -3356,6 +3358,8 @@ release/graaf.o: graaf.cpp graaf.h \
 		../mxe/usr/i686-w64-mingw32.static/qt5/include/QtGui/qtextformat.h \
 		../mxe/usr/i686-w64-mingw32.static/qt5/include/QtCore/QList \
 		../mxe/usr/i686-w64-mingw32.static/qt5/include/QtCore/QVariant \
+		../mxe/usr/i686-w64-mingw32.static/qt5/include/QtWidgets/QGraphicsSceneMouseEvent \
+		../mxe/usr/i686-w64-mingw32.static/qt5/include/QtWidgets/qgraphicssceneevent.h \
 		tak.h \
 		../mxe/usr/i686-w64-mingw32.static/qt5/include/QtCore/QPoint
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release/graaf.o graaf.cpp
@@ -3480,6 +3484,8 @@ release/tak.o: tak.cpp tak.h \
 		../mxe/usr/i686-w64-mingw32.static/qt5/include/QtCore/QPoint \
 		knoop.h \
 		../mxe/usr/i686-w64-mingw32.static/qt5/include/QtCore/QVariant \
+		../mxe/usr/i686-w64-mingw32.static/qt5/include/QtWidgets/QGraphicsSceneMouseEvent \
+		../mxe/usr/i686-w64-mingw32.static/qt5/include/QtWidgets/qgraphicssceneevent.h \
 		../mxe/usr/i686-w64-mingw32.static/qt5/include/QtGui/QIntValidator \
 		../mxe/usr/i686-w64-mingw32.static/qt5/include/QtGui/qvalidator.h \
 		../mxe/usr/i686-w64-mingw32.static/qt5/include/QtCore/qregularexpression.h

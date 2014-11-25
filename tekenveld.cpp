@@ -16,6 +16,23 @@ tekenveld::tekenveld() {
     eersteKnoop = NULL;
 }
 
+void tekenveld::vulGraafArrays() {
+    QList<QGraphicsItem*> list = items(QRectF(0,0,2000,2000), Qt::IntersectsItemShape, Qt::DescendingOrder, QTransform());
+    Knoop* knoop;
+    Tak* tak;
+    graaf.reset_2();
+    if (startknoop && eindknoop) {
+        foreach (QGraphicsItem* item, list) {
+            if ((knoop = dynamic_cast<Knoop *>(item)))
+                graaf.expandList(knoop, graaf.listEntrance);
+        }//foreach
+        foreach (QGraphicsItem* item, list) {
+            if ((tak = dynamic_cast<Tak *>(item)))
+                graaf.expandList(tak, graaf.listEntrance);
+        }//foreach
+    }//if
+}//vulGraafArrays
+
 void tekenveld::setTextEdits(bool readOnly) {
     QList<QGraphicsItem*> list = items(QRectF(0,0,2000,2000), Qt::IntersectsItemShape, Qt::DescendingOrder, QTransform());
     Knoop *knoop = NULL;
@@ -73,8 +90,7 @@ void tekenveld::mousePressEvent(QGraphicsSceneMouseEvent *event) {
                 knoop = new Knoop(x, y, false, true);
                 graaf.eindknoop = knoop;
                 addItem(knoop);
-            }//else if
-            graaf.expandList(knoop, graaf.listEntrance);
+            }//else if           
         }//if
        //anders als een takButton aan staat en met de linkermuisknop op een knoop wordt gedrukt
        //en daarna een tweede knoop wordt gedrukt, maak een lijn
@@ -111,7 +127,6 @@ void tekenveld::mousePressEvent(QGraphicsSceneMouseEvent *event) {
                             eersteKnoop->addTak(tak);
                             knoop->addTak(tak);
                             addItem(tak);
-                            graaf.expandList(tak, graaf.listEntrance);
                             firstClick = true;
                             eersteKnoop = NULL;
                         }//if
