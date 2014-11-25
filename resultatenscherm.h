@@ -18,6 +18,7 @@ public:
     explicit ResultatenScherm(QWidget *parent = 0);
     ~ResultatenScherm();
     void setScene(tekenveld *graaf);
+    friend class MainWindow;
 private slots:
     void on_Begin_clicked();
 

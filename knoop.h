@@ -36,7 +36,6 @@ private:
     void deleteTakFromList(Tak* tak);
     QGraphicsProxyWidget* pMyProxy; //nodig om de text box weer te geven
 protected:
-    void mousePressEvent(QGraphicsSceneMouseEvent *event); //wordt aangeroepen bij een muisklik op de knoop
     void mouseMoveEvent(QGraphicsSceneMouseEvent *event); //wordt aangeroepen bij een muisklik op de knoop
 };
 

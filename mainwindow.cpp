@@ -63,11 +63,7 @@ void MainWindow::on_GerichteTakRadio_toggled(bool checked)
 }
 
 void MainWindow::on_StartKnop_clicked()
-{
-    if (scene->graaf.algoritme == 1) {
-        scene->graaf.BellmanFord();
-        scene->graaf.vul_kortste_pad();
-    }
+{    
     //function open algoritme doorloop schermpje
     scene->resultaatScherm = true; //resultaatscherm gaat geopend worden
     scene->vulGraafArrays();
@@ -75,6 +71,16 @@ void MainWindow::on_StartKnop_clicked()
     ResultatenScherm* r = new ResultatenScherm(); //maak nieuw resultaatscherm aan
     scene->setTextEdits(true);
     r->setScene(scene); //kopieer het tekenveld van het hoofdscherm en plaats in resultaatscherm
+    if (r->scene->startknoop && scene->eindknoop) {
+        if (r->scene->graaf.algoritme == 0) {
+            r->scene->graaf.Dijkstra();
+            r->scene->graaf.vul_kortste_pad();
+        }
+        else if (r->scene->graaf.algoritme == 1) {
+            r->scene->graaf.BellmanFord();
+            r->scene->graaf.vul_kortste_pad();
+        }
+    }
     r->setModal(true);
     r->exec(); //open het resultaatscherm.
     delete r;

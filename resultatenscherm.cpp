@@ -22,7 +22,7 @@ void ResultatenScherm::setScene(tekenveld* graaf) {
 
 void ResultatenScherm::on_Begin_clicked()
 {
-    scene->graaf.stapBegin();
+   scene->graaf.stapBegin();
 }
 
 void ResultatenScherm::on_Vorige_clicked()

@@ -151,8 +151,3 @@ void Tak::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
         painter->drawPolygon(QPolygonF() << destPoint << destArrowP1 << destArrowP2);
     }//if
 }
-
-void Tak::mousePressEvent(QGraphicsSceneMouseEvent *event)
-{
-    qDebug("tak");
-}
