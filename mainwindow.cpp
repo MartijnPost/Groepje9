@@ -64,6 +64,10 @@ void MainWindow::on_GerichteTakRadio_toggled(bool checked)
 
 void MainWindow::on_StartKnop_clicked()
 {
+    if (scene->graaf.algoritme == 1) {
+        scene->graaf.BellmanFord();
+        scene->graaf.vul_kortste_pad();
+    }
     //function open algoritme doorloop schermpje
     scene->resultaatScherm = true; //resultaatscherm gaat geopend worden
     scene->vulGraafArrays();

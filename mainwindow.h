@@ -17,7 +17,6 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     friend class Knoop;
-    friend class ResulatenScherm;
     ~MainWindow();
 
 private slots:

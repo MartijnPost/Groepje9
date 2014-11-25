@@ -34,6 +34,8 @@ private:
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);//tekent de pijl
     void calcCoordinates();
     void placeTextBox();
+protected:
+    void mousePressEvent(QGraphicsSceneMouseEvent *event); //wordt aangeroepen bij een muisklik op de knoop
 };
 
 #endif

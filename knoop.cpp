@@ -77,6 +77,11 @@ QWidget *widget)
         painter->drawEllipse(QRectF(xStart-32.5,yStart-32.5,65,65)); //teken de cirkel
 }
 
+void Knoop::mousePressEvent(QGraphicsSceneMouseEvent *event)
+{
+    qDebug("knoop");
+}
+
 void Knoop::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
     QGraphicsItem::mouseMoveEvent(event); // move the item...

@@ -21,9 +21,9 @@ public:
     Graaf graaf;
     friend class Knoop;
     friend class MainWindow;
+private:
     bool startknoop; //true als er een startknoop voor komt in de graaf
     bool eindknoop; //true als er een eindknoop voor komt in de graaf
-private:    
     Knoop *eersteKnoop;
 protected:
     void mousePressEvent(QGraphicsSceneMouseEvent *event); //wordt aangeroepen bij een muisklik op het tekenveld
