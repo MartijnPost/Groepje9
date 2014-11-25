@@ -69,7 +69,10 @@ private:
     void stapAchteruit( );                        //Zet een stap terug in het algrotime
     void stapBegin( );                            //Ga terug naar het begin van het algoritme
     void stapEinde( );                            //Ga naar het einde van het algoritme
-
+    /* Dijkstra */
+    void Dijkstra();
+    Element* vindRij(Knoop* knoop);
+    bool* vastGezet;
 };
 
 #endif // GRAAF_H

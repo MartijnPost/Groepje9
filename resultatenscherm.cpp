@@ -37,9 +37,15 @@ void ResultatenScherm::on_Volgende_clicked()
 
 void ResultatenScherm::on_Einde_clicked()
 {
-    if (scene->graaf.algoritme == 1) {
-        scene->graaf.BellmanFord();
-        scene->graaf.vul_kortste_pad();
+    if (scene->startknoop && scene->eindknoop) {
+        if (scene->graaf.algoritme == 0) {
+            scene->graaf.Dijkstra();
+            scene->graaf.vul_kortste_pad();
+        }
+        else if (scene->graaf.algoritme == 1) {
+            scene->graaf.BellmanFord();
+            scene->graaf.vul_kortste_pad();
+        }
     }
 }
 
