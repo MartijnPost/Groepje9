@@ -40,7 +40,7 @@ public:
         if (ResultatenScherm->objectName().isEmpty())
             ResultatenScherm->setObjectName(QStringLiteral("ResultatenScherm"));
         ResultatenScherm->resize(1150, 758);
-        ResultatenScherm->setMaximumSize(QSize(2000, 2000));
+        ResultatenScherm->setMaximumSize(QSize(16777215, 16777215));
         ResultatenScherm->setStyleSheet(QStringLiteral("background-color: rgba(202, 164, 227, 194);"));
         gridLayout = new QGridLayout(ResultatenScherm);
         gridLayout->setSpacing(0);

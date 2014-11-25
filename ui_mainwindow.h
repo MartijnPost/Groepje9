@@ -109,6 +109,7 @@ public:
         label->setMinimumSize(QSize(60, 60));
         label->setMaximumSize(QSize(60, 60));
         label->setBaseSize(QSize(0, 0));
+        label->setMouseTracking(false);
         label->setPixmap(QPixmap(QString::fromUtf8("knoop.png")));
         label->setScaledContents(true);
 
@@ -234,7 +235,7 @@ public:
         sizePolicy1.setVerticalStretch(0);
         sizePolicy1.setHeightForWidth(graphicsView->sizePolicy().hasHeightForWidth());
         graphicsView->setSizePolicy(sizePolicy1);
-        graphicsView->setMaximumSize(QSize(2000, 2000));
+        graphicsView->setMaximumSize(QSize(16777215, 16777215));
         graphicsView->setStyleSheet(QStringLiteral("background-color: rgb(255, 255, 255);"));
 
         verticalLayout->addWidget(graphicsView);

@@ -16,9 +16,11 @@ public:
     bool gerichtetakButton; //true als de radiobutton "gerichte tak" aan staat
     bool firstClick; //nodig om takken te tekenen om te weten tussen welke twee knopen een tak komt
     bool resultaatScherm; //true als het om de graphicsScene in het resultaatscherm gaat
+    void vulGraafArrays();
     void setTextEdits(bool readOnly);
     Graaf graaf;
     friend class Knoop;
+    friend class MainWindow;
 private:
     bool startknoop; //true als er een startknoop voor komt in de graaf
     bool eindknoop; //true als er een eindknoop voor komt in de graaf

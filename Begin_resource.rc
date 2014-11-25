@@ -4,7 +4,7 @@
 #  include <winver.h>
 # endif
 
-IDI_ICON1	ICON	DISCARDABLE	"/home/robbin/Groepje9-master/Logo.ico"
+IDI_ICON1	ICON	DISCARDABLE	"/home/robbin/test/Logo.ico"
 
 VS_VERSION_INFO VERSIONINFO
 	FILEVERSION 0,0,0,0

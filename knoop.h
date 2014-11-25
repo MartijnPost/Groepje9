@@ -15,6 +15,7 @@ class Tak;
 class Knoop : public QGraphicsItem
 {
 public:
+    Knoop();
     Knoop(const qreal xPos, const qreal yPos, bool start, bool eind); //constructor
     qreal xHuidig; //x-coordinaat
     qreal xStart;

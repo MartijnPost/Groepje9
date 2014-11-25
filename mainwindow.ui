@@ -99,6 +99,9 @@
               <height>0</height>
              </size>
             </property>
+            <property name="mouseTracking">
+             <bool>false</bool>
+            </property>
             <property name="text">
              <string/>
             </property>
@@ -370,8 +373,8 @@
           </property>
           <property name="maximumSize">
            <size>
-            <width>2000</width>
-            <height>2000</height>
+            <width>16777215</width>
+            <height>16777215</height>
            </size>
           </property>
           <property name="styleSheet">
