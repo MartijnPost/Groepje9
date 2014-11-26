@@ -22,31 +22,24 @@ void ResultatenScherm::setScene(tekenveld* graaf) {
 
 void ResultatenScherm::on_Begin_clicked()
 {
-   scene->graaf.stapVooruit();
+   scene->graaf.stapBegin();
 }
 
 void ResultatenScherm::on_Vorige_clicked()
 {
-
+    qDebug() << "vorige" << scene->graaf.stap;
+    scene->graaf.stapAchteruit();
 }
 
 void ResultatenScherm::on_Volgende_clicked()
 {
-
+    qDebug() << "volgende" << scene->graaf.stap;
+    scene->graaf.stapVooruit();
 }
 
 void ResultatenScherm::on_Einde_clicked()
 {
-    if (scene->startknoop && scene->eindknoop) {
-        if (scene->graaf.algoritme == 0) {
-            scene->graaf.Dijkstra();
-            scene->graaf.vul_kortste_pad();
-        }
-        else if (scene->graaf.algoritme == 1) {
-            scene->graaf.BellmanFord();
-            scene->graaf.vul_kortste_pad();
-        }
-    }
+    scene->graaf.stapEinde();
 }
 
 void ResultatenScherm::on_Upload_clicked()

@@ -912,7 +912,7 @@ moc_mainwindow.cpp: ../Qt/5.3/gcc_64/include/QtWidgets/QMainWindow \
 		tak.h \
 		../Qt/5.3/gcc_64/include/QtCore/QPoint \
 		mainwindow.h
-	/home/robbin/Qt/5.3/gcc_64/bin/moc $(DEFINES) -I/home/robbin/Qt/5.3/gcc_64/mkspecs/linux-g++ -I/home/robbin/test -I/home/robbin/Qt/5.3/gcc_64/include -I/home/robbin/Qt/5.3/gcc_64/include/QtWidgets -I/home/robbin/Qt/5.3/gcc_64/include/QtGui -I/home/robbin/Qt/5.3/gcc_64/include/QtCore mainwindow.h -o moc_mainwindow.cpp
+	/home/robbin/Qt/5.3/gcc_64/bin/moc $(DEFINES) -I/home/robbin/Qt/5.3/gcc_64/mkspecs/linux-g++ -I/home/robbin/test2 -I/home/robbin/Qt/5.3/gcc_64/include -I/home/robbin/Qt/5.3/gcc_64/include/QtWidgets -I/home/robbin/Qt/5.3/gcc_64/include/QtGui -I/home/robbin/Qt/5.3/gcc_64/include/QtCore mainwindow.h -o moc_mainwindow.cpp
 
 moc_invoegscherm.cpp: ../Qt/5.3/gcc_64/include/QtWidgets/QDialog \
 		../Qt/5.3/gcc_64/include/QtWidgets/qdialog.h \
@@ -1016,7 +1016,7 @@ moc_invoegscherm.cpp: ../Qt/5.3/gcc_64/include/QtWidgets/QDialog \
 		../Qt/5.3/gcc_64/include/QtGui/qvector2d.h \
 		../Qt/5.3/gcc_64/include/QtGui/qtouchdevice.h \
 		invoegscherm.h
-	/home/robbin/Qt/5.3/gcc_64/bin/moc $(DEFINES) -I/home/robbin/Qt/5.3/gcc_64/mkspecs/linux-g++ -I/home/robbin/test -I/home/robbin/Qt/5.3/gcc_64/include -I/home/robbin/Qt/5.3/gcc_64/include/QtWidgets -I/home/robbin/Qt/5.3/gcc_64/include/QtGui -I/home/robbin/Qt/5.3/gcc_64/include/QtCore invoegscherm.h -o moc_invoegscherm.cpp
+	/home/robbin/Qt/5.3/gcc_64/bin/moc $(DEFINES) -I/home/robbin/Qt/5.3/gcc_64/mkspecs/linux-g++ -I/home/robbin/test2 -I/home/robbin/Qt/5.3/gcc_64/include -I/home/robbin/Qt/5.3/gcc_64/include/QtWidgets -I/home/robbin/Qt/5.3/gcc_64/include/QtGui -I/home/robbin/Qt/5.3/gcc_64/include/QtCore invoegscherm.h -o moc_invoegscherm.cpp
 
 moc_resultatenscherm.cpp: ../Qt/5.3/gcc_64/include/QtWidgets/QDialog \
 		../Qt/5.3/gcc_64/include/QtWidgets/qdialog.h \
@@ -1461,7 +1461,7 @@ moc_resultatenscherm.cpp: ../Qt/5.3/gcc_64/include/QtWidgets/QDialog \
 		tak.h \
 		../Qt/5.3/gcc_64/include/QtCore/QPoint \
 		resultatenscherm.h
-	/home/robbin/Qt/5.3/gcc_64/bin/moc $(DEFINES) -I/home/robbin/Qt/5.3/gcc_64/mkspecs/linux-g++ -I/home/robbin/test -I/home/robbin/Qt/5.3/gcc_64/include -I/home/robbin/Qt/5.3/gcc_64/include/QtWidgets -I/home/robbin/Qt/5.3/gcc_64/include/QtGui -I/home/robbin/Qt/5.3/gcc_64/include/QtCore resultatenscherm.h -o moc_resultatenscherm.cpp
+	/home/robbin/Qt/5.3/gcc_64/bin/moc $(DEFINES) -I/home/robbin/Qt/5.3/gcc_64/mkspecs/linux-g++ -I/home/robbin/test2 -I/home/robbin/Qt/5.3/gcc_64/include -I/home/robbin/Qt/5.3/gcc_64/include/QtWidgets -I/home/robbin/Qt/5.3/gcc_64/include/QtGui -I/home/robbin/Qt/5.3/gcc_64/include/QtCore resultatenscherm.h -o moc_resultatenscherm.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
