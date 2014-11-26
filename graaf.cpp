@@ -12,6 +12,7 @@ Graaf::Graaf()
     kortste_pad = NULL;
     vastGezet = NULL;
     stappenWaardes = NULL;
+    stappenArray = NULL;
     reset_1();
 }
 
@@ -27,6 +28,9 @@ void Graaf::reset_2() {
     Header* hHelp2 = NULL;
     Element* eHelp1 = NULL;
     Element* eHelp2 = NULL;
+    int aantal = aantalKnopen;
+    if (algoritme == 0)
+        aantal++;
     reset_1();
     while (hHelp1 != NULL) {
         eHelp1 = hHelp1->row;
@@ -39,12 +43,6 @@ void Graaf::reset_2() {
         delete hHelp1;
         hHelp1 = hHelp2;
     }//while
-    for (int i = 0; i < aantalKnopen; i++) {
-        delete[] stappenWaardes[i]->afstand;
-        stappenWaardes[i]->afstand = NULL;
-        delete stappenWaardes[i];
-        stappenWaardes[i] = NULL;
-    }//for
     listEntrance = NULL;
 }//reset_2
 
@@ -114,7 +112,6 @@ void Graaf::vul_array( ){
     stappenArray = new arrayPtr*[aantalKnopen];
     for(int i = 0; i < aantalKnopen; i++)
         stappenArray[i] = new arrayPtr[aantalKnopen];
-
     for (int i = 0; i < aantalKnopen; i++){
         stappenArray[i][0] = startknoop;
     }//for
@@ -177,12 +174,10 @@ void Graaf::vul_takken() {
     return;
 }
 
-void Graaf::verwijder_arrays( ) {
-    delete[] knopen;
-    delete[] takken;
+void Graaf::verwijder_arrays() {
     delete[] afstand;
-    delete[] voorganger;
     delete[] vastGezet;
+    delete[] stappenWaardes;
     return;
 }
 
