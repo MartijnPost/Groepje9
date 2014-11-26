@@ -9,6 +9,7 @@ Knoop::Knoop(const qreal xPos, const qreal yPos, bool start, bool eind)
     yStart = yPos;
     startknoop = start;    //deze zijn later nodig om takken te tekenen
     eindknoop = eind;
+    paintGreen = false;
     pLineEdit = new QLineEdit("");    
     pLineEdit->setMaxLength(6); //er kunnen maximaal 6 karakters in de text box geplaatst worden
     pLineEdit->setFixedSize(70, 20); //de grootte van de text box
@@ -63,11 +64,12 @@ void Knoop::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
 QWidget *widget)
 {        
     QPen paintpen(Qt::black); //de pen waarmee de knoop getekend wordt, is zwart
+    if (paintGreen)
+        paintpen.setColor("limegreen");
     paintpen.setWidth(1); //de dikte van de pen is 1
-
     painter->setPen(paintpen); //de pen waarmee getekend gaat worden is paintpen
-    painter->setRenderHint(QPainter::Antialiasing); //er wordt AA gebruikt om de knoop mooier te maken
-    painter->drawEllipse(QRectF(xStart-37.5,yStart-37.5,75,75)); //de knoop wordt getekend
+    painter->setRenderHint(QPainter::Antialiasing); //er wordt AA gebruikt om de knoop mooier te maken    
+    painter->drawEllipse(QRectF(xStart-37.5,yStart-37.5,75,75)); //de knoop wordt getekend    
     if (startknoop) { //als het een startknoop betreft, teken een pijl naar de cirkel
         painter->drawLine(xStart-75, yStart, xStart-37.5, yStart);
         painter->drawLine(xStart-45, yStart-6, xStart-37.5, yStart);

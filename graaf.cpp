@@ -18,6 +18,7 @@ Graaf::Graaf()
 void Graaf::reset_1() {
     aantalKnopen = 0;
     aantalTakken = 0;
+    stappenWaardes = NULL;
     stap = 0;
 }//reset_1
 
@@ -38,11 +39,17 @@ void Graaf::reset_2() {
         delete hHelp1;
         hHelp1 = hHelp2;
     }//while
+    for (int i = 0; i < aantalKnopen; i++) {
+        delete[] stappenWaardes[i]->afstand;
+        stappenWaardes[i]->afstand = NULL;
+        delete stappenWaardes[i];
+        stappenWaardes[i] = NULL;
+    }//for
     listEntrance = NULL;
 }//reset_2
 
 void Graaf::expandList(Knoop* k, Header*& h) {
-    if(h)        
+    if(h)
         expandList(k, h->next);
     else {
         h = new Header(k);
@@ -65,7 +72,7 @@ void Graaf::expandList(Tak* t, Header*& h) {
             aantalTakken++;
         }//else if
         expandList(t, h->next);
-    }    
+    }
     return;
 }
 
@@ -100,6 +107,9 @@ void Graaf::writeToDebug(Element *e) const {
 void Graaf::vul_array( ){
     //stappenArray vullen
     int n = 1;
+    int aantal = aantalKnopen;
+    if (algoritme == 0)
+        aantal++; //1 extra nodig voor Dijkstra
     Header* hulp = listEntrance;
     stappenArray = new arrayPtr*[aantalKnopen];
     for(int i = 0; i < aantalKnopen; i++)
@@ -120,23 +130,22 @@ void Graaf::vul_array( ){
             hulp = hulp->next;
         }//while
     }//for
-
     //stappenWaardes initializeren
-    stappenWaardes = new int*[aantalKnopen];
-    for(int i = 0; i < aantalKnopen; i++)
-        stappenWaardes[i] = new int[aantalKnopen];
-
-    for (int i = 0; i < aantalKnopen; i++){
+    stappenWaardes = new huidigeStap*[aantalKnopen];
+    for (int i = 0; i < aantal; i++){
+        stappenWaardes[i] = new huidigeStap;
+        stappenWaardes[i]->afstand = new int[aantalKnopen];
+        stappenWaardes[i]->gekleurdeTakken.clear();
         for (int j = 1; j < aantalKnopen; j++)
-            stappenWaardes[i][j] = INT_MAX;
-        stappenWaardes[i][0] = 0;
+            stappenWaardes[i]->afstand[j] = INT_MAX;
+        stappenWaardes[i]->afstand[0] = 0;
     }//for
 }//vul_array
 
 void Graaf::vul_knopen( ) {
     int n = 1;
     Header* hulp = listEntrance;
-    knopen = new knoopPtr[aantalKnopen];    
+    knopen = new knoopPtr[aantalKnopen];
     knopen[0] = startknoop;
     knopen[aantalKnopen-1] = eindknoop;
     //Loop de headerlijst door
@@ -150,7 +159,7 @@ void Graaf::vul_knopen( ) {
     return;
 }
 
-void Graaf::vul_takken( ) {
+void Graaf::vul_takken() {
     int n = 0;
     Header* hulp1 = listEntrance;
     Element* hulp2 = NULL;
@@ -177,14 +186,15 @@ void Graaf::verwijder_arrays( ) {
     return;
 }
 
-int Graaf::zoek_index(Knoop* k) const {  
+int Graaf::zoek_index(Knoop* k) const {
     for(int i=0;i<aantalKnopen;i++)
-        if(knopen[i] == k)      
-            return i; 
+        if(knopen[i] == k)
+            return i;
     return -1;
 }
 
 void Graaf::BellmanFord( ) {
+    qDebug() << "test";
     //Opschonen
     verwijder_arrays( );
     //Initialiseren
@@ -198,17 +208,26 @@ void Graaf::BellmanFord( ) {
         voorganger[i] = knopen[0]; //Eigenlijk NULL, crasht anders soms bij debuggen
     }
     afstand[0] = 0;
+    stappenWaardes[1]->knoop = startknoop;
     //Kortste pad berekenen
-    for(int i=0;i<aantalKnopen-1;i++) {        
-        for(int j=0;j<aantalTakken;j++) {            
+    for(int i=1;i<aantalKnopen;i++) {
+        stappenWaardes[i]->gekleurdeTakken = stappenWaardes[i-1]->gekleurdeTakken;
+        for(int j=0;j<aantalTakken;j++) {
             if(afstand[zoek_index(takken[j]->source)] != INT_MAX &&
             (afstand[zoek_index(takken[j]->source)] + takken[j]->pLineEdit->text().toInt()
             < afstand[zoek_index(takken[j]->dest)])) {
                 afstand[zoek_index(takken[j]->dest)] =
                 afstand[zoek_index(takken[j]->source)] + takken[j]->pLineEdit->text().toInt();
                 voorganger[zoek_index(takken[j]->dest)] = takken[j]->source;
+                foreach(Tak* tak, stappenWaardes[i]->gekleurdeTakken) {
+                    if (tak->dest == knopen[zoek_index(takken[j]->dest)] || tak->source == knopen[zoek_index(takken[j]->dest)]) {
+                        stappenWaardes[i]->gekleurdeTakken.removeOne(tak);
+                        break;
+                    }//if
+                }//foreach
+                stappenWaardes[i]->gekleurdeTakken << takken[j]; //Voeg de tak toe aan de lijst
             }//if
-            stappenWaardes[i+1][zoek_index(takken[j]->dest)] = afstand[zoek_index(takken[j]->dest)];
+            stappenWaardes[i]->afstand[zoek_index(takken[j]->dest)] = afstand[zoek_index(takken[j]->dest)];
         }//for
     }//for
     return;
@@ -239,6 +258,7 @@ void Graaf::Dijkstra() {
     int index_dest = 0;
     verwijder_arrays();
     vul_knopen();
+    vul_takken();
     vul_array();
     afstand = new int[aantalKnopen];
     vastGezet = new bool[aantalKnopen];
@@ -251,13 +271,17 @@ void Graaf::Dijkstra() {
     //Kortste pad berekenen:
     for (int i = 0; i < aantalKnopen; i++) {
         waarde = INT_MAX;
-        for (int j = 0; j < aantalKnopen; j++) {            
+            stappenWaardes[i+1]->gekleurdeTakken = stappenWaardes[i]->gekleurdeTakken;
+        for (int k = 0; k < aantalKnopen; k++)
+            stappenWaardes[i+1]->afstand[k] = stappenWaardes[i]->afstand[k];
+        for (int j = 0; j < aantalKnopen; j++) {
             if (afstand[j] < waarde && !vastGezet[j]) {
                 waarde = afstand[j];
-                index_source = j;                
+                index_source = j;
             }//if
-            stappenWaardes[i][j] = afstand[j];
         }//for
+        stappenWaardes[i+1]->afstand[index_source] = afstand[index_source];
+        stappenWaardes[i+1]->knoop = knopen[index_source];
         vastGezet[index_source] = true;
         rij = vindRij(knopen[index_source]);
         while (rij != NULL) {
@@ -266,7 +290,14 @@ void Graaf::Dijkstra() {
                 takAfstand = rij->tak->pLineEdit->text().toInt();
                 if (afstand[index_dest] > afstand[index_source] + takAfstand){
                     afstand[index_dest] = afstand[index_source] + takAfstand;
-                    stappenWaardes[i][index_dest] = afstand[index_dest];
+                    stappenWaardes[i+1]->afstand[index_dest] = afstand[index_dest];
+                    foreach(Tak* tak, stappenWaardes[i]->gekleurdeTakken) {
+                        if (tak->dest == knopen[index_dest] || tak->source == knopen[index_dest]) {
+                            stappenWaardes[i+1]->gekleurdeTakken.removeOne(tak);
+                            break;
+                        }//if
+                    }//foreach
+                    stappenWaardes[i+1]->gekleurdeTakken << rij->tak;
                 }//if
             }//if
             rij = rij->next;
@@ -274,12 +305,26 @@ void Graaf::Dijkstra() {
     }//for
 }//Dijkstra
 
+void Graaf::kleurTakken() {
+    for (int i = 0; i < aantalTakken; i++)
+        takken[i]->paintRed = false;
+     foreach (Tak *tak, stappenWaardes[stap]->gekleurdeTakken)
+         tak->paintRed = true;
+     for (int i = 0; i < aantalTakken; i++)
+         takken[i]->update();
+}
+
 void Graaf::stapVooruit() {
-    if (stap != aantalKnopen-1){        
+    if (!((algoritme == 0 && stap == aantalKnopen) || (algoritme == 1 && stap == aantalKnopen-1))) {
         stap++;
         for (int i = 0; i < aantalKnopen; i++){
-            qDebug() << "VooruitKnoop " << i <<" : " <<stappenWaardes[stap][i];
+            qDebug() << "VooruitKnoop " << i <<" : " <<stappenWaardes[stap]->afstand[i];
         }//for
+        if (algoritme == 0) {
+            stappenWaardes[stap]->knoop->paintGreen = true;
+            stappenWaardes[stap]->knoop->update();
+        }//if
+        kleurTakken();
     }//if
     else
         qDebug() << "einde";
@@ -287,10 +332,15 @@ void Graaf::stapVooruit() {
 
 void Graaf::stapAchteruit() {
     if (stap != 0){
+        if (algoritme == 0) {
+            stappenWaardes[stap]->knoop->paintGreen = false;
+            stappenWaardes[stap]->knoop->update();
+        }//if
         stap--;
         for (int i = 0; i < aantalKnopen; i++){
-            qDebug() << "AchteruitKnoop " << i <<" : " <<stappenWaardes[stap][i];
+            qDebug() << "AchteruitKnoop " << i <<" : " <<stappenWaardes[stap]->afstand[i];
         }//for
+        kleurTakken();
     }//if
     else
         qDebug() << "begin";
@@ -299,14 +349,26 @@ void Graaf::stapAchteruit() {
 void Graaf::stapBegin() {
     stap = 0;
     for (int i = 0; i < aantalKnopen; i++){
-        qDebug() << "BeginKnoop " << i <<" : " <<stappenWaardes[stap][i];
+        qDebug() << "BeginKnoop " << i <<" : " <<stappenWaardes[stap]->afstand[i];
+        if (algoritme == 0) {
+            stappenWaardes[i+1]->knoop->paintGreen = false;
+            stappenWaardes[i+1]->knoop->update();
+        }//if
     }//for
+    kleurTakken();
 }//stapBegin
 
 void Graaf::stapEinde() {
-    stap = aantalKnopen-1;
+    if (algoritme == 0)
+        stap = aantalKnopen;
+    else
+        stap = aantalKnopen-1;
     for (int i = 0; i < aantalKnopen; i++){
-        qDebug() << "EindKnoop " << i <<" : " <<stappenWaardes[stap][i];
+        qDebug() << "EindKnoop " << i <<" : " <<stappenWaardes[stap]->afstand[i];
+        if (algoritme == 0) {
+            stappenWaardes[i+1]->knoop->paintGreen = true;
+            stappenWaardes[i+1]->knoop->update();
+        }//if
     }//for
+    kleurTakken();
 }//stapEinde
-

@@ -155,7 +155,7 @@ void tekenveld::mousePressEvent(QGraphicsSceneMouseEvent *event) {
                     if (knoop == eersteKnoop) { //als de knoop die verwijderd wordt, zich op dit moment in de eersteKnoop pointer bevindt
                         eersteKnoop = NULL;
                         firstClick = true;
-                    }//if                
+                    }//if
                     takList = knoop->takken();
                     foreach (Tak *tak, takList) {
                         if (tak != NULL) {

@@ -12,13 +12,14 @@ Tak::Tak(Knoop *sourceNode, Knoop *destNode, bool directedEdge)
     source = sourceNode;
     dest = destNode;
     directed = directedEdge;
+    paintRed = false;
     calcCoordinates();
     pLineEdit = new QLineEdit("");
     pLineEdit->setMaxLength(3); //er kunnen maximaal 3 karakters in de text box geplaatst worden
     pLineEdit->setFixedSize(40, 20); //de grootte van de text box    
     pLineEdit->setValidator(new QIntValidator);    
     pMyProxy = new QGraphicsProxyWidget(this); // the proxy's parent is the 2d object
-    pMyProxy->setWidget(pLineEdit); //voeg de text box toe      
+    pMyProxy->setWidget(pLineEdit); //voeg de text box toe          
     placeTextBox();    
     //voeg toe aan adjancency list    
 }
@@ -132,8 +133,11 @@ void Tak::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
                   QWidget *widget)
 {
     //teken de lijn
-    QPen paintpen(Qt::black); //de pen waarmee de knoop getekend wordt, is zwart
-    paintpen.setWidth(2); //de dikte van de pen is 1
+    QPen paintpen(Qt::black);
+    if (paintRed)
+        paintpen.setColor(Qt::red);
+    paintpen.setWidth(2); //de dikte van de pen is 2
+    paintpen.setStyle(Qt::SolidLine);
     painter->setPen(paintpen); //de pen waarmee getekend gaat worden is paintpen
     painter->setRenderHint(QPainter::Antialiasing); //er wordt AA gebruikt om de knoop mooier te maken
     painter->drawLine(sourcePoint, destPoint);    
@@ -147,7 +151,10 @@ void Tak::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
                                                   cos(angle - Pi / 3) * arrowSize);
         QPointF destArrowP2 = destPoint + QPointF(sin(angle - Pi + Pi / 3) * arrowSize,
                                                   cos(angle - Pi + Pi / 3) * arrowSize);
-        painter->setBrush(Qt::black);
+        if (!paintRed)
+            painter->setBrush(Qt::black);
+        else
+            painter->setBrush(Qt::red);
         painter->drawPolygon(QPolygonF() << destPoint << destArrowP1 << destArrowP2);
     }//if
-}
+}//paint

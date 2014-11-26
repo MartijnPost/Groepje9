@@ -21,6 +21,7 @@ public:
     Graaf graaf;
     friend class Knoop;
     friend class MainWindow;
+    friend class ResultatenScherm;
     bool startknoop; //true als er een startknoop voor komt in de graaf
     bool eindknoop; //true als er een eindknoop voor komt in de graaf
 private:    

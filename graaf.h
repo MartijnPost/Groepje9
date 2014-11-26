@@ -3,6 +3,7 @@
 
 #include "knoop.h"
 #include "tak.h"
+#include <QList>
 
 class tekenveld;
 
@@ -31,6 +32,14 @@ struct Header
     Header(Knoop* k) : knoop(k), row(NULL), next(NULL) {};
 };
 
+struct huidigeStap
+{
+    QList<Tak*> gekleurdeTakken;                  //Bevat de gekleurde takken
+    int* afstand;
+    Knoop* knoop;
+    huidigeStap() : afstand(NULL), knoop(NULL) {};
+};
+
 class Graaf
 {
 public:
@@ -52,6 +61,7 @@ private:
     void reset_2();
     void writeToDebug(Header* h) const;           //Drukt de adjacency list af in de debug
     void writeToDebug(Element* e) const;          //Drukt de adjacency list af in de debug
+    void kleurTakken();
     /* Bellman-Ford Algoritme: */
     int* afstand;                                 //Lijst met de afstanden van elke knoop tot de startknoop
     knoopPtr* voorganger;                         //Lijst met voor elke knoop hun voorganger in hun korste pad
@@ -67,8 +77,7 @@ private:
     arrayPtr** stappenArray;                      //Array waar alle knopen van het algoritme stap voor stap in opgeslagen zijn
     void vul_array( );                            //Vult de array 'stappenArray'
     int stap;                                     //Tellertje voor stappenArray
-    int** stappenWaardes;                         //Array waar alle waardes van de knopen in het algoritme zijn in opgeslagen
-    void veranderWaardes(int i, int j, int x);
+    huidigeStap** stappenWaardes;                 //Array waar alle waardes van de knopen in het algoritme zijn in opgeslagen
     void stapVooruit( );                          //Zet een stap verder in het algoritme
     void stapAchteruit( );                        //Zet een stap terug in het algrotime
     void stapBegin( );                            //Ga terug naar het begin van het algoritme
@@ -76,7 +85,7 @@ private:
     /* Dijkstra */
     void Dijkstra();
     Element* vindRij(Knoop* knoop);
-    bool* vastGezet;
+    bool* vastGezet;    
 };
 
 #endif // GRAAF_H

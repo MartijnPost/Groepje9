@@ -48,6 +48,6 @@ void ResultatenScherm::on_Upload_clicked()
 }
 
 void ResultatenScherm::on_Stop_clicked()
-{
+{    
     ResultatenScherm::close();//function exit program
 }

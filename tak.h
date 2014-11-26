@@ -21,6 +21,8 @@ public:
     friend class tekenveld;
     friend class Graaf;  
     friend class Knoop;
+    friend class ResultatenScherm;
+    friend class MainWindow;
 private:
     Knoop *source, *dest;//de begin en eindknoop
     QLineF line;
@@ -34,6 +36,7 @@ private:
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);//tekent de pijl
     void calcCoordinates();
     void placeTextBox();
+    bool paintRed;
 };
 
 #endif

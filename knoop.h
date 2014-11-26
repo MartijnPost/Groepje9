@@ -23,6 +23,8 @@ public:
     qreal yStart;
     friend class Graaf;
     friend class tekenveld;
+    friend class ResultatenScherm;
+    friend class MainWindow;
 private:
     bool startknoop; //true als de knoop een startknoop is
     bool eindknoop; //true als de knoop een eindknoop is
@@ -34,6 +36,7 @@ private:
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget); //tekent de knoop
     void addTak(Tak *tak);//voegt tak toe aan taklijst
     void deleteTakFromList(Tak* tak);
+    bool paintGreen;
     QGraphicsProxyWidget* pMyProxy; //nodig om de text box weer te geven
 protected:
     void mouseMoveEvent(QGraphicsSceneMouseEvent *event); //wordt aangeroepen bij een muisklik op de knoop
