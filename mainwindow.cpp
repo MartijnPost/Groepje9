@@ -75,20 +75,24 @@ void MainWindow::on_StartKnop_clicked()
         if (r->scene->graaf.algoritme == 0) {
             r->scene->graaf.Dijkstra();
             r->scene->graaf.vul_kortste_pad();
+            r->scene->graaf.kleurKortstePad();
         }
         else if (r->scene->graaf.algoritme == 1) {
             r->scene->graaf.BellmanFord();
             r->scene->graaf.vul_kortste_pad();
-        }
+            r->scene->graaf.kleurKortstePad();
+        }        
         r->setModal(true);
         r->exec(); //open het resultaatscherm.
         for (int i = 0; i < r->scene->graaf.aantalTakken; i++) {
             r->scene->graaf.takken[i]->paintRed = false;
+            r->scene->graaf.takken[i]->paintBlue = false;
             r->scene->graaf.takken[i]->update();
         }//for
         for (int i = 0; i < r->scene->graaf.aantalKnopen; i++) {
             r->scene->graaf.knopen[i]->paintGreen = false;
         }
+        r->scene->graaf.blauweTakken.clear();
         delete r;
         r = NULL;
         scene->setTextEdits(false);

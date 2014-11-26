@@ -62,6 +62,11 @@ private:
     void writeToDebug(Header* h) const;           //Drukt de adjacency list af in de debug
     void writeToDebug(Element* e) const;          //Drukt de adjacency list af in de debug
     void kleurTakken();
+    void kleurKortstePad();
+    bool kleurKortstePadRec(Knoop* currentKnoop, Knoop* previousKnoop);
+    void verwijderAfstanden();                    //De weergegeven afstanden in de knopen worden verwijderd als het resultatenscherm wordt afgesloten
+    void afstandInKnoop(int stap, int i);         //Update de afstanden die in de knopen vermeld staan
+    QList<Tak*> blauweTakken;
     /* Bellman-Ford Algoritme: */
     int* afstand;                                 //Lijst met de afstanden van elke knoop tot de startknoop
     knoopPtr* voorganger;                         //Lijst met voor elke knoop hun voorganger in hun korste pad

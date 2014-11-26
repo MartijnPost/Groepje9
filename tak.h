@@ -37,6 +37,7 @@ private:
     void calcCoordinates();
     void placeTextBox();
     bool paintRed;
+    bool paintBlue;
 };
 
 #endif

@@ -48,6 +48,7 @@ void ResultatenScherm::on_Upload_clicked()
 }
 
 void ResultatenScherm::on_Stop_clicked()
-{    
+{
+    scene->graaf.verwijderAfstanden();
     ResultatenScherm::close();//function exit program
 }

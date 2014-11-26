@@ -116,7 +116,7 @@ clean: compiler_clean
 	-$(DEL_FILE) debug/Begin_resource_res.o
 
 distclean: clean 
-	-$(DEL_FILE) /home/robbin/test/begin_plugin_import.cpp
+	-$(DEL_FILE) /home/robbin/test2/begin_plugin_import.cpp
 	-$(DEL_FILE) $(DESTDIR_TARGET)
 	-$(DEL_FILE) Makefile.Debug
 
@@ -576,7 +576,7 @@ debug/moc_mainwindow.cpp: ../mxe/usr/i686-w64-mingw32.static/qt5/include/QtWidge
 		tak.h \
 		../mxe/usr/i686-w64-mingw32.static/qt5/include/QtCore/QPoint \
 		mainwindow.h
-	/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/bin/moc $(DEFINES) -D__GNUC__ -DWIN32 -I/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/mkspecs/win32-g++ -I/home/robbin/test -I/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/include -I/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/include/QtWidgets -I/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/include/QtGui -I/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/include/QtCore -I/home/robbin/mxe/usr/lib/gcc/i686-w64-mingw32.static/4.9.2/include/c++ -I/home/robbin/mxe/usr/lib/gcc/i686-w64-mingw32.static/4.9.2/include/c++/i686-w64-mingw32.static -I/home/robbin/mxe/usr/lib/gcc/i686-w64-mingw32.static/4.9.2/include/c++/backward -I/home/robbin/mxe/usr/lib/gcc/i686-w64-mingw32.static/4.9.2/include -I/home/robbin/mxe/usr/lib/gcc/i686-w64-mingw32.static/4.9.2/include-fixed -I/home/robbin/mxe/usr/i686-w64-mingw32.static/include mainwindow.h -o debug/moc_mainwindow.cpp
+	/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/bin/moc $(DEFINES) -D__GNUC__ -DWIN32 -I/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/mkspecs/win32-g++ -I/home/robbin/test2 -I/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/include -I/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/include/QtWidgets -I/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/include/QtGui -I/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/include/QtCore -I/home/robbin/mxe/usr/lib/gcc/i686-w64-mingw32.static/4.9.2/include/c++ -I/home/robbin/mxe/usr/lib/gcc/i686-w64-mingw32.static/4.9.2/include/c++/i686-w64-mingw32.static -I/home/robbin/mxe/usr/lib/gcc/i686-w64-mingw32.static/4.9.2/include/c++/backward -I/home/robbin/mxe/usr/lib/gcc/i686-w64-mingw32.static/4.9.2/include -I/home/robbin/mxe/usr/lib/gcc/i686-w64-mingw32.static/4.9.2/include-fixed -I/home/robbin/mxe/usr/i686-w64-mingw32.static/include mainwindow.h -o debug/moc_mainwindow.cpp
 
 debug/moc_invoegscherm.cpp: ../mxe/usr/i686-w64-mingw32.static/qt5/include/QtWidgets/QDialog \
 		../mxe/usr/i686-w64-mingw32.static/qt5/include/QtWidgets/qdialog.h \
@@ -680,7 +680,7 @@ debug/moc_invoegscherm.cpp: ../mxe/usr/i686-w64-mingw32.static/qt5/include/QtWid
 		../mxe/usr/i686-w64-mingw32.static/qt5/include/QtGui/qvector2d.h \
 		../mxe/usr/i686-w64-mingw32.static/qt5/include/QtGui/qtouchdevice.h \
 		invoegscherm.h
-	/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/bin/moc $(DEFINES) -D__GNUC__ -DWIN32 -I/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/mkspecs/win32-g++ -I/home/robbin/test -I/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/include -I/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/include/QtWidgets -I/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/include/QtGui -I/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/include/QtCore -I/home/robbin/mxe/usr/lib/gcc/i686-w64-mingw32.static/4.9.2/include/c++ -I/home/robbin/mxe/usr/lib/gcc/i686-w64-mingw32.static/4.9.2/include/c++/i686-w64-mingw32.static -I/home/robbin/mxe/usr/lib/gcc/i686-w64-mingw32.static/4.9.2/include/c++/backward -I/home/robbin/mxe/usr/lib/gcc/i686-w64-mingw32.static/4.9.2/include -I/home/robbin/mxe/usr/lib/gcc/i686-w64-mingw32.static/4.9.2/include-fixed -I/home/robbin/mxe/usr/i686-w64-mingw32.static/include invoegscherm.h -o debug/moc_invoegscherm.cpp
+	/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/bin/moc $(DEFINES) -D__GNUC__ -DWIN32 -I/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/mkspecs/win32-g++ -I/home/robbin/test2 -I/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/include -I/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/include/QtWidgets -I/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/include/QtGui -I/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/include/QtCore -I/home/robbin/mxe/usr/lib/gcc/i686-w64-mingw32.static/4.9.2/include/c++ -I/home/robbin/mxe/usr/lib/gcc/i686-w64-mingw32.static/4.9.2/include/c++/i686-w64-mingw32.static -I/home/robbin/mxe/usr/lib/gcc/i686-w64-mingw32.static/4.9.2/include/c++/backward -I/home/robbin/mxe/usr/lib/gcc/i686-w64-mingw32.static/4.9.2/include -I/home/robbin/mxe/usr/lib/gcc/i686-w64-mingw32.static/4.9.2/include-fixed -I/home/robbin/mxe/usr/i686-w64-mingw32.static/include invoegscherm.h -o debug/moc_invoegscherm.cpp
 
 debug/moc_resultatenscherm.cpp: ../mxe/usr/i686-w64-mingw32.static/qt5/include/QtWidgets/QDialog \
 		../mxe/usr/i686-w64-mingw32.static/qt5/include/QtWidgets/qdialog.h \
@@ -1125,7 +1125,7 @@ debug/moc_resultatenscherm.cpp: ../mxe/usr/i686-w64-mingw32.static/qt5/include/Q
 		tak.h \
 		../mxe/usr/i686-w64-mingw32.static/qt5/include/QtCore/QPoint \
 		resultatenscherm.h
-	/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/bin/moc $(DEFINES) -D__GNUC__ -DWIN32 -I/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/mkspecs/win32-g++ -I/home/robbin/test -I/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/include -I/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/include/QtWidgets -I/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/include/QtGui -I/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/include/QtCore -I/home/robbin/mxe/usr/lib/gcc/i686-w64-mingw32.static/4.9.2/include/c++ -I/home/robbin/mxe/usr/lib/gcc/i686-w64-mingw32.static/4.9.2/include/c++/i686-w64-mingw32.static -I/home/robbin/mxe/usr/lib/gcc/i686-w64-mingw32.static/4.9.2/include/c++/backward -I/home/robbin/mxe/usr/lib/gcc/i686-w64-mingw32.static/4.9.2/include -I/home/robbin/mxe/usr/lib/gcc/i686-w64-mingw32.static/4.9.2/include-fixed -I/home/robbin/mxe/usr/i686-w64-mingw32.static/include resultatenscherm.h -o debug/moc_resultatenscherm.cpp
+	/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/bin/moc $(DEFINES) -D__GNUC__ -DWIN32 -I/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/mkspecs/win32-g++ -I/home/robbin/test2 -I/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/include -I/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/include/QtWidgets -I/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/include/QtGui -I/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/include/QtCore -I/home/robbin/mxe/usr/lib/gcc/i686-w64-mingw32.static/4.9.2/include/c++ -I/home/robbin/mxe/usr/lib/gcc/i686-w64-mingw32.static/4.9.2/include/c++/i686-w64-mingw32.static -I/home/robbin/mxe/usr/lib/gcc/i686-w64-mingw32.static/4.9.2/include/c++/backward -I/home/robbin/mxe/usr/lib/gcc/i686-w64-mingw32.static/4.9.2/include -I/home/robbin/mxe/usr/lib/gcc/i686-w64-mingw32.static/4.9.2/include-fixed -I/home/robbin/mxe/usr/i686-w64-mingw32.static/include resultatenscherm.h -o debug/moc_resultatenscherm.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:

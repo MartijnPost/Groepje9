@@ -300,13 +300,69 @@ void Graaf::Dijkstra() {
     }//for
 }//Dijkstra
 
+void Graaf::verwijderAfstanden() {
+    for(int i=0; i<aantalKnopen; i++)
+        knopen[i]->lengteTekst->setText("");
+}
+
+void Graaf::afstandInKnoop(int stap, int i) {
+    if(stappenWaardes[stap]->afstand[i] == INT_MAX)
+        knopen[i]->lengteTekst->setText("∞");
+    else
+        knopen[i]->lengteTekst->setText(QString::number(stappenWaardes[stap]->afstand[i]));
+}
+
 void Graaf::kleurTakken() {
-    for (int i = 0; i < aantalTakken; i++)
+     for (int i = 0; i < aantalTakken; i++) {
         takken[i]->paintRed = false;
-     foreach (Tak *tak, stappenWaardes[stap]->gekleurdeTakken)
-         tak->paintRed = true;
+        takken[i]->paintBlue = false;
+     }//for
+     foreach (Tak *tak, stappenWaardes[stap]->gekleurdeTakken) {
+         if (blauweTakken.contains(tak))
+             tak->paintBlue = true;
+         else
+            tak->paintRed = true;
+     }//foreach
      for (int i = 0; i < aantalTakken; i++)
          takken[i]->update();
+}
+
+bool Graaf::kleurKortstePadRec(Knoop* currentKnoop, Knoop* previousKnoop) {
+    if (currentKnoop == startknoop)
+        return true;
+    foreach(Tak* tak, currentKnoop->takkenList) {
+        if (tak->paintRed) {
+            if (tak->source == currentKnoop && !(tak->dest == previousKnoop)) {
+                if (kleurKortstePadRec(tak->dest, currentKnoop)) {
+                    blauweTakken << tak;
+                    return true;
+                }//if
+            }//if
+            else if (tak->dest == currentKnoop && !(tak->source == previousKnoop)){
+                if (kleurKortstePadRec(tak->source, currentKnoop)) {
+                    blauweTakken << tak;
+                    return true;
+                }//if
+            }//else
+        }//if
+    }//foreach
+    return false;
+}//kleurKortstePad
+
+void Graaf::kleurKortstePad() {
+    int aantal = aantalKnopen;
+    if (algoritme == 1)
+        aantal--;
+    foreach (Tak *tak, stappenWaardes[aantal]->gekleurdeTakken)
+        tak->paintRed = true;
+    if (kleurKortstePadRec(eindknoop, NULL))
+        qDebug() << "korstepad gevonden";
+    else {
+        blauweTakken.clear();
+        qDebug() << "start- en eindknoop niet verbonden";
+    }//else
+    foreach (Tak *tak, stappenWaardes[aantal]->gekleurdeTakken)
+        tak->paintRed = false;
 }
 
 void Graaf::stapVooruit() {
@@ -314,12 +370,13 @@ void Graaf::stapVooruit() {
         stap++;
         for (int i = 0; i < aantalKnopen; i++){
             qDebug() << "VooruitKnoop " << i <<" : " <<stappenWaardes[stap]->afstand[i];
+            afstandInKnoop(stap, i);
         }//for
         if (algoritme == 0) {
             stappenWaardes[stap]->knoop->paintGreen = true;
             stappenWaardes[stap]->knoop->update();
         }//if
-        kleurTakken();
+        kleurTakken();        
     }//if
     else
         qDebug() << "einde";
@@ -334,6 +391,7 @@ void Graaf::stapAchteruit() {
         stap--;
         for (int i = 0; i < aantalKnopen; i++){
             qDebug() << "AchteruitKnoop " << i <<" : " <<stappenWaardes[stap]->afstand[i];
+            afstandInKnoop(stap, i);
         }//for
         kleurTakken();
     }//if
@@ -345,6 +403,7 @@ void Graaf::stapBegin() {
     stap = 0;
     for (int i = 0; i < aantalKnopen; i++){
         qDebug() << "BeginKnoop " << i <<" : " <<stappenWaardes[stap]->afstand[i];
+        afstandInKnoop(stap, i);
         if (algoritme == 0) {
             stappenWaardes[i+1]->knoop->paintGreen = false;
             stappenWaardes[i+1]->knoop->update();
@@ -360,6 +419,7 @@ void Graaf::stapEinde() {
         stap = aantalKnopen-1;
     for (int i = 0; i < aantalKnopen; i++){
         qDebug() << "EindKnoop " << i <<" : " <<stappenWaardes[stap]->afstand[i];
+        afstandInKnoop(stap, i);
         if (algoritme == 0) {
             stappenWaardes[i+1]->knoop->paintGreen = true;
             stappenWaardes[i+1]->knoop->update();
