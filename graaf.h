@@ -9,6 +9,7 @@ class tekenveld;
 //Voor de dynamische arrays:
 typedef Knoop* knoopPtr;
 typedef Tak* takPtr;
+typedef Knoop* arrayPtr;
 
 //De elementen uit de rijen van de adjacency list
 struct Element
@@ -63,8 +64,11 @@ private:
     int zoek_index(Knoop* k) const;               //Zoekt voor een knoop zijn index in de lijst 'knopen'
     void BellmanFord( );                          //Implementatie functie voor het Bellman-Ford algoritme
     void vul_kortste_pad( );                      //Vult de lijst 'kortste_pad'
-    int stappenArray[999][999];                   //Array waar alle lengtes van algoritme stap voor stap in opgeslagen zijn
+    arrayPtr** stappenArray;                      //Array waar alle knopen van het algoritme stap voor stap in opgeslagen zijn
+    void vul_array( );                            //Vult de array 'stappenArray'
     int stap;                                     //Tellertje voor stappenArray
+    int** stappenWaardes;                         //Array waar alle waardes van de knopen in het algoritme zijn in opgeslagen
+    void veranderWaardes(int i, int j, int x);
     void stapVooruit( );                          //Zet een stap verder in het algoritme
     void stapAchteruit( );                        //Zet een stap terug in het algrotime
     void stapBegin( );                            //Ga terug naar het begin van het algoritme
