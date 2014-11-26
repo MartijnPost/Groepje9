@@ -1,0 +1,95 @@
+Graaf.h:
+
+ knoopPtr* vorige;                             //Lijst met de eerder bezogte knopen van het gretige algoritme
+    bool eindig(Knoop* k);                        //Functie die checkt of het vanaf de aangegeven knoop de eindknoop bereikbaar is.
+    bool gezien(Knoop* k);                        //Kijkt of de knoop al eerder gezien is bij het gretige algoritme
+    void gretig( );                               //Doe het gretige algoritme
+
+
+Graaf.cpp:
+
+void Graaf::verwijder_arrays( ) {
+    delete [] knopen;
+    delete [] takken;
+    delete [] afstand;
+    delete [] voorganger;
+    delete [] vorige;
+    return;
+}
+
+bool Graaf::eindig(Knoop *k) {
+    /*
+     * Kijk of de eindknoop direct aan k ligt -> return true;
+     * Kijk of de eindknoop bereikbaar is via knopen niet in vorige[] -> return true;
+     *
+    */
+    for(int j=0;j<aantalTakken;j++){
+        if(takken[j]->source==k && takken[j]->dest==eindknoop){
+            return true;
+        }
+        if(takken[j]->source==k && eindig(takken[j]->dest)){
+            return true;
+        }
+    }
+    return false;
+}
+
+bool Graaf::gezien(Knoop *k) {
+    //Kijk of de knoop al eerder gezien is
+    for(int j=0;j<aantalKnopen;j++){
+        if(k==vorige[j]){
+            return true;
+        }
+    }
+    return false;
+}
+
+void Graaf::gretig( ) {
+    //Opschonen
+    verwijder_arrays( );
+    //Initialiseren
+    vul_knopen( );
+    vul_takken( );
+    vorige = new knoopPtr[aantalKnopen];
+    knoopPtr tijdelijk = startknoop;    //Wordt gebruikt om de kortste route te zoeken
+    knoopPtr volgende;  //Wordt de volgende knoop
+    int lengte = INT_MAX;
+    int vorigeIndex = 1;
+    while(tijdelijk != eindknoop){
+        /*Kijk wat kortste pad is vanaf tijdelijk die niet al bezocht is
+         * Sla knoop op als bezocht
+         * if(eindig(tijdelijk)){
+         *  tijdelijk = nieuwe knoop
+         * }
+         * else{
+         *  Check of er andere bereikbare knopen zijn en ga dan terug
+         *      Zo niet geef een error wegens oneindige loop
+         * }
+        */
+        //TODO Zet de beginknoop op gezien
+        vorige[0] = startknoop;
+        for(int j=0;j<aantalTakken;j++){
+            //Als de tak vanuit tijdelijk komt, de lengte minimaal is en de nieuwe knoop nog niet gezien
+            if(takken[j]->source==tijdelijk && lengte < takken[j]->pLineEdit->text().toInt() && !gezien(tijdelijk)){
+                vorige[vorigeIndex] = takken[j]->dest;
+                vorigeIndex++;
+                if(eindig(takken[j]->dest)){ //Als er een route is naar de eindknoop
+                    volgende = takken[j]->dest;
+                    afstand[zoek_index(takken[j]->dest)] =
+                    afstand[zoek_index(takken[j]->source)] + takken[j]->pLineEdit->text().toInt();
+                }
+            }
+        }
+        //Ga vanaf de volgende knoop verder
+        tijdelijk = volgende;
+    }
+
+}
+
+void Graaf::stapBegin() {
+    stap = 0;
+    verwijder_arrays( );
+    for (int i = 0; i < aantalKnopen; i++){
+        qDebug() << "Knoop " << i <<" : " <<stappenArray[stap][i];
+    }//for
+}//stapBegin
