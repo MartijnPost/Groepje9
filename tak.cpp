@@ -14,6 +14,7 @@ Tak::Tak(Knoop *sourceNode, Knoop *destNode, bool directedEdge)
     directed = directedEdge;
     paintRed = false;
     paintBlue = false;
+    paintPurple = false;
     calcCoordinates();
     pLineEdit = new QLineEdit("");
     pLineEdit->setMaxLength(3); //er kunnen maximaal 3 karakters in de text box geplaatst worden
@@ -139,6 +140,8 @@ void Tak::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
         paintpen.setColor("orangered");
     else if (paintBlue)
         paintpen.setColor("cornflowerblue");
+    else if (paintPurple)
+        paintpen.setColor(Qt::magenta);
     paintpen.setWidth(2); //de dikte van de pen is 2
     paintpen.setStyle(Qt::SolidLine);
     painter->setPen(paintpen); //de pen waarmee getekend gaat worden is paintpen
@@ -154,10 +157,13 @@ void Tak::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
                                                   cos(angle - Pi / 3) * arrowSize);
         QPointF destArrowP2 = destPoint + QPointF(sin(angle - Pi + Pi / 3) * arrowSize,
                                                   cos(angle - Pi + Pi / 3) * arrowSize);
-        if (paintRed)
-            painter->setBrush(Qt::red);
-        else if (paintBlue)
+        if (paintBlue)
             painter->setBrush(Qt::blue);
+        else if (paintPurple)
+            painter->setBrush(Qt::magenta);
+
+        else if (paintRed)
+            painter->setBrush(Qt::red);
         else
             painter->setBrush(Qt::black);
         painter->drawPolygon(QPolygonF() << destPoint << destArrowP1 << destArrowP2);

@@ -15,12 +15,33 @@ MainWindow::MainWindow(QWidget *parent) :
     scene = new tekenveld();
     scene->setSceneRect(0,0,2000,2000); //nodig om het tekenveld 'vast' te zetten
     ui->graphicsView->setScene(scene);
+    r = new ResultatenScherm(); //maak nieuw resultaatscherm aan
+    r->setModal(true);
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+void MainWindow::vulGraafArrays() {
+    QList<QGraphicsItem*> list = scene->items(QRectF(0,0,2000,2000), Qt::IntersectsItemShape, Qt::DescendingOrder, QTransform());
+    Knoop* knoop = NULL;
+    Tak* tak = NULL;
+    r->graaf.reset();
+    if (scene->startknoop && scene->eindknoop) {
+        r->graaf.startknoop = scene->startknoopPointer;
+        r->graaf.eindknoop = scene->eindknoopPointer;
+        foreach (QGraphicsItem* item, list) {
+            if ((knoop = dynamic_cast<Knoop *>(item)))
+                r->graaf.expandList(knoop, r->graaf.listEntrance);
+        }//foreach
+        foreach (QGraphicsItem* item, list) {
+            if ((tak = dynamic_cast<Tak *>(item)))
+                r->graaf.expandList(tak, r->graaf.listEntrance);
+        }//foreach
+    }//if
+}//vulGraafArrays
 
 void MainWindow::on_KnoopRadio_toggled(bool checked)
 {
@@ -67,39 +88,34 @@ void MainWindow::on_StartKnop_clicked()
     //function open algoritme doorloop schermpje
     if (scene->startknoop && scene->eindknoop) {
         scene->resultaatScherm = true; //resultaatscherm gaat geopend worden
-        scene->vulGraafArrays();
+        vulGraafArrays();
         hide(); //verberg hoofdscherm
-        ResultatenScherm* r = new ResultatenScherm(); //maak nieuw resultaatscherm aan
         scene->setTextEdits(true);
         r->setScene(scene); //kopieer het tekenveld van het hoofdscherm en plaats in resultaatscherm
-        if (r->scene->graaf.algoritme == 0) {
-            r->scene->graaf.Dijkstra();
-            r->scene->graaf.vul_kortste_pad();
-            r->scene->graaf.kleurKortstePad();
+        if (r->graaf.algoritme == 0) {
+            r->graaf.Dijkstra();
+            qDebug() << "test_10";
+            r->graaf.vul_kortste_pad();
         }
-        else if (r->scene->graaf.algoritme == 1) {
-            r->scene->graaf.BellmanFord();
-            r->scene->graaf.vul_kortste_pad();
-            r->scene->graaf.kleurKortstePad();
-        }        
-        r->setModal(true);
+        else if (r->graaf.algoritme == 1) {
+            r->graaf.BellmanFord();
+            r->graaf.vul_kortste_pad();
+        }
         r->exec(); //open het resultaatscherm.
-        for (int i = 0; i < r->scene->graaf.aantalTakken; i++) {
-            r->scene->graaf.takken[i]->paintRed = false;
-            r->scene->graaf.takken[i]->paintBlue = false;
-            r->scene->graaf.takken[i]->update();
+        for (int i = 0; i < r->graaf.aantalTakken; i++) {
+            r->graaf.takken[i]->paintRed = false;
+            r->graaf.takken[i]->paintBlue = false;
+            r->graaf.takken[i]->paintPurple = false;
+            r->graaf.takken[i]->update();
         }//for
-        for (int i = 0; i < r->scene->graaf.aantalKnopen; i++) {
-            r->scene->graaf.knopen[i]->paintGreen = false;
+        for (int i = 0; i < r->graaf.aantalKnopen; i++) {
+            r->graaf.knopen[i]->paintGreen = false;
         }
-        r->scene->graaf.blauweTakken.clear();
-        delete r;
-        r = NULL;
         scene->setTextEdits(false);
         show(); //als het resultaatscherm wordt afgesloten, toon het hoofdscherm
         scene->resultaatScherm = false; //resultaatscherm is afgesloten
     }//if
-}
+}//on_Startknop_clicked
 
 void MainWindow::on_InvoegenKnop_clicked()
 {
@@ -110,6 +126,7 @@ void MainWindow::on_InvoegenKnop_clicked()
 
 void MainWindow::on_AfsluitenKnop_clicked()
 {
+    r = NULL;
     MainWindow::close();//function exit program
 }
 
@@ -122,6 +139,6 @@ void MainWindow::on_ClearKnop_clicked()
 
 void MainWindow::on_algChoice_currentIndexChanged(int index)
 {
-    scene->graaf.algoritme = index;
+    r->graaf.algoritme = index;
     qDebug() << index;
 }

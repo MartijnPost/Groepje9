@@ -38,6 +38,7 @@ private:
     void placeTextBox();
     bool paintRed;
     bool paintBlue;
+    bool paintPurple;
 };
 
 #endif

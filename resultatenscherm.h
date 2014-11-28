@@ -33,8 +33,9 @@ private slots:
     void on_Stop_clicked();
 
 private:    
+    Graaf graaf;
     tekenveld *scene;
-    Ui::ResultatenScherm *ui;    
+    Ui::ResultatenScherm *ui;
 };
 
 #endif // RESULTATENSCHERM_H

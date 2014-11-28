@@ -5,6 +5,7 @@
 #include <QtCore>
 #include <QtWidgets>
 #include "tekenveld.h"
+#include "resultatenscherm.h"
 
 namespace Ui {
 class MainWindow;
@@ -42,6 +43,8 @@ private slots:
     void on_algChoice_currentIndexChanged(int index);
 
 private:
+    ResultatenScherm* r;
+    void vulGraafArrays();
     tekenveld *scene;
     Ui::MainWindow *ui;
 };

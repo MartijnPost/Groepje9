@@ -1,8 +1,7 @@
 #include "resultatenscherm.h"
 #include "ui_resultatenscherm.h"
 
-ResultatenScherm::ResultatenScherm(QWidget *parent) :
-    QDialog(parent),
+ResultatenScherm::ResultatenScherm(QWidget *parent) : QDialog(parent),
     ui(new Ui::ResultatenScherm)
 {
     ui->setupUi(this);
@@ -22,24 +21,24 @@ void ResultatenScherm::setScene(tekenveld* graaf) {
 
 void ResultatenScherm::on_Begin_clicked()
 {
-   scene->graaf.stapBegin();
+   graaf.stapBegin();
 }
 
 void ResultatenScherm::on_Vorige_clicked()
 {
-    qDebug() << "vorige" << scene->graaf.stap;
-    scene->graaf.stapAchteruit();
+    qDebug() << "vorige" << graaf.stap;
+    graaf.stapAchteruit();
 }
 
 void ResultatenScherm::on_Volgende_clicked()
 {
-    qDebug() << "volgende" << scene->graaf.stap;
-    scene->graaf.stapVooruit();
+    qDebug() << "volgende" << graaf.stap;
+    graaf.stapVooruit();
 }
 
 void ResultatenScherm::on_Einde_clicked()
 {
-    scene->graaf.stapEinde();
+    graaf.stapEinde();
 }
 
 void ResultatenScherm::on_Upload_clicked()
@@ -49,6 +48,6 @@ void ResultatenScherm::on_Upload_clicked()
 
 void ResultatenScherm::on_Stop_clicked()
 {
-    scene->graaf.verwijderAfstanden();
+    graaf.verwijderAfstanden();
     ResultatenScherm::close();//function exit program
 }

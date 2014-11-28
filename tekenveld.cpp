@@ -14,47 +14,30 @@ tekenveld::tekenveld() {
     gerichtetakButton = false;
     firstClick = true;
     eersteKnoop = NULL;
+    eindknoopPointer = NULL;
+    startknoopPointer = NULL;
 }
-
-void tekenveld::vulGraafArrays() {
-    QList<QGraphicsItem*> list = items(QRectF(0,0,2000,2000), Qt::IntersectsItemShape, Qt::DescendingOrder, QTransform());
-    Knoop* knoop;
-    Tak* tak;
-    graaf.reset_2();
-    if (startknoop && eindknoop) {
-        foreach (QGraphicsItem* item, list) {
-            if ((knoop = dynamic_cast<Knoop *>(item)))
-                graaf.expandList(knoop, graaf.listEntrance);
-        }//foreach
-        foreach (QGraphicsItem* item, list) {
-            if ((tak = dynamic_cast<Tak *>(item)))
-                graaf.expandList(tak, graaf.listEntrance);
-        }//foreach
-    }//if
-}//vulGraafArrays
 
 void tekenveld::setTextEdits(bool readOnly) {
     QList<QGraphicsItem*> list = items(QRectF(0,0,2000,2000), Qt::IntersectsItemShape, Qt::DescendingOrder, QTransform());
     Knoop *knoop = NULL;
     Tak *tak = NULL;
     while (!list.empty()) {
-        knoop = dynamic_cast<Knoop *>(list.front());
-        if (knoop != NULL) {
+        knoop = NULL;
+        tak = NULL;
+        if ((knoop = dynamic_cast<Knoop *>(list.front()))) {
             if(readOnly)
                 knoop->pLineEdit->setReadOnly(true);
             else
                 knoop->pLineEdit->setReadOnly(false);
         }//if
-        else {
-            tak = dynamic_cast<Tak *>(list.front());
-            if (tak != NULL) {
-                if (readOnly)
-                    tak->pLineEdit->setReadOnly(true);
-                else
-                    tak->pLineEdit->setReadOnly(false);
-            }//if
-        }//else
-        list.pop_front();
+        else if ((tak = dynamic_cast<Tak *>(list.front()))) {
+            if (readOnly)
+                tak->pLineEdit->setReadOnly(true);
+            else
+                tak->pLineEdit->setReadOnly(false);
+        }//else if
+    list.pop_front();
     }//while
 }//setReadOnly
 
@@ -82,13 +65,13 @@ void tekenveld::mousePressEvent(QGraphicsSceneMouseEvent *event) {
             else if (startknoopButton && !startknoop) {
                 startknoop = true;
                 knoop = new Knoop(x, y, true, false);
-                graaf.startknoop = knoop;
+                startknoopPointer = knoop;
                 addItem(knoop);
             }//else if
             else if (eindknoopButton && !eindknoop) {
                 eindknoop = true;
                 knoop = new Knoop(x, y, false, true);
-                graaf.eindknoop = knoop;
+                eindknoopPointer = knoop;
                 addItem(knoop);
             }//else if           
         }//if
@@ -162,15 +145,21 @@ void tekenveld::mousePressEvent(QGraphicsSceneMouseEvent *event) {
                             tak->source->deleteTakFromList(tak);
                             tak->dest->deleteTakFromList(tak);
                             removeItem(tak);
+                            delete tak;
+                            tak = NULL;
                         }//if
                     }//foreach
                 removeItem(knoop); //verwijder het object
+                delete knoop;
+                knoop = NULL;
                 }//if
                 if (tak != NULL) {
                     if (!knoopInLijst) {
                         tak->source->deleteTakFromList(tak);
                         tak->dest->deleteTakFromList(tak);
                         removeItem(tak);
+                        delete tak;
+                        tak = NULL;
                     }//if
                 }//if
             }//foreach
