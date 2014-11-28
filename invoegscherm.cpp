@@ -10,7 +10,9 @@ InvoegScherm::InvoegScherm(QWidget *parent) :
     ui(new Ui::InvoegScherm)
 {
     ui->setupUi(this);
-    this->setWindowTitle("Invoegscherm");   
+    this->setWindowTitle("Invoegscherm");
+    algName = "";
+    toevoegen = false;
 }
 
 InvoegScherm::~InvoegScherm()
@@ -20,19 +22,19 @@ InvoegScherm::~InvoegScherm()
 
 void InvoegScherm::on_Toevoegen_clicked()
 {
-    QString algName = ui->addAlgBox->text();
+    algName = ui->addAlgBox->text();
     if (algName == "") { //het algoritme moet een naam hebben, mag dus niet leeg zijn
         QMessageBox msgBox;
         msgBox.setText("Vul alstublieft een naam voor het algoritme in");
         msgBox.exec();
     }
-    else {            
-        //MainWindow::ui->algChoice->addItem(algName);//nieuwe algoritme wordt toegevoegd aan de combobox
-        InvoegScherm::close();//function exit program
-    }
+    else
+        toevoegen = true;
+    InvoegScherm::close();//function exit program
 }
 
 void InvoegScherm::on_Terug_clicked()
 {
+    toevoegen = false;
     InvoegScherm::close();//function exit program
 }

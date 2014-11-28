@@ -14,7 +14,7 @@ class InvoegScherm : public QDialog
 public:
     explicit InvoegScherm(QWidget *parent = 0);
     ~InvoegScherm();
-
+    friend class MainWindow;
 private slots:
     void on_Toevoegen_clicked();
 
@@ -22,6 +22,8 @@ private slots:
 
 private:
     Ui::InvoegScherm *ui;
+    QString algName;
+    bool toevoegen;
 };
 
 #endif // INVOEGSCHERM_H

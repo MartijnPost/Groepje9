@@ -188,11 +188,8 @@ int Graaf::zoek_index(Knoop* k) const {
     return -1;
 }//zoek_index
 
-void Graaf::BellmanFord( ) {
+void Graaf::BellmanFord() {
     //Initialiseren
-    vul_knopen( );
-    vul_takken( );
-    vul_array( );    
     qDebug() << aantalKnopen;
     voorganger = new knoopPtr[aantalKnopen];
     for(int i=0;i<aantalKnopen;i++) {
@@ -265,9 +262,6 @@ void Graaf::Dijkstra() {
     int index_source = 0;
     int index_dest = 0;
     stapEindknoop = aantalKnopen;
-    vul_knopen();
-    vul_takken();
-    vul_array();
     vastGezet = new bool[aantalKnopen];
     //Initialiseren
     for (int i=1; i < aantalKnopen; i++) {
@@ -400,7 +394,7 @@ bool Graaf::kleurKortstePadRec(Knoop* currentKnoop, Knoop* previousKnoop, bool b
 }//kleurKortstePad
 
 void Graaf::stapVooruit() {
-    if (!((algoritme == 0 && stap == aantalKnopen) || (algoritme == 1 && stap == aantalKnopen-1))) {
+    if (!(stap == aantalKnopen || (algoritme == 1 && stap == aantalKnopen-1))) {
         stap++;
         for (int i = 0; i < aantalKnopen; i++){
             qDebug() << "VooruitKnoop " << i <<" : " <<stappenWaardes[stap].afstand[i];

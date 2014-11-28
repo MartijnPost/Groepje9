@@ -92,6 +92,9 @@ void MainWindow::on_StartKnop_clicked()
         hide(); //verberg hoofdscherm
         scene->setTextEdits(true);
         r->setScene(scene); //kopieer het tekenveld van het hoofdscherm en plaats in resultaatscherm
+        r->graaf.vul_knopen();
+        r->graaf.vul_takken();
+        r->graaf.vul_array();
         if (r->graaf.algoritme == 0) {
             r->graaf.Dijkstra();
             r->graaf.vul_kortste_pad();
@@ -121,7 +124,9 @@ void MainWindow::on_InvoegenKnop_clicked()
     InvoegScherm i;
     i.setModal(true);
     i.exec();
-}
+    if (i.toevoegen)
+        ui->algChoice->addItem(i.algName);//nieuwe algoritme wordt toegevoegd aan de combobox
+}//on_InvoegenKnop_clicked()
 
 void MainWindow::on_AfsluitenKnop_clicked()
 {
