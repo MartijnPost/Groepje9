@@ -9,7 +9,6 @@ class tekenveld;
 
 //Voor de dynamische arrays:
 typedef Knoop* knoopPtr;
-typedef Tak* takPtr;
 typedef Knoop* arrayPtr;
 
 //De elementen uit de rijen van de adjacency list
@@ -30,6 +29,17 @@ struct Header
     Header* next;
     Header() : knoop(NULL), row(NULL), next(NULL) {};
     Header(Knoop* k) : knoop(k), row(NULL), next(NULL) {};
+};
+
+struct takInfo
+{
+    Tak* tak;
+    Knoop* source1;
+    Knoop* dest1;
+    Knoop* source2;
+    Knoop* dest2;
+    takInfo() : tak(NULL), source1(NULL), dest1(NULL), source2(NULL), dest2(NULL) {};
+    takInfo(Tak* t, Knoop* s1, Knoop* d1, Knoop* s2, Knoop* d2) : tak(t), source1(s1), dest1(d1), source2(s2), dest2(d2) {};
 };
 
 struct huidigeStap
@@ -72,7 +82,7 @@ private:
     int* afstand;                                 //Lijst met de afstanden van elke knoop tot de startknoop
     knoopPtr* voorganger;                         //Lijst met voor elke knoop hun voorganger in hun korste pad
     knoopPtr* knopen;                             //Lijst met alle knopen uit de graaf
-    takPtr* takken;                               //Lijst met alle takken uit de graafd
+    takInfo* takken;                               //Lijst met alle takken uit de graafd
     void vul_knopen( );                           //Vult de lijst 'knopen'
     void vul_takken( );                           //Vult de lijst 'takken'
     int zoek_index(Knoop* k) const;               //Zoekt voor een knoop zijn index in de lijst 'knopen'
@@ -80,7 +90,7 @@ private:
     void vul_kortste_pad( );                      //Vult de lijst 'kortste_pad'
     void vul_array( );                            //Vult de array 'stappenArray'
     int stap;                                     //Tellertje voor stappenArray
-    huidigeStap* stappenWaardes;                 //Array waar alle waardes van de knopen in het algoritme zijn in opgeslagen
+    huidigeStap* stappenWaardes;                  //Array waar alle waardes van de knopen in het algoritme zijn in opgeslagen
     void stapVooruit( );                          //Zet een stap verder in het algoritme
     void stapAchteruit( );                        //Zet een stap terug in het algrotime
     void stapBegin( );                            //Ga terug naar het begin van het algoritme

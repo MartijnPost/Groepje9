@@ -575,6 +575,8 @@ release/moc_mainwindow.cpp: ../mxe/usr/i686-w64-mingw32.static/qt5/include/QtWid
 		../mxe/usr/i686-w64-mingw32.static/qt5/include/QtWidgets/QLineEdit \
 		tak.h \
 		../mxe/usr/i686-w64-mingw32.static/qt5/include/QtCore/QPoint \
+		resultatenscherm.h \
+		../mxe/usr/i686-w64-mingw32.static/qt5/include/QtWidgets/QDialog \
 		mainwindow.h
 	/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/bin/moc $(DEFINES) -D__GNUC__ -DWIN32 -I/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/mkspecs/win32-g++ -I/home/robbin/test2 -I/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/include -I/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/include/QtWidgets -I/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/include/QtGui -I/home/robbin/mxe/usr/i686-w64-mingw32.static/qt5/include/QtCore -I/home/robbin/mxe/usr/lib/gcc/i686-w64-mingw32.static/4.9.2/include/c++ -I/home/robbin/mxe/usr/lib/gcc/i686-w64-mingw32.static/4.9.2/include/c++/i686-w64-mingw32.static -I/home/robbin/mxe/usr/lib/gcc/i686-w64-mingw32.static/4.9.2/include/c++/backward -I/home/robbin/mxe/usr/lib/gcc/i686-w64-mingw32.static/4.9.2/include -I/home/robbin/mxe/usr/lib/gcc/i686-w64-mingw32.static/4.9.2/include-fixed -I/home/robbin/mxe/usr/i686-w64-mingw32.static/include mainwindow.h -o release/moc_mainwindow.cpp
 
@@ -1596,9 +1598,9 @@ release/main.o: main.cpp mainwindow.h \
 		../mxe/usr/i686-w64-mingw32.static/qt5/include/QtWidgets/QLineEdit \
 		tak.h \
 		../mxe/usr/i686-w64-mingw32.static/qt5/include/QtCore/QPoint \
-		invoegscherm.h \
-		../mxe/usr/i686-w64-mingw32.static/qt5/include/QtWidgets/QDialog \
 		resultatenscherm.h \
+		../mxe/usr/i686-w64-mingw32.static/qt5/include/QtWidgets/QDialog \
+		invoegscherm.h \
 		../mxe/usr/i686-w64-mingw32.static/qt5/include/QtWidgets/QApplication
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release/main.o main.cpp
 
@@ -2045,6 +2047,8 @@ release/mainwindow.o: mainwindow.cpp mainwindow.h \
 		../mxe/usr/i686-w64-mingw32.static/qt5/include/QtWidgets/QLineEdit \
 		tak.h \
 		../mxe/usr/i686-w64-mingw32.static/qt5/include/QtCore/QPoint \
+		resultatenscherm.h \
+		../mxe/usr/i686-w64-mingw32.static/qt5/include/QtWidgets/QDialog \
 		ui_mainwindow.h \
 		../mxe/usr/i686-w64-mingw32.static/qt5/include/QtWidgets/QAction \
 		../mxe/usr/i686-w64-mingw32.static/qt5/include/QtWidgets/QApplication \
@@ -2061,9 +2065,7 @@ release/mainwindow.o: mainwindow.cpp mainwindow.h \
 		../mxe/usr/i686-w64-mingw32.static/qt5/include/QtWidgets/QSpacerItem \
 		../mxe/usr/i686-w64-mingw32.static/qt5/include/QtWidgets/QVBoxLayout \
 		../mxe/usr/i686-w64-mingw32.static/qt5/include/QtWidgets/QWidget \
-		invoegscherm.h \
-		../mxe/usr/i686-w64-mingw32.static/qt5/include/QtWidgets/QDialog \
-		resultatenscherm.h
+		invoegscherm.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release/mainwindow.o mainwindow.cpp
 
 release/invoegscherm.o: invoegscherm.cpp invoegscherm.h \
@@ -2521,6 +2523,7 @@ release/invoegscherm.o: invoegscherm.cpp invoegscherm.h \
 		../mxe/usr/i686-w64-mingw32.static/qt5/include/QtWidgets/QGraphicsProxyWidget \
 		tak.h \
 		../mxe/usr/i686-w64-mingw32.static/qt5/include/QtCore/QPoint \
+		resultatenscherm.h \
 		ui_mainwindow.h \
 		../mxe/usr/i686-w64-mingw32.static/qt5/include/QtWidgets/QComboBox \
 		../mxe/usr/i686-w64-mingw32.static/qt5/include/QtWidgets/QGraphicsView \

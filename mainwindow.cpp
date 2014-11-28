@@ -94,7 +94,6 @@ void MainWindow::on_StartKnop_clicked()
         r->setScene(scene); //kopieer het tekenveld van het hoofdscherm en plaats in resultaatscherm
         if (r->graaf.algoritme == 0) {
             r->graaf.Dijkstra();
-            qDebug() << "test_10";
             r->graaf.vul_kortste_pad();
         }
         else if (r->graaf.algoritme == 1) {
@@ -103,10 +102,10 @@ void MainWindow::on_StartKnop_clicked()
         }
         r->exec(); //open het resultaatscherm.
         for (int i = 0; i < r->graaf.aantalTakken; i++) {
-            r->graaf.takken[i]->paintRed = false;
-            r->graaf.takken[i]->paintBlue = false;
-            r->graaf.takken[i]->paintPurple = false;
-            r->graaf.takken[i]->update();
+            r->graaf.takken[i].tak->paintRed = false;
+            r->graaf.takken[i].tak->paintBlue = false;
+            r->graaf.takken[i].tak->paintPurple = false;
+            r->graaf.takken[i].tak->update();
         }//for
         for (int i = 0; i < r->graaf.aantalKnopen; i++) {
             r->graaf.knopen[i]->paintGreen = false;

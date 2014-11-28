@@ -911,6 +911,8 @@ moc_mainwindow.cpp: ../Qt/5.3/gcc_64/include/QtWidgets/QMainWindow \
 		../Qt/5.3/gcc_64/include/QtWidgets/QLineEdit \
 		tak.h \
 		../Qt/5.3/gcc_64/include/QtCore/QPoint \
+		resultatenscherm.h \
+		../Qt/5.3/gcc_64/include/QtWidgets/QDialog \
 		mainwindow.h
 	/home/robbin/Qt/5.3/gcc_64/bin/moc $(DEFINES) -I/home/robbin/Qt/5.3/gcc_64/mkspecs/linux-g++ -I/home/robbin/test2 -I/home/robbin/Qt/5.3/gcc_64/include -I/home/robbin/Qt/5.3/gcc_64/include/QtWidgets -I/home/robbin/Qt/5.3/gcc_64/include/QtGui -I/home/robbin/Qt/5.3/gcc_64/include/QtCore mainwindow.h -o moc_mainwindow.cpp
 
@@ -1930,9 +1932,9 @@ main.o: main.cpp mainwindow.h \
 		../Qt/5.3/gcc_64/include/QtWidgets/QLineEdit \
 		tak.h \
 		../Qt/5.3/gcc_64/include/QtCore/QPoint \
-		invoegscherm.h \
-		../Qt/5.3/gcc_64/include/QtWidgets/QDialog \
 		resultatenscherm.h \
+		../Qt/5.3/gcc_64/include/QtWidgets/QDialog \
+		invoegscherm.h \
 		../Qt/5.3/gcc_64/include/QtWidgets/QApplication
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
@@ -2379,6 +2381,8 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		../Qt/5.3/gcc_64/include/QtWidgets/QLineEdit \
 		tak.h \
 		../Qt/5.3/gcc_64/include/QtCore/QPoint \
+		resultatenscherm.h \
+		../Qt/5.3/gcc_64/include/QtWidgets/QDialog \
 		ui_mainwindow.h \
 		../Qt/5.3/gcc_64/include/QtWidgets/QAction \
 		../Qt/5.3/gcc_64/include/QtWidgets/QApplication \
@@ -2395,9 +2399,7 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		../Qt/5.3/gcc_64/include/QtWidgets/QSpacerItem \
 		../Qt/5.3/gcc_64/include/QtWidgets/QVBoxLayout \
 		../Qt/5.3/gcc_64/include/QtWidgets/QWidget \
-		invoegscherm.h \
-		../Qt/5.3/gcc_64/include/QtWidgets/QDialog \
-		resultatenscherm.h
+		invoegscherm.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o mainwindow.cpp
 
 invoegscherm.o: invoegscherm.cpp invoegscherm.h \
@@ -2855,6 +2857,7 @@ invoegscherm.o: invoegscherm.cpp invoegscherm.h \
 		../Qt/5.3/gcc_64/include/QtWidgets/QGraphicsProxyWidget \
 		tak.h \
 		../Qt/5.3/gcc_64/include/QtCore/QPoint \
+		resultatenscherm.h \
 		ui_mainwindow.h \
 		../Qt/5.3/gcc_64/include/QtWidgets/QComboBox \
 		../Qt/5.3/gcc_64/include/QtWidgets/QGraphicsView \
