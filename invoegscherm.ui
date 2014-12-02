@@ -53,7 +53,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QPlainTextEdit" name="plainTextEdit">
+      <widget class="QPlainTextEdit" name="insertAlg">
        <property name="font">
         <font>
          <pointsize>14</pointsize>

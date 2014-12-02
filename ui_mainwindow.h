@@ -39,21 +39,27 @@ public:
     QSpacerItem *verticalSpacer_2;
     QHBoxLayout *horizontalLayout_2;
     QRadioButton *KnoopRadio;
-    QLabel *label;
+    QPushButton *KnoopButton;
+    QSpacerItem *horizontalSpacer_2;
     QHBoxLayout *horizontalLayout_3;
     QRadioButton *StartKnoopRadio;
-    QLabel *label_2;
+    QPushButton *StartKnoopButton;
+    QSpacerItem *horizontalSpacer_3;
     QHBoxLayout *horizontalLayout_4;
     QRadioButton *EindKnoopRadio;
-    QLabel *label_3;
+    QPushButton *EindKnoopButton;
+    QSpacerItem *horizontalSpacer_4;
     QHBoxLayout *horizontalLayout_5;
     QRadioButton *OngerichteTakRadio;
-    QLabel *label_4;
+    QPushButton *OngerichteTakButton;
+    QSpacerItem *horizontalSpacer_5;
     QHBoxLayout *horizontalLayout_6;
     QRadioButton *GerichteTakRadio;
-    QLabel *label_5;
+    QPushButton *GerichteTakButton;
+    QSpacerItem *horizontalSpacer_6;
     QSpacerItem *verticalSpacer;
-    QSpacerItem *horizontalSpacer;
+    QLabel *label_6;
+    QSpacerItem *verticalSpacer_3;
     QVBoxLayout *verticalLayout;
     QGraphicsView *graphicsView;
     QHBoxLayout *horizontalLayout;
@@ -83,7 +89,7 @@ public:
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setSpacing(6);
         verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
-        verticalSpacer_2 = new QSpacerItem(20, 10, QSizePolicy::Minimum, QSizePolicy::Fixed);
+        verticalSpacer_2 = new QSpacerItem(20, 13, QSizePolicy::Minimum, QSizePolicy::Fixed);
 
         verticalLayout_2->addItem(verticalSpacer_2);
 
@@ -99,21 +105,20 @@ public:
 
         horizontalLayout_2->addWidget(KnoopRadio);
 
-        label = new QLabel(centralWidget);
-        label->setObjectName(QStringLiteral("label"));
-        QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
-        label->setSizePolicy(sizePolicy);
-        label->setMinimumSize(QSize(60, 60));
-        label->setMaximumSize(QSize(60, 60));
-        label->setBaseSize(QSize(0, 0));
-        label->setMouseTracking(false);
-        label->setPixmap(QPixmap(QString::fromUtf8("knoop.png")));
-        label->setScaledContents(true);
+        KnoopButton = new QPushButton(centralWidget);
+        KnoopButton->setObjectName(QStringLiteral("KnoopButton"));
+        KnoopButton->setMinimumSize(QSize(60, 60));
+        KnoopButton->setMaximumSize(QSize(60, 60));
+        KnoopButton->setStyleSheet(QStringLiteral("border-image:url(knoop.png);"));
+        KnoopButton->setIconSize(QSize(32, 32));
+        KnoopButton->setCheckable(false);
+        KnoopButton->setAutoRepeat(false);
 
-        horizontalLayout_2->addWidget(label);
+        horizontalLayout_2->addWidget(KnoopButton);
+
+        horizontalSpacer_2 = new QSpacerItem(20, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+
+        horizontalLayout_2->addItem(horizontalSpacer_2);
 
 
         verticalLayout_2->addLayout(horizontalLayout_2);
@@ -128,16 +133,17 @@ public:
 
         horizontalLayout_3->addWidget(StartKnoopRadio);
 
-        label_2 = new QLabel(centralWidget);
-        label_2->setObjectName(QStringLiteral("label_2"));
-        sizePolicy.setHeightForWidth(label_2->sizePolicy().hasHeightForWidth());
-        label_2->setSizePolicy(sizePolicy);
-        label_2->setMinimumSize(QSize(60, 60));
-        label_2->setMaximumSize(QSize(60, 60));
-        label_2->setPixmap(QPixmap(QString::fromUtf8("startknoop.png")));
-        label_2->setScaledContents(true);
+        StartKnoopButton = new QPushButton(centralWidget);
+        StartKnoopButton->setObjectName(QStringLiteral("StartKnoopButton"));
+        StartKnoopButton->setMinimumSize(QSize(60, 60));
+        StartKnoopButton->setMaximumSize(QSize(60, 60));
+        StartKnoopButton->setStyleSheet(QStringLiteral("border-image:url(startknoop.png);"));
 
-        horizontalLayout_3->addWidget(label_2);
+        horizontalLayout_3->addWidget(StartKnoopButton);
+
+        horizontalSpacer_3 = new QSpacerItem(20, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+
+        horizontalLayout_3->addItem(horizontalSpacer_3);
 
 
         verticalLayout_2->addLayout(horizontalLayout_3);
@@ -152,16 +158,17 @@ public:
 
         horizontalLayout_4->addWidget(EindKnoopRadio);
 
-        label_3 = new QLabel(centralWidget);
-        label_3->setObjectName(QStringLiteral("label_3"));
-        sizePolicy.setHeightForWidth(label_3->sizePolicy().hasHeightForWidth());
-        label_3->setSizePolicy(sizePolicy);
-        label_3->setMinimumSize(QSize(60, 60));
-        label_3->setMaximumSize(QSize(60, 60));
-        label_3->setPixmap(QPixmap(QString::fromUtf8("eindknoop.png")));
-        label_3->setScaledContents(true);
+        EindKnoopButton = new QPushButton(centralWidget);
+        EindKnoopButton->setObjectName(QStringLiteral("EindKnoopButton"));
+        EindKnoopButton->setMinimumSize(QSize(60, 60));
+        EindKnoopButton->setMaximumSize(QSize(60, 60));
+        EindKnoopButton->setStyleSheet(QStringLiteral("border-image:url(eindknoop.png);"));
 
-        horizontalLayout_4->addWidget(label_3);
+        horizontalLayout_4->addWidget(EindKnoopButton);
+
+        horizontalSpacer_4 = new QSpacerItem(20, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+
+        horizontalLayout_4->addItem(horizontalSpacer_4);
 
 
         verticalLayout_2->addLayout(horizontalLayout_4);
@@ -176,16 +183,17 @@ public:
 
         horizontalLayout_5->addWidget(OngerichteTakRadio);
 
-        label_4 = new QLabel(centralWidget);
-        label_4->setObjectName(QStringLiteral("label_4"));
-        sizePolicy.setHeightForWidth(label_4->sizePolicy().hasHeightForWidth());
-        label_4->setSizePolicy(sizePolicy);
-        label_4->setMinimumSize(QSize(60, 60));
-        label_4->setMaximumSize(QSize(60, 60));
-        label_4->setPixmap(QPixmap(QString::fromUtf8("gerichtepijll.png")));
-        label_4->setScaledContents(true);
+        OngerichteTakButton = new QPushButton(centralWidget);
+        OngerichteTakButton->setObjectName(QStringLiteral("OngerichteTakButton"));
+        OngerichteTakButton->setMinimumSize(QSize(60, 60));
+        OngerichteTakButton->setMaximumSize(QSize(60, 60));
+        OngerichteTakButton->setStyleSheet(QStringLiteral("border-image:url(gerichtepijll.png);"));
 
-        horizontalLayout_5->addWidget(label_4);
+        horizontalLayout_5->addWidget(OngerichteTakButton);
+
+        horizontalSpacer_5 = new QSpacerItem(20, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+
+        horizontalLayout_5->addItem(horizontalSpacer_5);
 
 
         verticalLayout_2->addLayout(horizontalLayout_5);
@@ -200,16 +208,17 @@ public:
 
         horizontalLayout_6->addWidget(GerichteTakRadio);
 
-        label_5 = new QLabel(centralWidget);
-        label_5->setObjectName(QStringLiteral("label_5"));
-        sizePolicy.setHeightForWidth(label_5->sizePolicy().hasHeightForWidth());
-        label_5->setSizePolicy(sizePolicy);
-        label_5->setMinimumSize(QSize(60, 60));
-        label_5->setMaximumSize(QSize(60, 60));
-        label_5->setPixmap(QPixmap(QString::fromUtf8("gerichtpijl.png")));
-        label_5->setScaledContents(true);
+        GerichteTakButton = new QPushButton(centralWidget);
+        GerichteTakButton->setObjectName(QStringLiteral("GerichteTakButton"));
+        GerichteTakButton->setMinimumSize(QSize(60, 60));
+        GerichteTakButton->setMaximumSize(QSize(60, 60));
+        GerichteTakButton->setStyleSheet(QStringLiteral("border-image:url(gerichtpijl.png);"));
 
-        horizontalLayout_6->addWidget(label_5);
+        horizontalLayout_6->addWidget(GerichteTakButton);
+
+        horizontalSpacer_6 = new QSpacerItem(20, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+
+        horizontalLayout_6->addItem(horizontalSpacer_6);
 
 
         verticalLayout_2->addLayout(horizontalLayout_6);
@@ -218,12 +227,26 @@ public:
 
         verticalLayout_2->addItem(verticalSpacer);
 
+        label_6 = new QLabel(centralWidget);
+        label_6->setObjectName(QStringLiteral("label_6"));
+        QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(label_6->sizePolicy().hasHeightForWidth());
+        label_6->setSizePolicy(sizePolicy);
+        label_6->setMinimumSize(QSize(120, 75));
+        label_6->setMaximumSize(QSize(50, 50));
+        label_6->setPixmap(QPixmap(QString::fromUtf8("Logo.png")));
+        label_6->setScaledContents(true);
+
+        verticalLayout_2->addWidget(label_6);
+
+        verticalSpacer_3 = new QSpacerItem(20, 28, QSizePolicy::Minimum, QSizePolicy::Fixed);
+
+        verticalLayout_2->addItem(verticalSpacer_3);
+
 
         horizontalLayout_7->addLayout(verticalLayout_2);
-
-        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
-
-        horizontalLayout_7->addItem(horizontalSpacer);
 
         verticalLayout = new QVBoxLayout();
         verticalLayout->setSpacing(0);
@@ -237,6 +260,8 @@ public:
         graphicsView->setSizePolicy(sizePolicy1);
         graphicsView->setMaximumSize(QSize(16777215, 16777215));
         graphicsView->setStyleSheet(QStringLiteral("background-color: rgb(255, 255, 255);"));
+        graphicsView->setFrameShape(QFrame::Box);
+        graphicsView->setFrameShadow(QFrame::Sunken);
 
         verticalLayout->addWidget(graphicsView);
 
@@ -410,15 +435,16 @@ public:
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0));
         KnoopRadio->setText(QString());
-        label->setText(QString());
+        KnoopButton->setText(QString());
         StartKnoopRadio->setText(QString());
-        label_2->setText(QString());
+        StartKnoopButton->setText(QString());
         EindKnoopRadio->setText(QString());
-        label_3->setText(QString());
+        EindKnoopButton->setText(QString());
         OngerichteTakRadio->setText(QString());
-        label_4->setText(QString());
+        OngerichteTakButton->setText(QString());
         GerichteTakRadio->setText(QString());
-        label_5->setText(QString());
+        GerichteTakButton->setText(QString());
+        label_6->setText(QString());
         StartKnop->setText(QApplication::translate("MainWindow", "START", 0));
         algChoice->clear();
         algChoice->insertItems(0, QStringList()

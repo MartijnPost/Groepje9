@@ -25,6 +25,7 @@ private:
     Knoop *eersteKnoop;
     Knoop *eindknoopPointer;
     Knoop *startknoopPointer;
+    bool takPlaced;
 protected:
     void mousePressEvent(QGraphicsSceneMouseEvent *event); //wordt aangeroepen bij een muisklik op het tekenveld
     void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event); //wordt aangeroepen bij een muisklik op het tekenveld

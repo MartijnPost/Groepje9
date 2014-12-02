@@ -43,7 +43,11 @@ void ResultatenScherm::on_Einde_clicked()
 
 void ResultatenScherm::on_Upload_clicked()
 {
-
+    QImage img(2000,2000,QImage::Format_ARGB32_Premultiplied);
+    QPainter p(&img);
+    scene->render(&p);
+    p.end();
+    img.save("scene.png"); //er wordt niks geüpload, er wordt wel een afbeelding van het tekenveld opgeslagen
 }
 
 void ResultatenScherm::on_Stop_clicked()

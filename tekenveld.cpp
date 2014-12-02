@@ -13,6 +13,7 @@ tekenveld::tekenveld() {
     ongerichtetakButton = false;
     gerichtetakButton = false;
     firstClick = true;
+    takPlaced = false;
     eersteKnoop = NULL;
     eindknoopPointer = NULL;
     startknoopPointer = NULL;
@@ -46,10 +47,10 @@ void tekenveld::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
 }
 
 void tekenveld::mousePressEvent(QGraphicsSceneMouseEvent *event) {
+    Tak *tak = NULL;
     if (!resultaatScherm) {
         qreal x = event->scenePos().x();
         qreal y = event->scenePos().y();
-        Tak *tak = NULL;
         Knoop *knoop = NULL;
         QList<QGraphicsItem*> list;
         QList<Tak*> takList;
@@ -73,8 +74,8 @@ void tekenveld::mousePressEvent(QGraphicsSceneMouseEvent *event) {
                 knoop = new Knoop(x, y, false, true);
                 eindknoopPointer = knoop;
                 addItem(knoop);
-            }//else if           
-        }//if
+            }//else if
+       }//if
        //anders als een takButton aan staat en met de linkermuisknop op een knoop wordt gedrukt
        //en daarna een tweede knoop wordt gedrukt, maak een lijn
        else if ((ongerichtetakButton || gerichtetakButton) && (itemAt(event->scenePos(), QTransform())) &&
@@ -110,11 +111,12 @@ void tekenveld::mousePressEvent(QGraphicsSceneMouseEvent *event) {
                             eersteKnoop->addTak(tak);
                             knoop->addTak(tak);
                             addItem(tak);
+                            takPlaced = true;
                             firstClick = true;
                             eersteKnoop = NULL;
                         }//if
                     }//while
-                }//else if
+                }//else
             }//if
         }//else if
         //anders als er zich een object op de coordinaten (x,y) bevindt en er op de rechtermuisknop gedrukt
@@ -159,11 +161,15 @@ void tekenveld::mousePressEvent(QGraphicsSceneMouseEvent *event) {
                         tak->dest->deleteTakFromList(tak);
                         removeItem(tak);
                         delete tak;
-                        tak = NULL;
+                        tak = NULL;                        
                     }//if
                 }//if
             }//foreach
         }//else if
-     }//if
+     }//if    
      QGraphicsScene::mousePressEvent(event); //needed to retain standard mouse click functionality
+     if (takPlaced) {
+         takPlaced = false;
+         tak->pLineEdit->setFocus();
+     }//if
 }

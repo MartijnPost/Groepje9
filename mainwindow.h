@@ -24,13 +24,23 @@ public:
 private slots:
     void on_KnoopRadio_toggled(bool checked);
 
+    void on_KnoopButton_clicked();
+
     void on_StartKnoopRadio_toggled(bool checked);
+
+    void on_StartKnoopButton_clicked();
 
     void on_EindKnoopRadio_toggled(bool checked);
 
+    void on_EindKnoopButton_clicked();
+
     void on_OngerichteTakRadio_toggled(bool checked);
 
+    void on_OngerichteTakButton_clicked();
+
     void on_GerichteTakRadio_toggled(bool checked);
+
+    void on_GerichteTakButton_clicked();
 
     void on_StartKnop_clicked();
 

@@ -51,12 +51,22 @@ void MainWindow::on_KnoopRadio_toggled(bool checked)
         scene->knoopButton = false;
 }
 
+void MainWindow::on_KnoopButton_clicked()
+{
+    ui->KnoopRadio->setChecked(true);
+}
+
 void MainWindow::on_StartKnoopRadio_toggled(bool checked)
 {
     if (checked)
         scene->startknoopButton = true;
     else
         scene->startknoopButton = false;
+}
+
+void MainWindow::on_StartKnoopButton_clicked()
+{
+    ui->StartKnoopRadio->setChecked(true);
 }
 
 void MainWindow::on_EindKnoopRadio_toggled(bool checked)
@@ -67,6 +77,11 @@ void MainWindow::on_EindKnoopRadio_toggled(bool checked)
         scene->eindknoopButton = false;
 }
 
+void MainWindow::on_EindKnoopButton_clicked()
+{
+    ui->EindKnoopRadio->setChecked(true);
+}
+
 void MainWindow::on_OngerichteTakRadio_toggled(bool checked)
 {
     if (checked)
@@ -75,12 +90,22 @@ void MainWindow::on_OngerichteTakRadio_toggled(bool checked)
         scene->ongerichtetakButton = false;
 }
 
+void MainWindow::on_OngerichteTakButton_clicked()
+{
+    ui->OngerichteTakRadio->setChecked(true);
+}
+
 void MainWindow::on_GerichteTakRadio_toggled(bool checked)
 {
     if (checked)
         scene->gerichtetakButton = true;
     else
         scene->gerichtetakButton = false;
+}
+
+void MainWindow::on_GerichteTakButton_clicked()
+{
+    ui->GerichteTakRadio->setChecked(true);
 }
 
 void MainWindow::on_StartKnop_clicked()
@@ -98,11 +123,12 @@ void MainWindow::on_StartKnop_clicked()
         if (r->graaf.algoritme == 0) {
             r->graaf.Dijkstra();
             r->graaf.vul_kortste_pad();
-        }
+        }        
         else if (r->graaf.algoritme == 1) {
             r->graaf.BellmanFord();
             r->graaf.vul_kortste_pad();
         }
+        r->setModal(true);
         r->exec(); //open het resultaatscherm.
         for (int i = 0; i < r->graaf.aantalTakken; i++) {
             r->graaf.takken[i].tak->paintRed = false;
@@ -110,6 +136,7 @@ void MainWindow::on_StartKnop_clicked()
             r->graaf.takken[i].tak->paintPurple = false;
             r->graaf.takken[i].tak->update();
         }//for
+        qDebug("test4");
         for (int i = 0; i < r->graaf.aantalKnopen; i++) {
             r->graaf.knopen[i]->paintGreen = false;
         }
@@ -125,7 +152,7 @@ void MainWindow::on_InvoegenKnop_clicked()
     i.setModal(true);
     i.exec();
     if (i.toevoegen)
-        ui->algChoice->addItem(i.algName);//nieuwe algoritme wordt toegevoegd aan de combobox
+        ui->algChoice->addItem(i.algName.toUpper());//nieuwe algoritmenaam wordt toegevoegd aan de combobox
 }//on_InvoegenKnop_clicked()
 
 void MainWindow::on_AfsluitenKnop_clicked()

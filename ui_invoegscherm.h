@@ -30,7 +30,7 @@ public:
     QGridLayout *gridLayout;
     QVBoxLayout *verticalLayout;
     QLineEdit *addAlgBox;
-    QPlainTextEdit *plainTextEdit;
+    QPlainTextEdit *insertAlg;
     QHBoxLayout *horizontalLayout;
     QPushButton *Terug;
     QPushButton *Toevoegen;
@@ -57,12 +57,12 @@ public:
 
         verticalLayout->addWidget(addAlgBox);
 
-        plainTextEdit = new QPlainTextEdit(InvoegScherm);
-        plainTextEdit->setObjectName(QStringLiteral("plainTextEdit"));
-        plainTextEdit->setFont(font);
-        plainTextEdit->setStyleSheet(QStringLiteral("background-color: rgb(255, 255, 255);"));
+        insertAlg = new QPlainTextEdit(InvoegScherm);
+        insertAlg->setObjectName(QStringLiteral("insertAlg"));
+        insertAlg->setFont(font);
+        insertAlg->setStyleSheet(QStringLiteral("background-color: rgb(255, 255, 255);"));
 
-        verticalLayout->addWidget(plainTextEdit);
+        verticalLayout->addWidget(insertAlg);
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(0);
@@ -109,7 +109,7 @@ public:
     {
         InvoegScherm->setWindowTitle(QApplication::translate("InvoegScherm", "Dialog", 0));
         addAlgBox->setPlaceholderText(QApplication::translate("InvoegScherm", "Naam van algoritme", 0));
-        plainTextEdit->setPlaceholderText(QApplication::translate("InvoegScherm", "Algoritme geschreven in C++", 0));
+        insertAlg->setPlaceholderText(QApplication::translate("InvoegScherm", "Algoritme geschreven in C++", 0));
         Terug->setText(QApplication::translate("InvoegScherm", "TERUG", 0));
         Toevoegen->setText(QApplication::translate("InvoegScherm", "TOEVOEGEN", 0));
     } // retranslateUi

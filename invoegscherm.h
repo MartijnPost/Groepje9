@@ -23,6 +23,7 @@ private slots:
 private:
     Ui::InvoegScherm *ui;
     QString algName;
+    QString eigenAlg;
     bool toevoegen;
 };
 

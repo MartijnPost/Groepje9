@@ -344,10 +344,12 @@ void Graaf::kleurTakken() {
     }//if
     if (stap != 0 && algoritme == 0) {
         kleurKortstePadRec(stappenWaardes[stap].knoop, NULL, false);
+        qDebug("test3");
         if (stap > stapEindknoop)
             kleurKortstePadRec(eindknoop, NULL, true);
-        else
+        else if (!stappenWaardes[stap].gekleurdeTakken.empty())
             kleurKortstePadRec(stappenWaardes[stap+1].knoop, NULL, true);
+         qDebug("test4");
     }//if
     if (algoritme == 1 && stap == aantalKnopen-1)
         kleurKortstePadRec(eindknoop, NULL, true);
@@ -404,7 +406,9 @@ void Graaf::stapVooruit() {
             stappenWaardes[stap].knoop->paintGreen = true;
             stappenWaardes[stap].knoop->update();
         }//if
-        kleurTakken();        
+        qDebug("test1");
+        kleurTakken();
+        qDebug("test2");
     }//if
     else
         qDebug() << "einde";
