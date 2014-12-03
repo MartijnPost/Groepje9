@@ -459,6 +459,3 @@ void Graaf::stapEinde() {
     }//for
     kleurTakken();
 }//stapEinde
-
-void Graaf::eigenAlgoritme() {
-}//eigenAlgoritme
