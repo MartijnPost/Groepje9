@@ -99,6 +99,8 @@ private:
     void Dijkstra();
     Element* vindRij(Knoop* knoop);
     bool* vastGezet;    
+    /* Eigen algoritme */
+    void eigenAlgoritme( );
 };
 
 #endif // GRAAF_H

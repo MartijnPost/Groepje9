@@ -20,10 +20,13 @@ private slots:
 
     void on_Terug_clicked();
 
+    void updateGraaf();
+
 private:
     Ui::InvoegScherm *ui;
-    QString algName;
-    QString eigenAlg;
+    QString algName; //titel van algoritme
+    QString eigenAlgQ; //het algoritme van gebruiker
+    std::string eigenAlg; //opnieuw het algoritme; nu in geschikt formaat voor fstream
     bool toevoegen;
 };
 
