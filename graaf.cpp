@@ -14,7 +14,7 @@ Graaf::Graaf() {
     vastGezet = NULL;
     afstand = NULL;
     stap = 0;
-}
+}//constructor
 
 void Graaf::reset() {
     Header* hHelp1 = listEntrance;
@@ -282,12 +282,12 @@ void Graaf::Dijkstra() {
             }//if
         }//for
         if (i > 0) {
-            stappenWaardes[i+1].paarseTakken = stappenWaardes[i].paarseTakken;
+            stappenWaardes[i+1].rodeTakken = stappenWaardes[i].rodeTakken;
             foreach (Tak *tak, knopen[index_source]->takkenList) {
-                if (tak->paintRed == false && ((tak->dest == knopen[index_source] &&
+                if (tak->paintPurple == false && ((tak->dest == knopen[index_source] &&
                 vastGezet[zoek_index(tak->source)]) || (tak->source == knopen[index_source] &&
                 vastGezet[zoek_index(tak->dest)]))) {
-                    stappenWaardes[i+1].paarseTakken << tak;
+                    stappenWaardes[i+1].rodeTakken << tak;
                 }//if
             }//foreach
         }//if
@@ -332,24 +332,22 @@ void Graaf::afstandInKnoop(int stap, int i) {
 
 void Graaf::kleurTakken() {    
     for (int i = 0; i < aantalTakken; i++) {
-        takken[i].tak->paintRed = false;
-        takken[i].tak->paintBlue = false;
         takken[i].tak->paintPurple = false;
+        takken[i].tak->paintBlue = false;
+        takken[i].tak->paintRed = false;
     }//for
     foreach (Tak *tak, stappenWaardes[stap].gekleurdeTakken)
-        tak->paintRed = true;
+        tak->paintPurple = true;
     if (algoritme == 0) {
-        foreach (Tak *tak, stappenWaardes[stap].paarseTakken)
-            tak->paintPurple = true;
+        foreach (Tak *tak, stappenWaardes[stap].rodeTakken)
+            tak->paintRed = true; //
     }//if
     if (stap != 0 && algoritme == 0) {
         kleurKortstePadRec(stappenWaardes[stap].knoop, NULL, false);
-        qDebug("test3");
-        if (stap > stapEindknoop)
+        if (eindknoop != NULL && stap >= stapEindknoop)
             kleurKortstePadRec(eindknoop, NULL, true);
-        else if (!stappenWaardes[stap].gekleurdeTakken.empty())
+        else if (stappenWaardes[stap+1].knoop != NULL && !stappenWaardes[stap].gekleurdeTakken.empty())
             kleurKortstePadRec(stappenWaardes[stap+1].knoop, NULL, true);
-         qDebug("test4");
     }//if
     if (algoritme == 1 && stap == aantalKnopen-1)
         kleurKortstePadRec(eindknoop, NULL, true);
@@ -361,15 +359,15 @@ bool Graaf::kleurKortstePadRec(Knoop* currentKnoop, Knoop* previousKnoop, bool b
     if (currentKnoop == startknoop)
         return true;
     foreach(Tak* tak, currentKnoop->takkenList) {
-        if (tak->paintRed) {
+        if (tak->paintPurple) {
             if (tak->source == currentKnoop && !(tak->dest == previousKnoop)) {
                 if (kleurKortstePadRec(tak->dest, currentKnoop, blauw)) {
                     if (blauw) {
-                        tak->paintRed = false;
+                        tak->paintPurple = false;
                         tak->paintBlue = true;
                     }//if
                     else {
-                        tak->paintRed = true;
+                        tak->paintPurple = true;
                         tak->paintBlue = false;
                     }//else
                     tak->update();
@@ -379,11 +377,11 @@ bool Graaf::kleurKortstePadRec(Knoop* currentKnoop, Knoop* previousKnoop, bool b
             else if (tak->dest == currentKnoop && !(tak->source == previousKnoop)) {
                 if (kleurKortstePadRec(tak->source, currentKnoop, blauw)) {
                     if (blauw) {
-                        tak->paintRed = false;
+                        tak->paintPurple = false;
                         tak->paintBlue = true;
                     }//if
                     else {
-                        tak->paintRed = true;
+                        tak->paintPurple = true;
                         tak->paintBlue = false;
                     }//else
                     tak->update();
@@ -406,9 +404,7 @@ void Graaf::stapVooruit() {
             stappenWaardes[stap].knoop->paintGreen = true;
             stappenWaardes[stap].knoop->update();
         }//if
-        qDebug("test1");
         kleurTakken();
-        qDebug("test2");
     }//if
     else
         qDebug() << "einde";

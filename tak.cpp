@@ -109,7 +109,7 @@ QRectF Tak::boundingRect() const
     return QRectF(0,0,2000,2000);
 }
 
-QPainterPath Tak::shape() const
+QPainterPath Tak::shape() const //create shape of edge
 {
     QPainterPath path;
     QPolygon polygon;
@@ -136,12 +136,12 @@ void Tak::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
 {
     //teken de lijn
     QPen paintpen(Qt::black);
-    if (paintRed)
-        paintpen.setColor("orangered");
+    if (paintPurple)
+        paintpen.setColor(Qt::magenta);
     else if (paintBlue)
         paintpen.setColor("cornflowerblue");
-    else if (paintPurple)
-        paintpen.setColor(Qt::magenta);
+    else if (paintRed)
+        paintpen.setColor("orangered");
     paintpen.setWidth(2); //de dikte van de pen is 2
     paintpen.setStyle(Qt::SolidLine);
     painter->setPen(paintpen); //de pen waarmee getekend gaat worden is paintpen
@@ -153,15 +153,14 @@ void Tak::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
         double angle = ::acos(line.dx() / line.length());
         if (line.dy() >= 0)
             angle = TwoPi - angle;
-        QPointF destArrowP1 = destPoint + QPointF(sin(angle - Pi / 3) * arrowSize,
+        QPointF destArrowP1 = destPoint + QPointF(sin(angle - Pi / 3) * arrowSize, //bereken de coordinaten
                                                   cos(angle - Pi / 3) * arrowSize);
         QPointF destArrowP2 = destPoint + QPointF(sin(angle - Pi + Pi / 3) * arrowSize,
                                                   cos(angle - Pi + Pi / 3) * arrowSize);
         if (paintBlue)
-            painter->setBrush(Qt::blue);
+            painter->setBrush(Qt::blue);       
         else if (paintPurple)
             painter->setBrush(Qt::magenta);
-
         else if (paintRed)
             painter->setBrush(Qt::red);
         else

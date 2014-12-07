@@ -28,7 +28,7 @@ Knoop::Knoop(const qreal xPos, const qreal yPos, bool start, bool eind)
     lengteWidget->moveBy(xStart-35,yStart-30); //zet de text box op de juiste positie in het tekenveld
     setFlag(ItemIsMovable);
     setFlag(ItemSendsGeometryChanges);
-}
+}//constructor
 
 QVariant Knoop::itemChange(GraphicsItemChange change, const QVariant &value) {
     if (change == ItemPositionChange) {
@@ -58,7 +58,7 @@ QList<Tak *> Knoop::takken() const
 
 void Knoop::deleteTakFromList(Tak* tak) {
     takkenList.removeOne(tak);
-}
+}//deleteTakFromList
 
 QRectF Knoop::boundingRect() const
 {
@@ -66,7 +66,7 @@ QRectF Knoop::boundingRect() const
         return QRectF(xStart-75,yStart-37.5,115,75); //maak cirkel aan
     else
         return QRectF(xStart-37.5,yStart-37.5,75,75); //maak cirkel aan
-}
+}//boundingRect
 
 void Knoop::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
 QWidget *widget)
@@ -82,10 +82,10 @@ QWidget *widget)
         painter->drawLine(xStart-75, yStart, xStart-37.5, yStart);
         painter->drawLine(xStart-45, yStart-6, xStart-37.5, yStart);
         painter->drawLine(xStart-45, yStart+6, xStart-37.5, yStart);
-    }
+    }//if
     if (eindknoop) //als het een eindknoop betreft, teken een 2e kleinere cirkel
         painter->drawEllipse(QRectF(xStart-32.5,yStart-32.5,65,65)); //teken de cirkel
-}
+}//paint
 
 void Knoop::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {

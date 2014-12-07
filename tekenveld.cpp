@@ -17,33 +17,33 @@ tekenveld::tekenveld() {
     eersteKnoop = NULL;
     eindknoopPointer = NULL;
     startknoopPointer = NULL;
-}
+}//constructor
 
 void tekenveld::setTextEdits(bool readOnly) {
-    QList<QGraphicsItem*> list = items(QRectF(0,0,2000,2000), Qt::IntersectsItemShape, Qt::DescendingOrder, QTransform());
+    QList<QGraphicsItem*> list = items(QRectF(0,0,2000,2000), Qt::IntersectsItemShape, Qt::DescendingOrder, QTransform()); //alle items in het tekenveld
     Knoop *knoop = NULL;
     Tak *tak = NULL;
-    while (!list.empty()) {
+    while (!list.empty()) { //doorloop de lijst van items
         knoop = NULL;
         tak = NULL;
-        if ((knoop = dynamic_cast<Knoop *>(list.front()))) {
+        if ((knoop = dynamic_cast<Knoop *>(list.front()))) { //als het voorste item in de lijst een knoop betreft
             if(readOnly)
                 knoop->pLineEdit->setReadOnly(true);
             else
                 knoop->pLineEdit->setReadOnly(false);
         }//if
-        else if ((tak = dynamic_cast<Tak *>(list.front()))) {
+        else if ((tak = dynamic_cast<Tak *>(list.front()))) { //als het voorste item in de lijst een tak betreft
             if (readOnly)
                 tak->pLineEdit->setReadOnly(true);
             else
                 tak->pLineEdit->setReadOnly(false);
         }//else if
-    list.pop_front();
+    list.pop_front(); //item is bekeken, verwijder uit lijst
     }//while
 }//setReadOnly
 
 void tekenveld::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
-    mousePressEvent(event);
+    mousePressEvent(event); //double click also triggers the mousePressEvent function
 }
 
 void tekenveld::mousePressEvent(QGraphicsSceneMouseEvent *event) {
@@ -59,17 +59,17 @@ void tekenveld::mousePressEvent(QGraphicsSceneMouseEvent *event) {
         //ander object snijdt met de knoop die neergezet gaat worden, voeg knoop toe op deze positie
         if ((event->button() == Qt::LeftButton) &&
         (items(QRectF(x-37.5,y-37.5,75,75), Qt::IntersectsItemShape, Qt::DescendingOrder, QTransform())).empty()) {
-            if (knoopButton) {
+            if (knoopButton) { //voeg normale knoop toe
                 knoop = new Knoop(x, y, false, false);
                 addItem(knoop);
             }//if
-            else if (startknoopButton && !startknoop) {
+            else if (startknoopButton && !startknoop) { //voeg startknoop toe
                 startknoop = true;
                 knoop = new Knoop(x, y, true, false);
                 startknoopPointer = knoop;
                 addItem(knoop);
             }//else if
-            else if (eindknoopButton && !eindknoop) {
+            else if (eindknoopButton && !eindknoop) { //voeg eindknoop toe
                 eindknoop = true;
                 knoop = new Knoop(x, y, false, true);
                 eindknoopPointer = knoop;
@@ -79,10 +79,10 @@ void tekenveld::mousePressEvent(QGraphicsSceneMouseEvent *event) {
        //anders als een takButton aan staat en met de linkermuisknop op een knoop wordt gedrukt
        //en daarna een tweede knoop wordt gedrukt, maak een lijn
        else if ((ongerichtetakButton || gerichtetakButton) && (itemAt(event->scenePos(), QTransform())) &&
-       (event->button() == Qt::LeftButton))  {
+       (event->button() == Qt::LeftButton)) {
             if (ongerichtetakButton || gerichtetakButton) {
                 //sla eerste knoop op
-                if (firstClick) {
+                if (firstClick) { //stel eerste knoop van tak in
                     list = items(event->scenePos(), Qt::IntersectsItemShape, Qt::DescendingOrder, QTransform());
                     while (!list.empty() && eersteKnoop == NULL) {
                         eersteKnoop = dynamic_cast<Knoop *>(list.front());
@@ -93,7 +93,7 @@ void tekenveld::mousePressEvent(QGraphicsSceneMouseEvent *event) {
                     }//while
                 }//if
                 //maak de tak
-                else if (!firstClick) {
+                else if (!firstClick) { //stel tweede knoop in
                     if (itemAt(event->scenePos(), QTransform())) {
                         list = items(event->scenePos(), Qt::IntersectsItemShape, Qt::DescendingOrder, QTransform());
                         while (!list.empty() && knoop == NULL) {
@@ -168,8 +168,8 @@ void tekenveld::mousePressEvent(QGraphicsSceneMouseEvent *event) {
         }//else if
      }//if    
      QGraphicsScene::mousePressEvent(event); //needed to retain standard mouse click functionality
-     if (takPlaced) {
+     if (takPlaced) { //als er een tak is geplaatst
          takPlaced = false;
-         tak->pLineEdit->setFocus();
+         tak->pLineEdit->setFocus(); //zet de focus op de text edit van de tak
      }//if
-}
+}//mousePressEvent

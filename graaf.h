@@ -45,7 +45,7 @@ struct takInfo
 struct huidigeStap
 {
     QList<Tak*> gekleurdeTakken;                  //Bevat de gekleurde takken
-    QList<Tak*> paarseTakken;
+    QList<Tak*> rodeTakken;
     int* afstand;
     Knoop* knoop;
     huidigeStap() : afstand(NULL), knoop(NULL) {};

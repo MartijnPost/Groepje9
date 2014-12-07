@@ -7,16 +7,13 @@
 #include <string>
 
 
-InvoegScherm::InvoegScherm(QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::InvoegScherm)
+InvoegScherm::InvoegScherm(QWidget *parent) : QDialog(parent), ui(new Ui::InvoegScherm)
 {
     ui->setupUi(this);
     this->setWindowTitle("Invoegscherm");
     algName = "";
     eigenAlg = "";
     toevoegen = false;
-
 }
 
 InvoegScherm::~InvoegScherm()
@@ -39,21 +36,21 @@ void InvoegScherm::on_Toevoegen_clicked()
         QMessageBox msgBox;
         msgBox.setText("Vul alstublieft een naam voor het algoritme in");
         msgBox.exec();
-    }
+    }//if
     else if (eigenAlgQ == "") {//er moet natuurlijk ook een algoritme worden ingevuld
         QMessageBox msgBox;
         msgBox.setText("Vul alstublieft een algoritme in");
         msgBox.exec();
-    }
+    }//else
     else {
         toevoegen = true;
         updateGraaf(); //voegt het algoritme toe aan graaf.cpp
         InvoegScherm::close();//function exit program
-    }
-}
+    }//else
+}//on_Toevoegen_clicked
 
 void InvoegScherm::on_Terug_clicked()
 {
     toevoegen = false;
     InvoegScherm::close();//function exit program
-}
+}//on_Terug_clicked
