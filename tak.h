@@ -15,9 +15,7 @@ class Tak : public QGraphicsItem
 {
 public:
     Tak(Knoop *sourceKnoop, Knoop *destKnoop, bool directedEdge);//constructor   
-    ~Tak();    
-    qreal midX;
-    qreal midY;
+    ~Tak();        
     friend class tekenveld;
     friend class Graaf;  
     friend class Knoop;

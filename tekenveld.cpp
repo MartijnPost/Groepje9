@@ -80,44 +80,42 @@ void tekenveld::mousePressEvent(QGraphicsSceneMouseEvent *event) {
        //en daarna een tweede knoop wordt gedrukt, maak een lijn
        else if ((ongerichtetakButton || gerichtetakButton) && (itemAt(event->scenePos(), QTransform())) &&
        (event->button() == Qt::LeftButton)) {
-            if (ongerichtetakButton || gerichtetakButton) {
-                //sla eerste knoop op
-                if (firstClick) { //stel eerste knoop van tak in
+            //sla eerste knoop op
+            if (firstClick) { //stel eerste knoop van tak in
+                list = items(event->scenePos(), Qt::IntersectsItemShape, Qt::DescendingOrder, QTransform());
+                while (!list.empty() && eersteKnoop == NULL) {
+                    eersteKnoop = dynamic_cast<Knoop *>(list.front());
+                    if (eersteKnoop != NULL)
+                        firstClick = false;
+                    else
+                        list.pop_front();
+                }//while
+            }//if
+            //maak de tak
+            else if (!firstClick) { //stel tweede knoop in
+                if (itemAt(event->scenePos(), QTransform())) {
                     list = items(event->scenePos(), Qt::IntersectsItemShape, Qt::DescendingOrder, QTransform());
-                    while (!list.empty() && eersteKnoop == NULL) {
-                        eersteKnoop = dynamic_cast<Knoop *>(list.front());
-                        if (eersteKnoop != NULL)
+                    while (!list.empty() && knoop == NULL) {
+                        knoop = dynamic_cast<Knoop *>(list.front());
+                        if (knoop != NULL)
                             firstClick = false;
                         else
                             list.pop_front();
                     }//while
-                }//if
-                //maak de tak
-                else if (!firstClick) { //stel tweede knoop in
-                    if (itemAt(event->scenePos(), QTransform())) {
-                        list = items(event->scenePos(), Qt::IntersectsItemShape, Qt::DescendingOrder, QTransform());
-                        while (!list.empty() && knoop == NULL) {
-                            knoop = dynamic_cast<Knoop *>(list.front());
-                            if (knoop != NULL)
-                                firstClick = false;
-                            else
-                                list.pop_front();
-                        }//while
-                        if (knoop != NULL && eersteKnoop != knoop) {
-                            if (gerichtetakButton)
-                                tak = new Tak(eersteKnoop, knoop, true);
-                            else
-                                tak = new Tak(eersteKnoop, knoop, false);
-                            eersteKnoop->addTak(tak);
-                            knoop->addTak(tak);
-                            addItem(tak);
-                            takPlaced = true;
-                            firstClick = true;
-                            eersteKnoop = NULL;
-                        }//if
-                    }//while
-                }//else
-            }//if
+                    if (knoop != NULL && eersteKnoop != knoop) {
+                        if (gerichtetakButton)
+                            tak = new Tak(eersteKnoop, knoop, true);
+                        else
+                            tak = new Tak(eersteKnoop, knoop, false);
+                        eersteKnoop->addTak(tak);
+                        knoop->addTak(tak);
+                        addItem(tak);
+                        takPlaced = true;
+                        firstClick = true;
+                        eersteKnoop = NULL;
+                    }//if
+                }//while
+            }//else
         }//else if
         //anders als er zich een object op de coordinaten (x,y) bevindt en er op de rechtermuisknop gedrukt
         //wordt en de knoopbutton aan staat, verwijder de knoop

@@ -14,13 +14,13 @@ public:
     bool ongerichtetakButton; //true als de radiobutton "ongerichte tak" aan staat
     bool gerichtetakButton; //true als de radiobutton "gerichte tak" aan staat
     bool firstClick; //nodig om takken te tekenen om te weten tussen welke twee knopen een tak komt
-    bool resultaatScherm; //true als het om de graphicsScene in het resultaatscherm gaat
+    bool resultaatScherm; //true als het om de graphicsScene in het resultaatscherm gaat     
+    bool startknoop; //true als er een startknoop voor komt in de graaf
+    bool eindknoop; //true als er een eindknoop voor komt in de graaf
     void setTextEdits(bool readOnly);
     friend class Knoop;
     friend class MainWindow;
     friend class ResultatenScherm;
-    bool startknoop; //true als er een startknoop voor komt in de graaf
-    bool eindknoop; //true als er een eindknoop voor komt in de graaf
 private:
     Knoop *eersteKnoop;
     Knoop *eindknoopPointer;

@@ -94,15 +94,15 @@ void Tak::calcCoordinates() {
 }
 
 void Tak::placeTextBox() {
-    midX = (source->xHuidig + dest->xHuidig)/2; //berekent de X-coördinaat van het midden van de lijn
-    midY = (source->yHuidig + dest->yHuidig)/2; //berekent de Y-coördinaat van het midden van de lijn
+    qreal midX = (source->xHuidig + dest->xHuidig)/2; //berekent de X-coördinaat van het midden van de lijn
+    qreal midY = (source->yHuidig + dest->yHuidig)/2; //berekent de Y-coördinaat van het midden van de lijn
     pMyProxy->setPos(midX-20,midY-10); //zet de text box rechts boven het midden van de lijn
 }//placeTextBox
 
 Tak::~Tak()
 {
     delete pLineEdit;
-}
+}//destructor
 
 QRectF Tak::boundingRect() const
 {    

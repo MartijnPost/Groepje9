@@ -15,19 +15,18 @@ class Tak;
 class Knoop : public QGraphicsItem
 {
 public:
-    Knoop();
     Knoop(const qreal xPos, const qreal yPos, bool start, bool eind); //constructor
-    qreal xHuidig; //x-coordinaat
     qreal xStart;
-    qreal yHuidig; //y-coordinaat
     qreal yStart;
+    qreal xHuidig; //x-coordinaat
+    qreal yHuidig; //y-coordinaat    
     friend class Graaf;
     friend class tekenveld;
-    friend class ResultatenScherm;
     friend class MainWindow;
 private:
     bool startknoop; //true als de knoop een startknoop is
     bool eindknoop; //true als de knoop een eindknoop is
+    bool paintGreen; //true wanneer de kleur van de pen groen moet zijn
     QList<Tak *> takken() const;//geeft takkenlijst
     QList<Tak *> takkenList;//taklijst met alle takken    Q
     QRectF boundingRect() const; //vorm van de knoop
@@ -37,7 +36,6 @@ private:
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget); //tekent de knoop
     void addTak(Tak *tak);//voegt tak toe aan taklijst
     void deleteTakFromList(Tak* tak);
-    bool paintGreen;
     QGraphicsProxyWidget* pMyProxy; //nodig om de text box weer te geven
     QGraphicsProxyWidget* lengteWidget; //nodig om de text box weer te geven
 protected:

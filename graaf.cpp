@@ -283,16 +283,12 @@ void Graaf::Dijkstra() {
         }//for
         if (i > 0) {
             stappenWaardes[i+1].rodeTakken = stappenWaardes[i].rodeTakken;
-            foreach (Tak *tak, knopen[index_source]->takkenList) {
-                if (tak->paintPurple == false && ((tak->dest == knopen[index_source] &&
-                vastGezet[zoek_index(tak->source)]) || (tak->source == knopen[index_source] &&
-                vastGezet[zoek_index(tak->dest)]))) {
-                    stappenWaardes[i+1].rodeTakken << tak;
-                }//if
+            foreach (Tak *tak, knopen[index_source]->takkenList) {                
+                stappenWaardes[i+1].rodeTakken << tak;
             }//foreach
         }//if
-        stappenWaardes[i+1].afstand[index_source] = afstand[index_source];
-        stappenWaardes[i+1].knoop = knopen[index_source];
+        stappenWaardes[i+1].afstand[index_source] = afstand[index_source]; //minimale afstand
+        stappenWaardes[i+1].knoop = knopen[index_source]; //zet knoop vast
         if (stappenWaardes[i+1].knoop == eindknoop)
             stapEindknoop = i;
         vastGezet[index_source] = true;
